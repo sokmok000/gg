@@ -1,0 +1,88 @@
+<%- include("partials/header") %>
+<style>
+.pcard
+{
+    background-color: #f1f1f1;
+}
+
+.profile-card
+{
+    width: 400px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+}
+
+.image-container
+{
+    position: relative;
+}
+
+.info
+{
+    color: #4b4fe2;
+    margin-right: 16px;
+}
+
+.main-container
+{
+    padding: 20px;
+}
+/* .list-bar
+{
+    background-color: #bdc9ea;
+    border-radius: 16px;
+} */
+.itemlist
+{
+    padding: 0.1em 16px;
+    border-radius: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: #D2D9DA;
+}
+</style>
+
+<br><br><br><br>
+<body class="pcard">
+<div class="profile-card">
+    
+    <div class="image-container">
+            <img src="blue.png" style="width: 100%">
+            <div class="main-container">
+                <p>Username</p>
+                <p><input type="text" name="" placeholder="Name"></p>
+            </div>
+            <hr>
+    </div>
+    <div class="main-container">
+        <p>บ้านเลขที่</p>
+        <p><input type="text" name="" placeholder="Address"></p>
+        <p>จังหวัด</p>
+        <p><input type="text" name="" placeholder=""></p>
+        <p>เขต</p>
+        <p><input type="text" name="" placeholder=""></p>
+        <p>รหัสไปรษณีย์</p>
+        <p><input type="text" name="" placeholder=""></p>
+        <p>Tel.</p>
+        <p><input type="tel" name="" placeholder="085-xxxxxxx"></p>
+        <p>Change Password</p>
+        <p><input type="password" name="" placeholder="Password"></p>
+        <p><input type="password" name="" placeholder="Confrim Password"></p>
+        <hr>
+        <p>Change Photo</p>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div>
+            <center><button type="button"  class="btn btn-dark">Submit</button></center>
+    </div>
+</div>
+</body>
+
+<%- include("partials/footer") %>

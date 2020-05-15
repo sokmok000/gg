@@ -67,7 +67,10 @@ app.get("/jordan/details/checkbil",function(req,res){
 
 app.get("/profile",function(req,res){
     res.render("profile");
-});  
+});
+app.get("/profile2",function(req,res){
+    res.render("profile2");
+});    
 
 
 
@@ -85,7 +88,9 @@ app.get("/profile",function(req,res){
 //         {name: "Anivia",imgurl:"https://vignette.wikia.nocookie.net/leagueoflegends/images/1/15/Anivia_PapercraftSkin.jpg/revision/latest?cb=20190208202530"},
 //       ];
 
-
+app.get("/edit", function(req,res){
+    res.render("edit");
+});
 
 app.get("/jordan", function(req,res){
     res.render("jordan");
