@@ -24,7 +24,7 @@ app.use(bodyParser.json())
 
 
 router.get('/', function(req, res, next) {
-  res.render('home');
+  res.render('home2');
 });
 function enSureAuthenticated(req,res,next){
   if(req.isAuthenticated()){
