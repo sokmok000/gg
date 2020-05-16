@@ -37,6 +37,11 @@
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     
     <a href="/" class="w3-bar-item w3-button w3-padding-large"><i class="glyphicon glyphicon-home"></i> Web Name</a>
+    <%}%>
+      
+
+
+<%if(locals.user){%>
     <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
     <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
     <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>
@@ -51,7 +56,8 @@
 <div class="w3-dropdown-hover w3-hide-small">
   <a href="/profile"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Profile</a>
 </div>
-
+<a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Your name is <%= user.name %></a>
+<%}%>
 </div>
 
 

@@ -1,29 +1,25 @@
 <%- include("partials/header") %>
 <body>
-    <form   action="/login" method="POST" id="login">
   <div class="form">
     <h2>Login</h2>
     <div class="input">
       <div class="inputBox">
         <label>Username</label>
-        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="" placeholder="">
       </div>
       <div class="inputBox">
         <label>Password</label>
-        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="" placeholder="">
       </div>
       <div class="inputBox">
-        <input type="submit" name="" value="Log In">
-      </div>
-      <div class="inputBox">
-        <center><a href="/signup" style="color: greenyellow; ;">Sign Up Here!!</a></center>
+        <input type="submit" name="" value="Sign In">
       </div>
     </div>
     <p class="forget">Forget Password ?<a href="/#">Cilck Here</a></p>
   </div>
-  </form>
 </body>
 <style>
+
   body
   {
     display: flex;
@@ -32,6 +28,7 @@
     min-height: 100vh;
     background: #303030;
   }
+
   .form
   {
     position: relative;
@@ -108,6 +105,9 @@
   {
     color:#ff0047;
   }
+
+
+
 </style>
 
 <%- include("partials/footer") %>

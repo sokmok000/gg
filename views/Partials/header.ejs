@@ -283,7 +283,7 @@ function myFunction() {
 
 
 <%if(locals.user){%>
-  Your name is <%= user.name %>
+ 
   <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
   <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
   <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>
@@ -293,7 +293,7 @@ function myFunction() {
 </div>
   <div class="w3-dropdown-hover w3-hide-small">
     <a href="/logout"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Logout</a>
-</div>
+</div><a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Your name is <%= user.name %></a>
 <%}%>
 </div>
 
