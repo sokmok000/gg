@@ -7,7 +7,7 @@
 
 .profile-card
 {
-    width: 400px;
+    width: 1000px;
     margin: auto;
     background: #fff;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
@@ -47,28 +47,39 @@
 <body class="pcard">
 <div class="profile-card">
     
-    <div class="image-container">
+    <div  class="image-container">
             <img src="blue.png" style="width: 100%">
             <div class="main-container">
                 <p>Username</p>
-                <p><input type="text" name="" placeholder="Name"></p>
+                <p><input style="width: 600px;" type="text" name="" placeholder=""></p>
+                <p>Surename</p>
+                <p><input style="width: 600px;" type="text" name="" placeholder=""></p>
             </div>
+            
             <hr>
     </div>
     <div class="main-container">
         <p>บ้านเลขที่</p>
-        <p><input type="text" name="" placeholder="Address"></p>
+        <p><input style="width: 600px;"  type="text" name="" placeholder="Address"></p>
         <p>จังหวัด</p>
-        <p><input type="text" name="" placeholder=""></p>
+        <p><input style="width: 600px;" type="text" name="" placeholder=""></p>
         <p>เขต</p>
-        <p><input type="text" name="" placeholder=""></p>
+        <p><input style="width: 600px;" type="text" name="" placeholder=""></p>
         <p>รหัสไปรษณีย์</p>
-        <p><input type="text" name="" placeholder=""></p>
+        <p><input style="width: 600px;" type="text" name="" placeholder=""></p>
+        <p>บัตรประชาชน</p>
+        <p><input style="width: 600px;" type="number" name="" placeholder="13 หลัก"></p>
         <p>Tel.</p>
-        <p><input type="tel" name="" placeholder="085-xxxxxxx"></p>
-        <p>Change Password</p>
-        <p><input type="password" name="" placeholder="Password"></p>
-        <p><input type="password" name="" placeholder="Confrim Password"></p>
+        <p><input style="width: 600px;" type="tel" name="" placeholder="085-xxxxxxx"></p>
+        <p>Size</p>
+        <p><input style="width: 600px;" type="" name="" placeholder=""></p>
+        <p>เพศ</p>
+        <p><form action="">
+            <input type="radio" name="gender" value="male"> Male<br>
+            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="other"> Other
+          </form></p>
+
         <hr>
         <p>Change Photo</p>
         <div class="input-group mb-3">
