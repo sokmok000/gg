@@ -3,7 +3,7 @@ var router = express.Router();
 const {check,validationResult}= require("express-validator")
 // import form DB
 let User = require("./model/db")
-
+let profile = require("./model/profile")
 let bcrypt = require('bcryptjs')
 const bodyParser = require('body-parser')
 //passport ID
@@ -148,6 +148,71 @@ router.post('/signup', [
       }
       }
     );
- 
+
+  
+    router.get('/profile/:id/edit', function(req,res){
+      profile.findById({_id:req.user._id},function(err,edit){
+          if(err){
+              console.log("error");
+          } else {
+              res.render('edit',{edit:edit});
+          }
+      })
+  });
+//   router.post('/profile/:id/edit',edit.single('image'),function(req,res){
+//     if(!req.file){
+//         console.log(req.file)
+//     let username = req.body.username;
+//     let TelephoneNo = req.body.tel;
+//     let Province  = req.body.Province;
+//     let District = req.body.District;
+//     let Gender = req.body.Gender;
+//     let Nationality = req.body.Nationality;
+//     let Religion = req.body.Religion;
+//     let Address = req.body.Address;
+//     let Country = req.body.Country;
+//     let ZipCode = req.body.ZipCode;
+   
+//     jobseekersignup.updateMany({_id:req.user._id},{$set : {Name:Name,Surname:Surname,IDCard:IDCard,TelephoneNo:TelephoneNo
+//     ,DateofBirth:DateofBirth,Province:Province,District:District,SubDistrict:SubDistrict,Height:Height
+// ,Weight:Weight,Gender:Gender,Nationality:Nationality,Religion:Religion,Address:Address,Country:Country,ZipCode:ZipCode}} ,function(error, idCard){
+//         if(error){
+//             console.log(error);
+//         } else {
+//             res.redirect('/jobseeker/profile')
+//             }
+//         }
+//     );
+// }
+// if(req.file){
+//     let Name = req.body.Name;
+//     let Surname = req.body.Surname ;
+//     let IDCard = req.body.IDCard;
+//     let TelephoneNo = req.body.tel;
+//     let DateofBirth = req.body.DateofBirth;
+//     let Province  = req.body.Province;
+//     let District = req.body.District;
+//     let SubDistrict = req.body.SubDistrict;
+//     let Height = req.body.Height;
+//     let Weight = req.body.Weight;
+//     let Gender = req.body.Gender;
+//     let Nationality = req.body.Nationality;
+//     let Religion = req.body.Religion;
+//     let Address = req.body.Address;
+//     let Country = req.body.Country;
+//     let ZipCode = req.body.ZipCode;
+//     let image = req.file.filename;
+//     jobseekersignup.updateMany({_id:req.user._id},{$set : {Name:Name,Surname:Surname,image:image,IDCard:IDCard,TelephoneNo:TelephoneNo
+//     ,DateofBirth:DateofBirth,Province:Province,District:District,SubDistrict:SubDistrict,Height:Height
+// ,Weight:Weight,Gender:Gender,Nationality:Nationality,Religion:Religion,Address:Address,Country:Country,ZipCode:ZipCode}} ,function(error, idCard){
+//         if(error){
+//             console.log(error);
+//         } else {
+//             res.redirect('/jobseeker/profile')
+//             }
+//         }
+//     );
+// }
+// });
   
   module.exports = router;
