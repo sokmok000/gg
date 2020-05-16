@@ -30,7 +30,9 @@ function enSureAuthenticated(req,res,next){
   if(req.isAuthenticated()){
         return next();
     }else{
-          res.render("login")
+      req.flash('error', 'You need to login first');
+      res.redirect("/login")
+      
 }
 }
 
@@ -42,21 +44,42 @@ router.get("/login",function(req , res, ){
 })
 router.get('/logout', function(req, res) {
   req.logout();
+  req.flash("success","logout successfully")
   res.redirect('/');
 });
 router.get("/profile",enSureAuthenticated,function(req , res, next ){
-  res.render("profile");
+//   User.findById({_id:req.user._id}),function(user,error){
+//     if(error){
+//       console.log("error")
+//     }else{
+//       res.render("profile",{user:user});
+//     }
+//   }
+// })
+res.render("profile")
 })
+// router.get('/profile/new', function(req,res){
+//   User.findById({_id:req.user._id},function(create,error){
+//        if(error){
+//            console.log("Error!");
+//        } else {
+//            res.render('updatecomprofile',{usercreate:create});
+//        }
+//    })
+// });
 
 
 
 
 router.post("/login",passport.authenticate("local",{
           failureRedirect:"/login",
-          failureFlash:false
+          successFlash: true,            
+         failureFlash: true,
+          successFlash: "You log in successfully",
+         failureFlash: "Invalid username or password "
 }),
 function(req , res){
-  res.redirect("/")
+  res.redirect("/profile")
 })
 passport.serializeUser(function(user,done){
   done(null,user.id)
@@ -91,11 +114,11 @@ passport.use(new LocalStrategy(function(username,password,done){
 
 
 
+
 router.post('/signup', [
     check('email', 'กรุณาป้อน Email ให้ถูกต้อง').isEmail(),
     check('name', 'กรุณาป้อน Username ').not().isEmpty(),
     check('password', 'กรุณาป้อน Password').not().isEmpty(),
-    // check('confirm', 'กรุณาป้อน Password ให้เหมือนกัน').not().isEmpty()
   ], function(req, res, ) {
     const result = validationResult(req);
     var errors = result.errors;
@@ -107,31 +130,24 @@ router.post('/signup', [
       })
     } else{
         //insert DB
-      let name = req.body.name;
-      let password = req.body.password;
-      // let confirm = req.body.confirm;
-      let email = req.body.email;
-      let newUser = new User({
-        name:name,
-        password:password,
-        // confirm:confirm,
-        email:email
-      })
-      User.createUser(newUser,function(err,user){
-        if(err) throw err
-        
-      });
-      res.redirect("/login")
-    }
-    }
-  );
-
-
-
-
-
-
-
-
-
-module.exports = router;
+        let name = req.body.name;
+        let password = req.body.password;
+       
+        let email = req.body.email;
+        let newUser = new User({
+          name:name,
+          password:password,
+          email:email
+        })
+        User.createUser(newUser,function(err,user){
+          if(err) throw err
+          
+        });
+        req.flash("success","Register successfully , Please Login")
+        res.redirect("/login")
+      }
+      }
+    );
+ 
+  
+  module.exports = router;

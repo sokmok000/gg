@@ -1,6 +1,5 @@
 
 const mongoose = require("mongoose");
-
 let bcrypt = require('bcryptjs')
  // connection
 const connectiondb = "mongodb+srv://sokmok000:sokmok0000@cluster0-izngf.mongodb.net/test?retryWrites=true&w=majority"
@@ -21,17 +20,10 @@ let databaseSchema = mongoose.Schema({
 
 })
 
-// let databaseShoes = mongoose.Schema({
-//     name : {
-//         type : String
-//     },
-//     size : {
-//         type : String
-//     },
-// })
+
 
  let User = module.exports = mongoose.model("Sign Ups",databaseSchema)
-//  let admin = module.exports = mongoose.model("Admin",databaseShoes)
+
 
 
 
@@ -59,4 +51,4 @@ module.exports.comparePassword=function(password,hash,callback){
        callback(null,ismatch)
    })
     }
-   
+  

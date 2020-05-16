@@ -305,11 +305,23 @@ function myFunction() {
   <a href="/signup" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Sign Up</a>
   <a href="/proflie" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Proflie</a>
 </div>
- 
+<div class="container">
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+  <% } %>
+  <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+  <% } %>
+</div>  
 </div>
 
 
 <br>
 <br>
+
  <body> 
    
