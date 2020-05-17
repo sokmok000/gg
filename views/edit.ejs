@@ -7,7 +7,7 @@
 
 .profile-card
 {
-    width: 400px;
+    width: 1000px;
     margin: auto;
     background: #fff;
     box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
@@ -45,30 +45,45 @@
 
 <br><br><br><br>
 <body class="pcard">
-<div class="profile-card">
+   
+   
+    <form  action="/profile/<%= edit._id %>/edit" method="POST" ></form>
+    <div class="profile-card">
     
-    <div class="image-container">
+    <div  class="image-container">
             <img src="blue.png" style="width: 100%">
             <div class="main-container">
                 <p>Username</p>
-                <p><input type="text" name="" placeholder="Name"></p>
+                <p><input style="width: 600px;" type="text" name="Username" value="<%= edit.Username %>></p>
+                <p>Surename</p>
+                <p><input style="width: 600px;" type="text" name="Surename" value="<%= edit.Surename %>></p>
             </div>
+            
             <hr>
-    </div>
+    </div> 
     <div class="main-container">
         <p>บ้านเลขที่</p>
-        <p><input type="text" name="" placeholder="Address"></p>
+        <p><input style="width: 600px;"  type="text" name="Housenumber" placeholder="Address" value="<%= jobload.Housenumber %>"></p>
         <p>จังหวัด</p>
-        <p><input type="text" name="" placeholder=""></p>
-        <p>อำเภอ</p>
-        <p><input type="text" name="" placeholder=""></p>
+       <p><input style="width: 600px;" type="text" name="Province" placeholder="" value="<%= edit.Province %>"></p>
+        <p>เขต</p>
+        <p><input style="width: 600px;" type="text" name="District" placeholder="" value="<%= edit.District %>"></p>
         <p>รหัสไปรษณีย์</p>
-        <p><input type="text" name="" placeholder=""></p>
+        <p><input style="width: 600px;" type="text" name="Postalcode" placeholder="" value="<%= edit.Postalcode %>"></p>
+        <p>บัตรประชาชน</p>
+        <p><input style="width: 600px;" type="number" name="IDCard" placeholder="13 หลัก" value="<%= edit.IDCard %>"></p>
         <p>Tel.</p>
-        <p><input type="tel" name="" placeholder="085-xxxxxxx"></p>
-        <p>Change Password</p>
-        <p><input type="password" name="" placeholder="Password"></p>
-        <p><input type="password" name="" placeholder="Confrim Password"></p>
+        <p><input style="width: 600px;" type="tel" name="Telephone" placeholder="085-xxxxxxx" value="<%= edit.Telephone %>"></p>
+        <p>Size</p>
+        <p><input style="width: 600px;" type="" name="Size" placeholder="" value="<%= edit.Size %>"> </p>
+        <p>เพศ</p>
+        <p><select value="<%= edit.Gender %>"  name="Gender" >
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+        </p>
+
         <hr>
         <p>Change Photo</p>
         <div class="input-group mb-3">
@@ -82,7 +97,9 @@
             </div>
             <center><button type="button"  class="btn btn-dark">Submit</button></center>
     </div>
+
 </div>
+</form>
 </body>
 
 <%- include("partials/footer") %>

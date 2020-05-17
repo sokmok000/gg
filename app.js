@@ -54,6 +54,9 @@ app.get("/jordan/details",function(req,res){
     res.render("details2");
 });  
 
+app.get("/add",function(req,res){
+    res.render("add");
+});  
 
 app.get("/nike/details/checkbil",function(req,res){
     res.render("checkbil");
@@ -68,12 +71,12 @@ app.get("/jordan/details/checkbil",function(req,res){
     res.render("checkbil");
 });  
 
-app.get("/profile",function(req,res){
-    res.render("profile");
-});
-app.get("/profile2",function(req,res){
-    res.render("profile2");
-});    
+// app.get("/profile",function(req,res){
+//     res.render("profile");
+// });
+// app.get("/profile2",function(req,res){
+//     res.render("profile2");
+// });    
 
 
 

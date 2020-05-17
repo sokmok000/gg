@@ -1,13 +1,15 @@
 
 const mongoose = require("mongoose");
+passportLocalMongoose = require('passport-local-mongoose');
 let bcrypt = require('bcryptjs')
  // connection
 const connectiondb = "mongodb+srv://sokmok000:sokmok0000@cluster0-izngf.mongodb.net/test?retryWrites=true&w=majority"
 mongoose.connect(connectiondb,{useNewUrlParser: true , useUnifiedTopology: true})
+
 let dbtell = mongoose.connection;
 dbtell.on("error",console.error.bind(console,"connection error"))
 
-let databaseSchema = mongoose.Schema({
+let databaseSchema = new mongoose.Schema({
     name : {
         type : String
     },
@@ -16,7 +18,45 @@ let databaseSchema = mongoose.Schema({
     },
     password : {
         type : String
-    }
+    },
+    Username: {
+        type : String
+    },
+    Surename: {
+        type : String
+    },
+    Housenumber: {
+        type : String
+    },
+    Province: {
+        type : String
+    },
+    District: {
+        type : String
+    },
+    Postalcode: {
+        type : String
+    },
+    IDCard: {
+        type : String
+    },
+    Telephone: {
+        type : String
+    },
+    Size: {
+        type : String
+    },
+    Gender: {
+        type : String
+    },
+    image: {
+        type : String
+    },
+    
+   
+    
+  
+          
 
 })
 
@@ -24,7 +64,7 @@ let databaseSchema = mongoose.Schema({
 
  let User = module.exports = mongoose.model("Sign Ups",databaseSchema)
 
-
+        
 
 
  module.exports.createUser=function(newUser,callback){
@@ -52,3 +92,4 @@ module.exports.comparePassword=function(password,hash,callback){
    })
     }
   
+    databaseSchema.plugin(passportLocalMongoose);   
