@@ -77,7 +77,6 @@ router.get("/profile",function(req , res){
     if(error){
       console.log(error)
     }else{
-      console.log(user)
       res.render("profile2",{user:user});
     }
   })
@@ -102,7 +101,7 @@ function(req , res){
 
 
 router.post('/signup',function(req,res){
-  User.register(new User({username:req.body.username,email:req.body.email,name :"?",Surename :"?",Housenumber:"?", Province:"?", District:"?", Postalcode:"?", IDCard :"?", Telephone:"?", Size :"?",Gender:"?", image:"?"
+  User.register(new User({username:req.body.username,email:req.body.email,name :"",Surename :"",Housenumber:"", Province:"", District:"", Postalcode:"", IDCard :"", Telephone:"", Size :"",Gender:"", image:""
     }), req.body.password, function(err, user){
       if(err){
           console.log(err);
@@ -116,46 +115,6 @@ router.post('/signup',function(req,res){
   });
 });
     
-
-
-
-
-// router.post('/signup', [
-//     check('email', 'กรุณาป้อน Email ให้ถูกต้อง').isEmail(),
-//     check('name', 'กรุณาป้อน Username ').not().isEmpty(),
-//     check('password', 'กรุณาป้อน Password').not().isEmpty()
-//   ], function(req, res, next ) {
-//     const result = validationResult(req);
-//     let errors = result.errors;
-//     //Validation Data
-//     if (!result.isEmpty()) {
-//       //Return error to views
-//       res.render('signup2', {
-//         errors: errors
-//       })
-//     } else{
-//         //insert DB
-//         let name = req.body.name;
-//         let password = req.body.password;
-       
-//         let email = req.body.email;
-//         let newUser = new User({
-//           name:name,
-//           password:password,
-//           email:email
-//         })
-//         User.createUser(newUser,function(err,user){
-//           if(err){
-//             console.log(err)
-//             req.flash('error','Username or Email had already used');
-//             res.redirect('/signup')
-//           }
-//         });
-//         req.flash("success","Register successfully , Please Login")
-//         res.redirect("/login")
-//       }
-//       }
-//     );
 
 
 

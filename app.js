@@ -56,6 +56,13 @@ app.get("/jordan/details",function(req,res){
 
 app.get("/add",function(req,res){
     res.render("add");
+});
+
+app.get("/edit",function(req,res){
+    res.render("edit");
+});  
+app.get("/1",function(req,res){
+    res.render("profile");
 });  
 
 app.get("/nike/details/checkbil",function(req,res){

@@ -1,8 +1,10 @@
 <%- include("partials/header") %>
+<body style="background-color: #273746;">
+    
 <div class="container">
-    <header class="jumbotron">
+    <header class="jumbotron" style="background: url(bgshop4.jpg); background-size:cover; width: 100%; height:300px ;" >
         <div class="container">
-        <center><h1>JORDAN</h1></center>
+        
     </div>
 </header>
 <br><br><br><br><br><br>
@@ -17,6 +19,7 @@
                         <div class="details">
                             <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
                             <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/jordan/details">Jordan Store</a></p>
+                            <div><a href="#" class="add-cart btn btn-secondary"><i class="fas fa-shopping-cart"></i> Add to card</a></div>
                             <div class="social-icons">
                                 <a href="#"><i class="" aria-hidden="true"></i></a>
                             </div>
@@ -39,6 +42,7 @@
                     <div class="details">
                         <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
                         <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/jordan/details">Jordan Store</a></p>
+                        <div><a href="#" class="add-cart btn btn-secondary"><i class="fas fa-shopping-cart"></i> Add to card</a></div>
                         <div class="social-icons">
                             <a href="#"><i class="" aria-hidden="true"></i></a>
                         </div>
@@ -62,6 +66,7 @@
                     <div class="details">
                         <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
                         <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/jordan/details">Jordan Store</a></p>
+                        <div><a href="#" class="add-cart btn btn-secondary"><i class="fas fa-shopping-cart"></i> Add to card</a></div>
                         <div class="social-icons">
                             <a href="#"><i class="" aria-hidden="true"></i></a>
                         </div>
@@ -140,5 +145,36 @@
 
 
 </div>
+</body>
+<script>
+    let carts = document.querySelectorAll('.add-cart');
+    for(let i=0; i < carts.length ; i++)
+    {
+        carts[i].addEventListener('click',() =>{
+            console.log("Added to card");
+            cartNumbers();
+        });
+    }
+function onLoadCartNumbers() {
+    let productNumbers = localStorage.getItem("cartNumbers");
+    if(productNumbers){
+        document.querySelector(".cart span").textContent = productNumbers;
+    }
+}
+    function cartNumbers(){
+        let productNumbers = localStorage.getItem("cartNumber");
 
+        productNumbers = parseInt(productNumbers);
+        if(productNumbers){
+            localStorage.setItem("cartNumbers",productNumbers + 1);
+            document.querySelector(".cart span").textContent = productNumbers + 1;
+        }
+        else{
+            localStorage.setItem(".cartNumbers",1);
+            document.querySelector(".cart span").textContent = 1 ;
+        }
+    }
+
+    onLoadCartNumbers();
+    </script>
 <%- include("partials/footer") %>
