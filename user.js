@@ -145,9 +145,9 @@ router.post('/signup',function(req,res){
     let image= req.body.image
           
    
-    User.updateMany({_id:req.user._id},{$set : {Username:Username,Surename:Surename,Housenumber:Housenumber,Province:Province
+    User.updateMany({_id:req.user._id},{$set : {Name:Name,Surename:Surename,Housenumber:Housenumber,Province:Province
     ,District:District,Postalcode:Postalcode,IDCard:IDCard,Telephone:Telephone,Size:Size,Gender:Gender,image:image}} ,function(err, update){
-        if(error){
+        if(err){
             console.log(error);
         } else {
             res.redirect('/profile')
@@ -167,11 +167,10 @@ if(req.file){
   let Size= req.body.Size
   let Gender= req.body.Gender
   let image= req.file.image
-    User.updateMany({_id:req.user._id},{$set : {Name:Name,Surname:Surname,image:image,IDCard:IDCard,TelephoneNo:TelephoneNo
-    ,DateofBirth:DateofBirth,Province:Province,District:District,SubDistrict:SubDistrict,Height:Height
-,Weight:Weight,Gender:Gender,Nationality:Nationality,Religion:Religion,Address:Address,Country:Country,ZipCode:ZipCode}} ,function(err, update){
-        if(error){
-            console.log(error);
+    User.updateMany({_id:req.user._id},{$set : {Name:Name,Surname:Surname,Housenumber:Housenumber,Province:Province
+      ,District:District,Postalcode:Postalcode,IDCard:IDCard,Telephone:Telephone,Size:Size,Gender:Gender,image:image}} ,function(err, update){
+        if(err){
+            console.log(err);
         } else {
             res.redirect('/profile')
             }
