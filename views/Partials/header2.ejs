@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 <link src="http://maxcdn.bootstrapcdn.com/font-awesome/5.0.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 
     <head>
         
@@ -14,6 +15,7 @@
         
     </head>
 
+    
     <script>
 
       function myFunction() {
@@ -56,8 +58,12 @@
 <div class="w3-dropdown-hover w3-hide-small">
   <a href="/profile"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Profile</a>
 </div>
-<a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Your name is <%= user.name %></a>
+<
+<a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Your Username is <%= user.username %></a>
+<div><a class="cart w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-shopping-cart"></i>Cart</a></div>
+>>>>>>> origin/master
 <%}%>
+</div>
 </div>
 
 
@@ -69,7 +75,18 @@
 <a href="/signup" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Sign Up</a>
 <a href="/profile" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Profile</a>
 </div>
-
+<div class="container">
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+  <% } %>
+  <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+  <% } %>
+</div>  
 </div>
 
 

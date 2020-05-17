@@ -1,20 +1,20 @@
 <%- include("partials/header") %>
 <body>
 
-    <% if(locals.errors){ %>
+    <!-- <% if(locals.errors){ %>
         <ul class="alert alert-danger">
           <% Object.values(errors).forEach(function(error){%>
                   <li><%= error.msg %></li>
           <%})%>
         </ul>
-      <%}%>
+      <%}%> -->
     <form  action="/signup" method="POST" id="login">
   <div class="form">
     <h2>Register</h2>
     <div class="input">
       <div class="inputBox">
         <label>Username</label>
-        <input type="text" name="name" placeholder="Username">
+        <input type="text" name="username" placeholder="Username">
       </div>
       <div class="inputBox">
         <label>Password</label>

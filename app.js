@@ -6,9 +6,10 @@ const LocalStrategy = require("passport-local").Strategy
 const bcrypt = require('bcryptjs')
 const path = require("path");
 const session = require("express-session")
+const flash = require("connect-flash")
 let user = require('./user');
 let app = express()
-// let route = require("./home")
+
 
 
 app.use(session({
@@ -20,9 +21,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(passport.initialize())
 app.use(passport.session())
-
+app.use(flash())
 app.get("*",function(req , res , next){
     res.locals.user = req.user || null
+    res.locals.error = req.flash("error")
+    res.locals.success = req.flash("success")
     next()
 })
 app.use('/', user);
@@ -51,6 +54,16 @@ app.get("/jordan/details",function(req,res){
     res.render("details2");
 });  
 
+app.get("/add",function(req,res){
+    res.render("add");
+});
+
+app.get("/edit",function(req,res){
+    res.render("edit");
+});  
+app.get("/1",function(req,res){
+    res.render("profile");
+});  
 
 app.get("/nike/details/checkbil",function(req,res){
     res.render("checkbil");
@@ -65,12 +78,12 @@ app.get("/jordan/details/checkbil",function(req,res){
     res.render("checkbil");
 });  
 
-app.get("/profile",function(req,res){
-    res.render("profile");
-});
-app.get("/profile2",function(req,res){
-    res.render("profile2");
-});    
+// app.get("/profile",function(req,res){
+//     res.render("profile");
+// });
+// app.get("/profile2",function(req,res){
+//     res.render("profile2");
+// });    
 
 
 
