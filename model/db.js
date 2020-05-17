@@ -10,16 +10,16 @@ let dbtell = mongoose.connection;
 dbtell.on("error",console.error.bind(console,"connection error"))
 
 let databaseSchema = new mongoose.Schema({
-    name : {
-        type : String
+    username : {
+        type : String , unique : true
     },
     email : {
-        type : String
+        type : String , unique : true
     },
     password : {
         type : String
     },
-    Username: {
+    Name: {
         type : String
     },
     Surename: {
@@ -55,41 +55,14 @@ let databaseSchema = new mongoose.Schema({
     
    
     
-  
-          
+     
 
 })
-
-
-
- let User = module.exports = mongoose.model("Sign Ups",databaseSchema)
+databaseSchema.plugin(passportLocalMongoose);   
+module.exports = mongoose.model("Sign Ups",databaseSchema)
 
         
 
-
- module.exports.createUser=function(newUser,callback){
-    bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash("newUser.password", salt, function(err, hash) {
-            newUser.password=hash;
-            newUser.save(callback);
-        });
-    });
- }
-
-
-module.exports.getUserById=function(id,callback){
-    User.findById(id,callback)
-}
-module.exports.getUserByName=function(name,callback){
-    let query = {
-        name:name
-    }
-    User.findOne(query,callback)
-}
-module.exports.comparePassword=function(password,hash,callback){
-   bcrypt.compare(password,hash,function(err,ismatch){
-       callback(null,ismatch)
-   })
-    }
+    
   
-    databaseSchema.plugin(passportLocalMongoose);   
+   
