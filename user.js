@@ -74,6 +74,7 @@ router.get("/profile",enSureAuthenticated,function(req , res, next ){
 
 router.post("/login",passport.authenticate("local",{
           failureRedirect:"/login",
+          
           successFlash: true,            
          failureFlash: true,
           successFlash: "You log in successfully",
