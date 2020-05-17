@@ -17,6 +17,7 @@
                         <div class="details">
                             <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
                             <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/nike/details">Nike Store</a></p>
+                            <div><a href="#" class="add-cart btn btn-secondary" ><i class="fas fa-shopping-cart"></i> Add to cart</a></div>
                             <div class="social-icons">
                                 <a href="#"><i class="" aria-hidden="true"></i></a>
                             </div>
@@ -39,6 +40,7 @@
                     <div class="details">
                         <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
                         <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/nike/details">Nike Store</a></p>
+                        <div><a href="#" class="add-cart btn btn-secondary" ><i class="fas fa-shopping-cart"></i> Add to cart</a></div>
                         <div class="social-icons">
                             <a href="#"><i class="" aria-hidden="true"></i></a>
                         </div>
@@ -62,6 +64,7 @@
                     <div class="details">
                         <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
                         <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/nike/details">Nike Store</a></p>
+                        <div><a href="#" class="add-cart btn btn-secondary" ><i class="fas fa-shopping-cart"></i> Add to cart</a></div>
                         <div class="social-icons">
                             <a href="#"><i class="" aria-hidden="true"></i></a>
                         </div>
@@ -140,5 +143,35 @@
 
 
 </div>
-
+<script>
+    let carts = document.querySelectorAll('.add-cart');
+    for(let i=0; i < carts.length ; i++)
+    {
+        carts[i].addEventListener('click',() =>{
+            console.log("Added to card");
+            cartNumbers();
+        });
+    }
+function onLoadCartNumbers() {
+    let productNumbers = localStorage.getItem("cartNumbers");
+    if(productNumbers){
+        document.querySelector(".cart span").textContent = productNumbers;
+    }
+}
+    function cartNumbers(){
+        let productNumbers = localStorage.getItem("cartNumber");
+        
+        productNumbers = parseInt(productNumbers);
+        if(productNumbers){
+            localStorage.setItem("cartNumbers",productNumbers + 1);
+            document.querySelector(".cart span").textContent = productNumbers + 1;
+        }
+        else{
+            localStorage.setItem(".cartNumbers",1);
+            document.querySelector(".cart span").textContent = 1 ;
+        }
+    }
+    
+    onLoadCartNumbers();
+    </script>
 <%- include("partials/footer") %>
