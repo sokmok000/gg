@@ -1,14 +1,16 @@
 const express = require("express");
 var router = express.Router();
 const {check,validationResult}= require("express-validator");
-let profile = require("./model/profile");
 let User = require("./model/db");
+let sneaker = require("./model/sneaker")
 let bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 const passport = require("passport")
 const passportLocal = require('passport-local');
 
+
 const multer = require('multer');
+
 let app = express()
 app.use(passport.initialize())
 app.use(passport.session())
@@ -24,7 +26,7 @@ passport.deserializeUser(function(user, done) {
     
 });
 app.use((req,res,next)=>{
-  res.locals.currentUser = req.user || null
+  res.locals.user = req.user || null
   res.locals.error = req.flash('error');
   res.locals.success = req.flash('success');
   
@@ -150,6 +152,7 @@ router.post('/signup',function(req,res){
         if(err){
             console.log(error);
         } else {
+             req.flash('success','Edit profile success');
             res.redirect('/profile')
             }
         }

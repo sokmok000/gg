@@ -264,41 +264,41 @@ function myFunction() {
       
       <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     
-      <a href="/" class="w3-bar-item w3-button w3-padding-large"><i class="glyphicon glyphicon-home"></i> Web Name</a>
+      <a href="/admin" class="w3-bar-item w3-button w3-padding-large"><i class="glyphicon glyphicon-home"></i> Home </a>
       
 
-      <%if(!locals.user){%>
-      <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
-      <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
-      <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>      
-      <div class="w3-dropdown-hover w3-hide-small">
+      <!-- <%if(!locals.user){%> -->
+      <a href="/admin/add" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Add</a>
+      <!-- <a href="/admin/edit" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Edit</a>
+      <a href="/admin/delete" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Delete</a>       -->
+      <!-- <div class="w3-dropdown-hover w3-hide-small">
        <a  href="/login"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " style="float: right; margin-right: 20px;" >Login</a>
-    </div>
+    </div> -->
 
     
-    <div class="w3-dropdown-hover w3-hide-small">
+    <!-- <div class="w3-dropdown-hover w3-hide-small">
       <a href="/signup"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Signup</a>
-  </div>
-<%}%>
+  </div> -->
+<!-- <%}%> -->
       
 
 
-<%if(locals.user){%>
+<!-- <%if(locals.user){%> -->
  
-  <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
+  <!-- <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
   <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
   <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>
   
 <!-- <div class="w3-dropdown-hover w3-hide-small">
   <a href="/profile"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Profile</a>
 </div> -->
-  <div class="w3-dropdown-hover w3-hide-small">
+  <!-- <div class="w3-dropdown-hover w3-hide-small">
     <a href="/logout"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Logout</a>
 
-</div><a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Your Username is <%= user.username %></a>
-<div><a class="cart w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-shopping-cart"></i> Cart</a></div>
-
-<%}%>
+<!-- </div><a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> You are Admin </a> -->
+<!-- <div><a class="cart w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-shopping-cart"></i> Cart</a></div> -->
+ 
+<!-- <%}%> --> 
 </div>
 
 <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">

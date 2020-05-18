@@ -2,12 +2,16 @@ const express = require("express");
 const bodyParser = require('body-parser')
 //passport ID
 const passport = require("passport")
-const LocalStrategy = require("passport-local").Strategy
+const passportLocal = require("passport-local")
 const bcrypt = require('bcryptjs')
 const path = require("path");
 const session = require("express-session")
 const flash = require("connect-flash")
+const multer = require('multer');
+let sneaker = require("./model/sneaker")
+let User = require("./model/db");
 let user = require('./user');
+let Sneaker = require("./admin")
 let app = express()
 
 
@@ -22,25 +26,38 @@ app.use(bodyParser.json())
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
+passport.use('local', new passportLocal(User.authenticate()));
+passport.serializeUser(function(user, done) { 
+    done(null, user);
+  });
+  passport.deserializeUser(function(user, done) {
+    if(user!=null)
+      done(null,user);
+      
+  });
+
+
 app.get("*",function(req , res , next){
     res.locals.user = req.user || null
     res.locals.error = req.flash("error")
     res.locals.success = req.flash("success")
+    res.locals.Sneaker = req.Sneaker
     next()
 })
 app.use('/', user);
-// app.use("/",route)
+app.use('/', Sneaker);
 app.set("view engine","ejs");
-
-
-
-
-
-
-// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));
 app.set('views',[path.join(__dirname,"views"),
                  path.join(__dirname,"views/routes") ]);
+
+
+
+
+
+
+
+
 
 app.get("/adidas/details",function(req,res){
     res.render("details2");
@@ -54,9 +71,9 @@ app.get("/jordan/details",function(req,res){
     res.render("details2");
 });  
 
-app.get("/add",function(req,res){
-    res.render("add");
-});
+    // app.get("/add",function(req,res){
+    //     res.render("add");
+    // });
 
 app.get("/edit",function(req,res){
     res.render("edit");

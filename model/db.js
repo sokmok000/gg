@@ -51,12 +51,7 @@ let databaseSchema = new mongoose.Schema({
     },
     image: {
         type : String
-    },
-    
-   
-    
-     
-
+    }
 })
 databaseSchema.plugin(passportLocalMongoose);   
 module.exports = mongoose.model("Sign Ups",databaseSchema)
