@@ -61,7 +61,7 @@ app.set('views',[path.join(__dirname,"views"),
 
 
 
-app.get("/adidas/:id/details",function(req,res){
+app.get("/adidas/:id/detail",function(req,res){
     sneaker.findById({_id:req.params.id},function(err,adidasdetail){
         if(err){
             console.log("error")
@@ -72,7 +72,7 @@ app.get("/adidas/:id/details",function(req,res){
  
 });     
 
-app.get("/nike/:id/details",function(req,res){
+app.get("/nike/:id/detail",function(req,res){
     sneaker.findById({_id:req.params.id},function(err,nikedetail){
         if(err){
             console.log("error")
@@ -83,7 +83,7 @@ app.get("/nike/:id/details",function(req,res){
  
 });     
 
-app.get("/jordan/:id/details",function(req,res){
+app.get("/jordan/:id/detail",function(req,res){
     sneaker.findById({_id:req.params.id},function(err,jordandetail){
         if(err){
             console.log("error")

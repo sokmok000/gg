@@ -2,6 +2,7 @@ const express = require("express");
 let router = express.Router();
 const passport = require('passport')
 const sneaker = require("./model/sneaker")
+const plimit = require('p-limit');
 
 const multer = require('multer');
 let User = require("./model/db");
@@ -24,31 +25,17 @@ let editsneaker = multer({storage : savesneaker});
 
 
 router.get('/admin', function(req, res) {
-  sneaker.find(function(err,seeall){
+  sneaker.find({},function(err,newsneaker){
     if(err){
       console.log("error")
     }else{
-      res.render("admin",{seeall:seeall})
+
+      res.render("admin",{newsneaker:newsneaker})
     }
-  })
+  }).sort({$natural:-1}).limit(3)
 });
 
- 
-    
-     
 
-router.get('/admin/sneaker/add', function(req, res) {
-
-    res.render('add');
-  });
-
-router.post("/admin/sneaker/add",function(req , res ){
-    sneaker.create(new sneaker({Name :req.body.Name, Minidetail :req.body.Minidetail,Detail:req.body.Detail, Size:req.body.Size,Price:req.body.Price, Image:req.body.Image , Brand :req.body.Brand , Color :req.body.Color
-    })
-    )
-    req.flash('success','Add Sneaker Success');
-    res.redirect("/admin")
-})
 
 router.get('/admin/sneaker/editlist', function(req, res) {
  sneaker.find(function(err,findall){
@@ -61,8 +48,7 @@ router.get('/admin/sneaker/editlist', function(req, res) {
  )
 })
 
- 
-
+ //ADD
 
 router.get('/admin/sneaker/:id/detail', function(req, res) {
   sneaker.findById({_id:req.params.id},function(err,edit){
@@ -75,8 +61,20 @@ router.get('/admin/sneaker/:id/detail', function(req, res) {
  
 })
 
+router.get('/admin/sneaker/add', function(req, res) {
 
+  res.render('add');
+});
 
+router.post("/admin/sneaker/add",function(req , res ){
+  sneaker.create(new sneaker({Name :req.body.Name, Minidetail :req.body.Minidetail,Detail:req.body.Detail, Size:req.body.Size,Price:req.body.Price, Image:req.body.Image , Brand :req.body.Brand , Color :req.body.Color,Count :req.body.Count
+  })
+  )
+  req.flash('success','Add Sneaker Success');
+  res.redirect("/admin")
+})
+
+//EDIT 
 
 router.get('/admin/sneaker/:id/edit', function(req,res){
  sneaker.findById({_id:req.params.id},function(err, editsneaker){
@@ -88,15 +86,7 @@ router.get('/admin/sneaker/:id/edit', function(req,res){
   })
 });
 
-// router.put("/admin/sneaker/:id/detail",function(req,res){
-//   sneaker.findByIdAndUpdate(req.params.id, req.body.Name ,req.body.Minidetail,req.body.Detail,req.body.Price,req.body.Size,req.body.Brand,req.body.Colour,req.body.Image , function(err,update){
-//     if(err){
-//       res.redirect("/admin")
-//     }else{
-//       res.redirect("/")
-//     }
-//   })
-// })
+
 router.post('/admin/sneaker/:id/edit',function(req,res){ 
 
   let Name = req.body.Name
@@ -107,13 +97,9 @@ router.post('/admin/sneaker/:id/edit',function(req,res){
   let Image= req.body.Image
   let Brand= req.body.Brand
   let Color= req.body.Color
-  // sneaker.findById({_id:req.params.id},function(err,good){
-  //   if(err)
-  //   console.log(err)
-  //   else{
- 
-  sneaker.updateMany({_id:req.params.id},{$set : {Name:Name,Minidetail:Minidetail,Detail:Detail,Size:Size
-  ,Price:Price,Image:Image,Brand:Brand,Color:Color}} ,function(err, update){
+  let Count= req.body.Count
+
+  sneaker.updateMany({_id:req.params.id},{$set : {Name:Name,Minidetail:Minidetail,Detail:Detail,Size:Size,Price:Price,Image:Image,Brand:Brand,Color:Color,Count:Count}} ,function(err, update){
       if(err){
           console.log(err);
       } else {
@@ -126,6 +112,24 @@ router.post('/admin/sneaker/:id/edit',function(req,res){
   }
     )
 
+
+//Remove 
+
+    router.get('/admin/sneaker/:id/remove', function(req,res){ 
+      sneaker.remove({_id:req.params.id},function(err,remove){
+          if(err)
+          console.log("error")
+          else 
+          {
+              console.log(remove)
+              req.flash('success','You Remove Sneaker Successful');
+              res.redirect("/admin")
+              
+          }
+      })
+       
+    });
+       
 
 
 
@@ -162,5 +166,11 @@ router.get("/jordan",function(req,res){
     }
   })
 });
+
+
+
+
+
+
 
 module.exports = router;

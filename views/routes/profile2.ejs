@@ -69,13 +69,18 @@
         <p><b>
             <i class="fa fa-asterisk info"></i>รายการสินค้าที่สั่ง
         </b></p>
+       
         <div class="list-bar">
+            
             <div class="itemlist">
-                <a>nike 1020 date 10/10/2020</a>
+                <% user.sneakers.forEach(function(sneakershow) { %>
+                <p><%= sneakershow.Name %></p>
+                <% }) %>
             </div>
         </div>
-
+         
     </div>
+    
 </div>
 </body>
 

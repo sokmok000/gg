@@ -27,6 +27,9 @@ const   mongoose = require('mongoose'),
             },
             Color : {
                 type : String
+            },
+            Count: {
+                type : Number
             }
         })
 

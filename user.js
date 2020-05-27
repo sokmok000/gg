@@ -48,10 +48,18 @@ let saveprofile = multer.diskStorage(
 let edit = multer({storage : saveprofile});
 
 
-
-router.get('/', function(req, res, next) {
-  res.render('home2');
+router.get('/', function(req, res) {
+  sneaker.find({},function(err,newsneaker){
+    if(err){
+      console.log("error")
+    }else{
+      res.render("home2",{newsneaker:newsneaker})
+    }
+  }).sort({$natural:-1}).limit(3)
 });
+
+
+
 function enSureAuthenticated(req,res,next){
   if(req.isAuthenticated()){
         return next();
@@ -75,7 +83,7 @@ router.get('/logout', function(req, res) {
 });
 
 router.get("/profile",function(req , res){
-  User.findById({_id:req.user._id},function(error,user){
+  User.findById(req.user._id).populate('sneakers').exec(function(error,user){
     if(error){
       console.log(error)
     }else{
@@ -85,7 +93,7 @@ router.get("/profile",function(req , res){
 
   }  )
 
-
+  
 
 
 router.post("/login",passport.authenticate("local",{
@@ -181,5 +189,14 @@ if(req.file){
     );
 }
 });
+
+
+User.find({},function(err,success){
+  if(err){
+    console.log(err)
+  }else{
+    console.log(success)
+  }
+})
   
   module.exports = router;
