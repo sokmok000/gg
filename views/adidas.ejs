@@ -10,15 +10,15 @@
 <br><br><br><br>
 
 <div class ="row"style="display:flex; flex-wrap:wrap;">
-    
+    <% adidas.forEach(function(adi){ %>
         <div class="col-md-4 col-sm-6" >
             
                 <div class="card">
-                        <div class="front"><img src = " https://stockx-360.imgix.net/adidas-Yeezy-Boost-350-V2-Cinder/Images/adidas-Yeezy-Boost-350-V2-Cinder/Lv2/img01.jpg?auto=format,compress&q=90&updated_at=1585357645&w=1000 " class="img-fluid" width = "300px" ></div>
+                        <div class="front"><img src = " <%= adi.Image %> " class="img-fluid" width = "300px" ></div>
                         <div class = "back">
                             <div class="details">
-                                <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
-                                <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/adidas/details">Adidas Store</a></p>
+                                <h2><%= adi.Name %><br><span><%= adi.Minidetail %></span></h2>
+                                <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/adidas/<%= adi._id %>/details">Detail</a></p>
                                 <div><a href="#" class="add-cart btn btn-secondary"><i class="fas fa-shopping-cart"></i> Add to card</a></div>
                                 <div class="social-icons">
                                     <a href="#"><i class="" aria-hidden="true"></i></a>
@@ -30,120 +30,10 @@
                 <br><br>
                 
                 
-            
         </div>
 
-
-        <div class="col-md-4 col-sm-6" >
-            
-            <div class="card">
-                    <div class="front"><img src = " https://stockx-360.imgix.net/adidas-Yeezy-Boost-350-V2-Cinder/Images/adidas-Yeezy-Boost-350-V2-Cinder/Lv2/img01.jpg?auto=format,compress&q=90&updated_at=1585357645&w=1000 " class="img-fluid" width = "300px" ></div>
-                    <div class = "back">
-                        <div class="details">
-                            <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
-                            <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/adidas/details">Adidas Store</a></p>
-                            <div><a href="#" class="add-cart btn btn-secondary"><i class="fas fa-shopping-cart"></i> Add to card</a></div>
-                            <div class="social-icons">
-                                <a href="#"><i class="" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                
-            </div>    
-            <br><br>
-            
-            
-        
-    </div>
-
-
-
-    <div class="col-md-4 col-sm-6" >
-            
-        <div class="card">
-                <div class="front"><img src = " https://stockx-360.imgix.net/adidas-Yeezy-Boost-350-V2-Cinder/Images/adidas-Yeezy-Boost-350-V2-Cinder/Lv2/img01.jpg?auto=format,compress&q=90&updated_at=1585357645&w=1000 " class="img-fluid" width = "300px" ></div>
-                <div class = "back">
-                    <div class="details">
-                        <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
-                        <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/adidas/details">Adidas Store</a></p>
-                        <div><a href="#" class="add-cart btn btn-secondary"><i class="fas fa-shopping-cart"></i> Add to card</a></div>
-                        <div class="social-icons">
-                            <a href="#"><i class="" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-            
-        </div>    
-        <br><br>
-    </div>
-        
-
-
-
-    <div class="col-md-4 col-sm-6" >
-            
-        <div class="card">
-                <div class="front"><img src = " https://stockx-360.imgix.net/adidas-Yeezy-Boost-350-V2-Cinder/Images/adidas-Yeezy-Boost-350-V2-Cinder/Lv2/img01.jpg?auto=format,compress&q=90&updated_at=1585357645&w=1000 " class="img-fluid" width = "300px" ></div>
-                <div class = "back">
-                    <div class="details">
-                        <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
-                        <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/adidas/details">Adidas Store</a></p>
-                        <div class="social-icons">
-                            <a href="#"><i class="" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-            
-        </div>    
-        <br><br>
-    </div>
-
-
-    <div class="col-md-4 col-sm-6" >
-            
-        <div class="card">
-                <div class="front"><img src = " https://stockx-360.imgix.net/adidas-Yeezy-Boost-350-V2-Cinder/Images/adidas-Yeezy-Boost-350-V2-Cinder/Lv2/img01.jpg?auto=format,compress&q=90&updated_at=1585357645&w=1000 " class="img-fluid" width = "300px" ></div>
-                <div class = "back">
-                    <div class="details">
-                        <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
-                        <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/adidas/details">Adidas Store</a></p>
-                        <div class="social-icons">
-                            <a href="#"><i class="" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-            
-        </div>    
-        <br><br>
-    </div>
-
-
-
-    <div class="col-md-4 col-sm-6" >
-            
-        <div class="card">
-                <div class="front"><img src = " https://stockx-360.imgix.net/adidas-Yeezy-Boost-350-V2-Cinder/Images/adidas-Yeezy-Boost-350-V2-Cinder/Lv2/img01.jpg?auto=format,compress&q=90&updated_at=1585357645&w=1000 " class="img-fluid" width = "300px" ></div>
-                <div class = "back">
-                    <div class="details">
-                        <h2>ชื่อรุ่น<br><span>ชอบบบบ</span></h2>
-                        <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/adidas/details">Adidas Store</a></p>
-                        <div class="social-icons">
-                            <a href="#"><i class="" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-            
-        </div>    
-        <br><br>
-        
-        
+        <% }) %>
     
-    </div>
-    
-    
-
-    
-
 </div>
 </body>
         

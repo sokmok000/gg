@@ -35,13 +35,13 @@ app.use((req,res,next)=>{
 
 let saveprofile = multer.diskStorage(
   {
-  destination:function(req,file,cb){
-    cb(null,"./public/images/img-profile/");
+  destination:function(req,file,sp){
+    sp(null,"./public/images/img-profile/");
   },
-  filename:function(req,file,cb){
+  filename:function(req,file,sp){
    
 
-    cb(null,file.originalname);
+    sp(null,file.originalname);
   }
 })
 

@@ -8,6 +8,7 @@ const path = require("path");
 const session = require("express-session")
 const flash = require("connect-flash")
 const multer = require('multer');
+const methodOverride = require("method-override")
 let sneaker = require("./model/sneaker")
 let User = require("./model/db");
 let user = require('./user');
@@ -26,6 +27,7 @@ app.use(bodyParser.json())
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
+app.use(methodOverride("_method"))
 passport.use('local', new passportLocal(User.authenticate()));
 passport.serializeUser(function(user, done) { 
     done(null, user);
@@ -59,28 +61,44 @@ app.set('views',[path.join(__dirname,"views"),
 
 
 
-app.get("/adidas/details",function(req,res){
-    res.render("details2");
+app.get("/adidas/:id/details",function(req,res){
+    sneaker.findById({_id:req.params.id},function(err,adidasdetail){
+        if(err){
+            console.log("error")
+        }else{
+         res.render("adidasdetail",{adidasdetail:adidasdetail});
+        }
+    })
+ 
 });     
 
-app.get("/nike/details",function(req,res){
-    res.render("details2");
-});  
+app.get("/nike/:id/details",function(req,res){
+    sneaker.findById({_id:req.params.id},function(err,nikedetail){
+        if(err){
+            console.log("error")
+        }else{
+         res.render("nikedetail",{nikedetail:nikedetail});
+        }
+    })
+ 
+});     
 
-app.get("/jordan/details",function(req,res){
-    res.render("details2");
-});  
+app.get("/jordan/:id/details",function(req,res){
+    sneaker.findById({_id:req.params.id},function(err,jordandetail){
+        if(err){
+            console.log("error")
+        }else{
+         res.render("jordandetail",{jordandetail:jordandetail});
+        }
+    })
+ 
+});     
 
     // app.get("/add",function(req,res){
     //     res.render("add");
     // });
 
-app.get("/edit",function(req,res){
-    res.render("edit");
-});  
-app.get("/1",function(req,res){
-    res.render("profile");
-});  
+
 
 app.get("/nike/details/checkbil",function(req,res){
     res.render("checkbil");
@@ -118,22 +136,9 @@ app.get("/jordan/details/checkbil",function(req,res){
 //         {name: "Anivia",imgurl:"https://vignette.wikia.nocookie.net/leagueoflegends/images/1/15/Anivia_PapercraftSkin.jpg/revision/latest?cb=20190208202530"},
 //       ];
 
-app.get("/edit", function(req,res){
-    res.render("edit");
-});
-
-app.get("/jordan", function(req,res){
-    res.render("jordan");
-});
-
-app.get("/home2", function(req,res){
-    res.render("home2");
-});
 
 
-app.get("/nike",function(req,res){
-    res.render("nike");
-});
+
 
 // app.get("/signup",function(req,res){
 //     res.render("signup");
@@ -143,9 +148,7 @@ app.listen(3000, function(req,res){
     console.log("Started Now!!");
 });
 
-app.get("/adidas",function(req,res){
-    res.render("adidas");
-});
+
 
 
 

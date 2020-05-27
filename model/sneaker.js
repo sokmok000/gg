@@ -1,10 +1,13 @@
 const   mongoose = require('mongoose'),
       passportLocalMongoose = require('passport-local-mongoose');
         let sneaker = new mongoose.Schema({
+            username : {
+                type : String
+            },
             Name : {
                 type : String
             },
-            Minidetail  : {
+            Minidetail : {
                 type : String
             },
             Detail : {
@@ -19,13 +22,12 @@ const   mongoose = require('mongoose'),
             Image : {
                 type : String
             },
-            Type : {
+            Brand : {
                 type : String
             },
-            Colour : {
+            Color : {
                 type : String
             }
-
         })
 
 
