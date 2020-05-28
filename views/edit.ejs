@@ -54,30 +54,30 @@
             <img src="blue.png" style="width: 100%">
             <div class="main-container">
                 <p>Name</p>
-                <p><input style="width: 600px;" type="text" name="Name" value="<%= edit.Name %>"></p>
+                <p><input style="width: 600px;" type="text" name="Name" value="<%= edit.Name %>" required></p>
                 <p>Surename</p>
-                <p><input style="width: 600px;" type="text" name="Surename" value="<%= edit.Surename %>"></p>
+                <p><input style="width: 600px;" type="text" name="Surename" value="<%= edit.Surename %>" required></p>
             </div>
             
             <hr>
     </div> 
     <div class="main-container">
         <p>บ้านเลขที่</p>
-        <p><input style="width: 600px;"  type="text" name="Housenumber" placeholder="Address" value="<%= edit.Housenumber %>"></p>
+        <p><input style="width: 600px;"  type="text" name="Housenumber" placeholder="Address" value="<%= edit.Housenumber %>" required></p>
         <p>จังหวัด</p>
-       <p><input style="width: 600px;" type="text" name="Province" placeholder="" value="<%= edit.Province %>"></p>
+       <p><input style="width: 600px;" type="text" name="Province" placeholder="" value="<%= edit.Province %>" required> </p>
         <p>เขต</p>
-        <p><input style="width: 600px;" type="text" name="District" placeholder="" value="<%= edit.District %>"></p>
+        <p><input style="width: 600px;" type="text" name="District" placeholder="" value="<%= edit.District %>" required> </p>
         <p>รหัสไปรษณีย์</p>
-        <p><input style="width: 600px;" type="text" name="Postalcode" placeholder="" value="<%= edit.Postalcode %>"></p>
+        <p><input style="width: 600px;" type="text" name="Postalcode" placeholder="" value="<%= edit.Postalcode %>" required> </p>
         <p>บัตรประชาชน</p>
-        <p><input style="width: 600px;" type="number" name="IDCard" placeholder="13 หลัก" value="<%= edit.IDCard %>"></p>
+        <p><input style="width: 600px;" type="text" name="IDCard" placeholder="13 หลัก" value="<%= edit.IDCard %>" required> </p>
         <p>Tel.</p>
-        <p><input style="width: 600px;" type="tel" name="Telephone" placeholder="085-xxxxxxx" value="<%= edit.Telephone %>"></p>
+        <p><input style="width: 600px;" type="tel" name="Telephone" placeholder="085-xxxxxxx" value="<%= edit.Telephone %>" required> </p>
         <p>Size</p>
-        <p><input style="width: 600px;" type="" name="Size" placeholder="" value="<%= edit.Size %>"> </p>
+        <p><input style="width: 600px;" type="" name="Size" placeholder="" value="<%= edit.Size %>" required> </p>
         <p>เพศ</p>
-        <p><select value="<%= edit.Gender %>"  name="Gender" >
+        <p><select value="<%= edit.Gender %>"  name="Gender" required >
             <option>Male</option>
             <option>Female</option>
             <option>Other</option>

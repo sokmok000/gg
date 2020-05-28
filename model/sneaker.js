@@ -4,7 +4,7 @@ const   mongoose = require('mongoose'),
             username : {
                 type : String
             },
-            Name : {
+            Namesneaker : {
                 type : String
             },
             Minidetail : {
@@ -13,11 +13,11 @@ const   mongoose = require('mongoose'),
             Detail : {
                 type : String
             },
-            Size : {
+            Sizesneaker : {
                 type : String
             },
             Price : {
-                type : String
+                type : Number
             },
             Image : {
                 type : String
@@ -30,7 +30,16 @@ const   mongoose = require('mongoose'),
             },
             Count: {
                 type : Number
-            }
+            },
+            Date: {
+                type : Date
+            },
+            users : [
+                {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref:"Sign Ups"
+                }
+            ]
         })
 
 

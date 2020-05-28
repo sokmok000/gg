@@ -45,54 +45,51 @@
   <body >
     <div class="container">
   <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="https://i.pinimg.com/originals/72/38/5c/72385cc0a276ba208e05fffdc9fe4c83.jpg" alt="" width="400" height="200">
+  
     <h2>Checkout</h2>
     <p class="lead"></p>
   </div>
-
+  <img class="d-block mx-auto mb-4" src="<%= buy.Image %>" alt="" width="400" height="200">
   <div class="row">
+  
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="gg">Your Item</span>
-        <span class="badge badge-secondary badge-pill">1</span>
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div >
-            <h6 class="my-0">Nike Air Force 1</h6>
-            <small class="text-muted">White/Black</small>
+            <h6 class="my-0"><%= buy.Namesneaker %></h6>
+            <small class="text-muted"><%=  buy.Color %></small>
           </div>
-          <span class="text-muted">$160</span>
+          <span class="text-muted"><strong>$<%=  buy.Price %></strong></span>
         </li>
 
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-dark">
-            <h6 class="text-dark">Promo code</h6>
-
+            <h6 class="text-dark">Shipping</h6>
           </div>
-          <span class="text-success">-$5</span>
+  
+          <span class="text-success">$10</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Size</span>
+          <strong><%=  buy.Sizesneaker %></strong>
         </li>
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (USD)</span>
-          <strong>$155</strong>
+          <strong>$<%=  buy.Price+10 %></strong>
         </li>
       </ul>
-
-      <form class="card p-2">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code">
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </div>
-      </form>
-    </div>
+  
+        <%= user.Housenumber %> <%= user.Province %> <%= user.District %> <%= user.Postalcode %> <a href="/<%= buy._id %>/buy/shippinginfo"><div class="btn btn-outline-dark" href="/<%= buy._id %>/buy/shippinginfo" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit Info</div></a>
+    <!-- </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
       <form class="needs-validation" novalidate="">
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
+            <label for="firstName"></label>
             <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
             <div class="invalid-feedback">
               Valid first name is required.
@@ -176,9 +173,10 @@
             <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
             <label class="custom-control-label" for="credit">Cash</label>
           </div>    
-        </div>
+        </div> -->
+      <form action="/<%=buy._id %>/buy" method="POST">
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block a" type="submit">Continue to checkout</button>
+        <input type="submit" name="" class="btn btn-primary btn-sm" id="btn" value="Check Out"> 
       </form>
     </div>
   </div>

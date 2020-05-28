@@ -618,6 +618,8 @@ changeHeight();
 window.addEventListener('resize', changeHeight);
 </script>
 <body>
+    <div id="fb-root"></div>
+
     <div class="container">
         <div class="card">
             <div class="shoeBackground">
@@ -630,8 +632,9 @@ window.addEventListener('resize', changeHeight);
                 </div>
                 <h1 class="nike">nike</h1>
                 
-                <a href="#" class="share"><i class="fas fa-share-alt"></i></a>
-
+                <a href=" " class="share"><i class="fas fa-share-alt"></i></a>
+                <!-- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5ed026889590190013f0f4df&product=inline-share-buttons" async="async"></script>
+                <div class="sharethis-inline-share-buttons"></div> -->
                 <img src="<%= nikedetail.Image %>"   >
                 
 
@@ -639,7 +642,7 @@ window.addEventListener('resize', changeHeight);
             <div class="info">
                 <div class="shoeName">
                     <div>
-                        <h1 class="big"><%= nikedetail.Name %></h1>
+                        <h1 class="big"><%= nikedetail.Namesneaker %></h1>
                         
                     </div>
                     <h3 class="small"><%= nikedetail.Minidetail %></h3>
@@ -654,7 +657,7 @@ window.addEventListener('resize', changeHeight);
                 </div>
                 <div class="size-container">
                     <h3 class="title">size US Men</h3>
-                    <p><select  name="" >
+                    <p><select  name="Sizesneaker" >
                         <option>7 US</option>
                         <option>8 US</option>
                         <option>9 US</option>
@@ -666,7 +669,9 @@ window.addEventListener('resize', changeHeight);
                     </p>
                 </div>
                 <div class="buy-price">
-                    <a href="/adidas/details/checkbil" class="buy"><i class="fas fa-shopping-cart"></i>Add to card</a>
+                    
+                    <a href="/<%= nikedetail._id %>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now</a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=localhost:3000/nike/5ecffd67685c8b35cc4a70bd/detail">  Facebook</a>
                     <div class="price">
                         <i class="fas fa-dollar-sign"></i>
                         <h1><%= nikedetail.Price %></h1>

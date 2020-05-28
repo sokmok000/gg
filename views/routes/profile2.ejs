@@ -69,15 +69,21 @@
         <p><b>
             <i class="fa fa-asterisk info"></i>รายการสินค้าที่สั่ง
         </b></p>
-       
+        
         <div class="list-bar">
             
+            <% user.sneakers.forEach(function(sneakers){ %>
+                
             <div class="itemlist">
-                <% user.sneakers.forEach(function(sneakershow) { %>
-                <p><%= sneakershow.Name %></p>
-                <% }) %>
+                
+                 <%=  sneakers.Namesneaker %>  <%= moment(sneakers.Date).format("MM/DD/YY") %>
+                  
             </div>
+        
+            <%})%>
+       
         </div>
+    
          
     </div>
     

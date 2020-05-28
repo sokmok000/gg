@@ -39,12 +39,15 @@ passport.serializeUser(function(user, done) {
   });
 
 
-app.get("*",function(req , res , next){
+app.use("*",function(req , res , next){
     res.locals.user = req.user || null
     res.locals.error = req.flash("error")
     res.locals.success = req.flash("success")
     res.locals.Sneaker = req.Sneaker
+    res.locals.moment = require('moment')
     next()
+
+
 })
 app.use('/', user);
 app.use('/', Sneaker);
@@ -100,18 +103,16 @@ app.get("/jordan/:id/detail",function(req,res){
 
 
 
-app.get("/nike/details/checkbil",function(req,res){
-    res.render("checkbil");
-});  
-
-app.get("/adidas/details/checkbil",function(req,res){
-    res.render("checkbil");
-});  
 
 
-app.get("/jordan/details/checkbil",function(req,res){
-    res.render("checkbil");
-});  
+// app.get("/adidas/details/checkbil",function(req,res){
+//     res.render("checkbil");
+// });  
+
+
+// app.get("/jordan/details/checkbil",function(req,res){
+//     res.render("checkbil");
+// });  
 
 // app.get("/profile",function(req,res){
 //     res.render("profile");

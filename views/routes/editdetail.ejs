@@ -10,7 +10,7 @@
           <form class="" action="/admin/sneaker/<%= editsneaker._id %>/edit" method="post">
             <div class="form-group">
               <label for="">ชื่อสินค้า</label>
-              <input type="text" name="Name" value="<%= editsneaker.Name %>" class="form-control">
+              <input type="text" name="Name" value="<%= editsneaker.Namesneaker %>" class="form-control">
             </div>
             <div class="form-group">
                 <label for="">Mini detail</label>
@@ -24,7 +24,7 @@
               <input type="text" name="Price" value="<%= editsneaker.Price %>"  class="form-control">
             </div>  
             <p>Size US</p>
-            <p><select type="text" value="<%= editsneaker.Size %>"  name="Size" >
+            <p><select type="text" value="<%= editsneaker.Size %>"  name="Sizesneaker" >
               <option>7 US</option>
               <option>8 US</option>
               <option>9 US</option>

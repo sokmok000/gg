@@ -67,7 +67,7 @@ router.get('/admin/sneaker/add', function(req, res) {
 });
 
 router.post("/admin/sneaker/add",function(req , res ){
-  sneaker.create(new sneaker({Name :req.body.Name, Minidetail :req.body.Minidetail,Detail:req.body.Detail, Size:req.body.Size,Price:req.body.Price, Image:req.body.Image , Brand :req.body.Brand , Color :req.body.Color,Count :req.body.Count
+  sneaker.create(new sneaker({Namesneaker :req.body.Namesneaker, Minidetail :req.body.Minidetail,Detail:req.body.Detail, Sizesneaker:req.body.Sizesneaker,Price:req.body.Price, Image:req.body.Image , Brand :req.body.Brand , Color :req.body.Color,Count :req.body.Count,Date :req.body.Date
   })
   )
   req.flash('success','Add Sneaker Success');
@@ -89,17 +89,18 @@ router.get('/admin/sneaker/:id/edit', function(req,res){
 
 router.post('/admin/sneaker/:id/edit',function(req,res){ 
 
-  let Name = req.body.Name
+  let Namesneaker = req.body.Namesneaker
   let Minidetail = req.body.Minidetail
   let Detail = req.body.Detail
-  let Size= req.body.Size
+  let Sizesneaker= req.body.Sizesneaker
   let Price= req.body.Price
   let Image= req.body.Image
   let Brand= req.body.Brand
   let Color= req.body.Color
   let Count= req.body.Count
+  
 
-  sneaker.updateMany({_id:req.params.id},{$set : {Name:Name,Minidetail:Minidetail,Detail:Detail,Size:Size,Price:Price,Image:Image,Brand:Brand,Color:Color,Count:Count}} ,function(err, update){
+  sneaker.updateMany({_id:req.params.id},{$set : {Namesneaker:Namesneaker,Minidetail:Minidetail,Detail:Detail,Sizesneaker:Sizesneaker,Price:Price,Image:Image,Brand:Brand,Color:Color,Count:Count}} ,function(err, update){
       if(err){
           console.log(err);
       } else {

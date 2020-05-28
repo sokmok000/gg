@@ -635,7 +635,7 @@
                 <div class="info">
                     <div class="shoeName">
                         <div>
-                            <h1 class="big"><%= jordandetail.Name %></h1>
+                            <h1 class="big"><%= jordandetail.Namesneaker %></h1>
                             
                         </div>
                         <h3 class="small"><%= jordandetail.Minidetail %></h3>
@@ -650,7 +650,7 @@
                     </div>
                     <div class="size-container">
                         <h3 class="title">size US Men</h3>
-                        <p><select  name="" >
+                        <p><select  name="Sizesneaker" >
                             <option>7 US</option>
                             <option>8 US</option>
                             <option>9 US</option>
@@ -662,7 +662,9 @@
                         </p>
                     </div>
                     <div class="buy-price">
-                        <a href="/adidas/details/checkbil" class="buy"><i class="fas fa-shopping-cart"></i>Add to card</a>
+                        
+                        <a href="/<%= jordandetail._id %>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now</a>
+                      
                         <div class="price">
                             <i class="fas fa-dollar-sign"></i>
                             <h1><%= jordandetail.Price %></h1>

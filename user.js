@@ -178,7 +178,7 @@ if(req.file){
   let Size= req.body.Size
   let Gender= req.body.Gender
   let image= req.file.image
-    User.updateMany({_id:req.user._id},{$set : {Name:Name,Surname:Surname,Housenumber:Housenumber,Province:Province
+    User.updateMany({_id:req.user._id},{$set : {Name:Name,Surename:Surename,Housenumber:Housenumber,Province:Province
       ,District:District,Postalcode:Postalcode,IDCard:IDCard,Telephone:Telephone,Size:Size,Gender:Gender,image:image}} ,function(err, update){
         if(err){
             console.log(err);
@@ -191,12 +191,105 @@ if(req.file){
 });
 
 
-User.find({},function(err,success){
-  if(err){
-    console.log(err)
-  }else{
-    console.log(success)
+// sneaker.find({},function(err,success){
+//   if(err){
+//     console.log(err)
+//   }else{
+//     console.log(success)
+//   }
+// })
+
+router.get("/:id/buy",enSureAuthenticated,function(req,res){
+  sneaker.findById(req.params.id,function(err,buy){
+    if(err){
+      console.log("error22")
+    }else{
+      User.findById({_id: req.user._id},function(err,user){
+        if(err){
+          console.log(err)
+        }else{
+          res.render("checkbil",{buy:buy,user:user});
+        }
+      })
+
+      }
+    })
+  })
+  
+  
+router.post("/:id/buy",enSureAuthenticated,function(req,res){
+    User.findById(req.user._id,function(err,yes){
+      if(err){
+        console.log("error")
+      }else{
+        sneaker.findById(req.params.id,function(err,ok){
+          if(err){
+            console.log(err)
+          }else{
+            sneaker.updateMany({_id:req.params.id},{$set : {Count:ok.Count-1,Date : Date()}},function(err,update){
+              if(err){
+                console.log(err)
+              }else{
+                yes.sneakers.push(ok)
+                yes.save()
+                res.redirect("/")
+              }
+            })
+      
+          }
+      })
+    }
+  })
+  })
+
+
+
+  router.get("/:id/buy/shippinginfo",function(req,res){
+    User.findById({_id:req.user._id},function(err,info){
+      if(err){
+        console.log(err)
+      }else{
+        sneaker.findById({_id:req.params.id},function(err,sneaker){
+          if(err){
+            console.log(err)
+          }else{
+            res.render("shipping",{info:info,sneaker:sneaker})
+          }
+        })
+      }
+    })
+  })
+
+  router.post("/:id/buy/shippinginfo",function(req,res){
+    User.findById({_id:req.user._id},function(err,find){
+      if(err){
+        console.log(err)
+      }else{
+        User.updateMany({_id:req.user._id},{$set : {Name:req.body.Name,Surename:req.body.Surename,Housenumber:req.body.Housenumber,Province:req.body.Province
+          ,District:req.body.District,Postalcode:req.body.Postalcode,IDCard:req.body.IDCard,Telephone:req.body.Telephone}}, function(err,update){
+            if(err){
+              console.log(err)
+            }else{
+              sneaker.findById({_id:req.params.id},function(err,sneaker){
+                if(err){
+                  console.log(err)
+                }else{
+                  res.redirect("/" + req.params.id + "/buy")
+                }
+      }
+              )}
+    })
   }
 })
+  })
+    
+ 
+
+      
+
+
+
+
+
   
   module.exports = router;
