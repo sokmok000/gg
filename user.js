@@ -49,7 +49,7 @@ let edit = multer({storage : saveprofile});
 
 
 router.get('/', function(req, res) {
-  sneaker.find({},function(err,newsneaker){
+  sneaker.find({Sizesneaker:"7 US"},function(err,newsneaker){
     if(err){
       console.log("error")
     }else{
@@ -191,15 +191,16 @@ if(req.file){
 });
 
 
-// sneaker.find({},function(err,success){
-//   if(err){
-//     console.log(err)
-//   }else{
-//     console.log(success)
-//   }
-// })
+User.find({},function(err,success){
+  if(err){
+    console.log(err)
+  }else{
+    console.log(success)
+  }
+})
 
-router.get("/:id/buy",enSureAuthenticated,function(req,res){
+router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
+
   sneaker.findById(req.params.id,function(err,buy){
     if(err){
       console.log("error22")
@@ -215,22 +216,38 @@ router.get("/:id/buy",enSureAuthenticated,function(req,res){
       }
     })
   })
-  
-  
-router.post("/:id/buy",enSureAuthenticated,function(req,res){
+//   router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
+//   sneaker.find({ $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: "7 US"} ]},function(err,ok){
+//     if(err){
+//       console.log(err)
+//     }else{
+//       console.log(ok)
+//     }
+//   })
+// })
+
+
+  router.post("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
     User.findById(req.user._id,function(err,yes){
       if(err){
         console.log("error")
       }else{
-        sneaker.findById(req.params.id,function(err,ok){
+        sneaker.findById({_id:req.params.id},function(err,ok){
           if(err){
             console.log(err)
           }else{
-            sneaker.updateMany({_id:req.params.id},{$set : {Count:ok.Count-1,Date : Date()}},function(err,update){
+            sneaker.findOne({ $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: req.body.Sizes} ]},function(err,omg){
               if(err){
                 console.log(err)
               }else{
-                yes.sneakers.push(ok)
+                console.log(omg)
+                // let Count=omg.Count
+            sneaker.updateMany( { $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: req.body.Sizes} ]},{$set : {Count:omg.Count-1 ,Date : Date()}},function(err,update){
+              if(err){
+                console.log(err)
+              }else{
+                console.log(update)
+                yes.sneakers.push(omg)
                 yes.save()
                 res.redirect("/")
               }
@@ -240,9 +257,62 @@ router.post("/:id/buy",enSureAuthenticated,function(req,res){
       })
     }
   })
+  }
+})
   })
 
 
+
+
+  
+// router.post("/:id/buy",enSureAuthenticated,function(req,res){
+//     User.findById(req.user._id,function(err,yes){
+//       if(err){
+//         console.log("error")
+//       }else{
+//         sneaker.findById(req.params.id,function(err,ok){
+//           if(err){
+//             console.log(err)
+//           }else{
+//             sneaker.findOne({$or:[{"Size7.Size7": req.body.Sizes},{"Size8.Size8": req.body.Sizes }]},function(err,ready){
+//               if(err){
+//                 console.log(err)
+//               }else{
+//                 console.log(ready)
+             
+//                 sneaker.updateOne({_id:req.params.id},{$set: {Size7 : {Size7:ready.Size7.Size7,Count7:ready.Size7.Count7-1},Size8 : {Size8:ready.Size8.Size8,Count8:ready.Size8.Count8-1}}},function(err,update){
+//                   if(err){      
+//                     console.log(err)
+//                   }else{
+//                     console.log(update)
+//                     yes.sneakers.push(ok)
+//                     yes.save()
+//                     res.redirect("/")
+//               }
+                  
+//                           }
+//                 )
+                
+//               }
+//             })
+          
+//           }
+              
+//                       })
+//                     }
+//                   })
+//                 })
+                  
+                
+            
+                // sneaker.find({$or:[{"Size7.Size7": req.body.Sizes },{"Size8.Size8": req.body.Sizes }]},function(err,ready){
+                //   if(err){
+                //     console.log(err)
+                //   }else{
+                //     console.log(ready)
+                 
+
+                // sneaker.find({$or:[{Size7 : {Size7: req.body.Sizes,Count7:ok.Size7.Count7} },{Size8 : {Size8: req.body.Sizes,Count8:ok.Size8.Count8} }]}
 
   router.get("/:id/buy/shippinginfo",function(req,res){
     User.findById({_id:req.user._id},function(err,info){
@@ -283,13 +353,6 @@ router.post("/:id/buy",enSureAuthenticated,function(req,res){
 })
   })
     
- 
-
-      
-
-
-
-
 
   
-  module.exports = router;
+  module.exports = router 

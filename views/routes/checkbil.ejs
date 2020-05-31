@@ -51,7 +51,6 @@
   </div>
   <img class="d-block mx-auto mb-4" src="<%= buy.Image %>" alt="" width="400" height="200">
   <div class="row">
-  
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="gg">Your Item</span>
@@ -59,8 +58,8 @@
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div >
-            <h6 class="my-0"><%= buy.Namesneaker %></h6>
-            <small class="text-muted"><%=  buy.Color %></small>
+            <%=  buy.Namesneaker %>
+            <small class="text-muted"></small>
           </div>
           <span class="text-muted"><strong>$<%=  buy.Price %></strong></span>
         </li>
@@ -73,17 +72,79 @@
           <span class="text-success">$10</span>
         </li>
         <li class="list-group-item d-flex justify-content-between">
-          <span>Size</span>
-          <strong><%=  buy.Sizesneaker %></strong>
-        </li>
-        <li class="list-group-item d-flex justify-content-between">
           <span>Total (USD)</span>
           <strong>$<%=  buy.Price+10 %></strong>
         </li>
       </ul>
   
         <%= user.Housenumber %> <%= user.Province %> <%= user.District %> <%= user.Postalcode %> <a href="/<%= buy._id %>/buy/shippinginfo"><div class="btn btn-outline-dark" href="/<%= buy._id %>/buy/shippinginfo" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit Info</div></a>
-    <!-- </div>
+    
+    
+    
+        <form action="/<%=buy._id %>/<%=buy.Namesneaker %>/buy" method="POST">
+          <div class="prl6-sm prl0-lg">
+      <fieldset class="mt5-sm mb3-sm body-2 css-14bfa24">
+        <legend class="headline-5 prl6-sm prl0-lg ta-sm-l bg-transparent css-ybrhvy">
+          <div class="pt8-sm pt0-lg headline-5 css-uf1ume">
+            <span class="prl0-sm ta-sm-l bg-transparent sizeHeader">เลือกไซส์</span>
+
+          </div>
+        <!-- </legend>
+        <div class="mt2-sm css-12whm6j">
+          <div class="css-181a6of">
+            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364328" name="Sizes7" type="text" class="visually-hidden" >
+            <label for="skuAndSize__24364328" tabindex="-1" class="css-xf3ahq">7 US</label>
+          </div>
+          <div class="css-181a6of">
+            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364332" name="Sizes8" type="text" class="visually-hidden" >
+            <label for="skuAndSize__24364332" tabindex="-1" class="css-xf3ahq">8 US</label>
+          </div>
+          <div class="css-181a6of">
+            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364327" name="skuAndSize" type="radio" class="visually-hidden" value="24364327:8">
+            <label for="skuAndSize__24364327" tabindex="-1" class="css-xf3ahq">9 US</label>
+          </div><div class="css-181a6of">
+            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364338" name="skuAndSize" type="radio" class="visually-hidden" value="24364338:8.5">
+            <label for="skuAndSize__24364338" tabindex="-1" class="css-xf3ahq">10 US</label>
+          </div>
+          <div class="css-181a6of">
+            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364329" name="skuAndSize" type="radio"  class="visually-hidden" value="24364329:9">
+            <label for="skuAndSize__24364329" tabindex="-1" class="css-xf3ahq">11 US</label>
+          </div>
+          <div class="css-181a6of">
+              <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364336" name="skuAndSize" type="radio"  class="visually-hidden" value="24364336:9.5">
+              <label for="skuAndSize__24364336" tabindex="-1" class="css-xf3ahq">12 US</label>
+            </div>
+            <div class="css-181a6of">
+                <input aria-describedby="pdp-buytools-low-inventory-messaging"  name="skuAndSize" type="radio"  class="visually-hidden" value="24364331:10">
+                <label for="skuAndSize__24364331" tabindex="-1" class="css-xf3ahq">13 US</label>
+              </div>
+               -->
+                <div class="form-group">
+                <label for="">  </label>
+                <p><select type="text" value=""  name="Sizes" >
+                  <option>7 US</option>
+                  <option>8 US</option>
+                  <option>9 US</option>
+                  <option>10 US</option>
+                  <option>11 US</option>
+                  <option>12 US</option>
+                  <option>13 US</option>
+        
+              </select>
+              </div> 
+
+            
+
+
+                </div>
+              </fieldset>
+            </div>
+            <button aria-label="ยืนยัน" class="ncss-btn-primary-dark btn-lg css-y0myut add-to-cart-btn"> ยืนยัน</button></div></form>
+    
+    
+    
+    
+        <!-- </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
       <form class="needs-validation" novalidate="">
@@ -174,10 +235,10 @@
             <label class="custom-control-label" for="credit">Cash</label>
           </div>    
         </div> -->
-      <form action="/<%=buy._id %>/buy" method="POST">
+      <!-- <form action="/<%=buy._id %>/buy" method="POST">
         <hr class="mb-4">
         <input type="submit" name="" class="btn btn-primary btn-sm" id="btn" value="Check Out"> 
-      </form>
+      </form> -->
     </div>
   </div>
 

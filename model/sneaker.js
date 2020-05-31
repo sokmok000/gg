@@ -13,9 +13,10 @@ const   mongoose = require('mongoose'),
             Detail : {
                 type : String
             },
-            Sizesneaker : {
+            Sizesneaker :{
                 type : String
             },
+            
             Price : {
                 type : Number
             },
@@ -31,15 +32,19 @@ const   mongoose = require('mongoose'),
             Count: {
                 type : Number
             },
+            
             Date: {
                 type : Date
             },
+            versionKey: false ,
             users : [
                 {
                     type: mongoose.Schema.Types.ObjectId,
                     ref:"Sign Ups"
                 }
-            ]
+            ],
+          
+        
         })
 
 

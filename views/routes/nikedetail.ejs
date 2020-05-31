@@ -633,8 +633,7 @@ window.addEventListener('resize', changeHeight);
                 <h1 class="nike">nike</h1>
                 
                 <a href=" " class="share"><i class="fas fa-share-alt"></i></a>
-                <!-- <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5ed026889590190013f0f4df&product=inline-share-buttons" async="async"></script>
-                <div class="sharethis-inline-share-buttons"></div> -->
+                
                 <img src="<%= nikedetail.Image %>"   >
                 
 
@@ -670,8 +669,8 @@ window.addEventListener('resize', changeHeight);
                 </div>
                 <div class="buy-price">
                     
-                    <a href="/<%= nikedetail._id %>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now</a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=localhost:3000/nike/5ecffd67685c8b35cc4a70bd/detail">  Facebook</a>
+                    <a href="/<%= nikedetail._id %>/<%=nikedetail.Namesneaker%>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now</a>
+                    
                     <div class="price">
                         <i class="fas fa-dollar-sign"></i>
                         <h1><%= nikedetail.Price %></h1>

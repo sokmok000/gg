@@ -10,7 +10,7 @@
           <form class="" action="/admin/sneaker/<%= editsneaker._id %>/edit" method="post">
             <div class="form-group">
               <label for="">ชื่อสินค้า</label>
-              <input type="text" name="Name" value="<%= editsneaker.Namesneaker %>" class="form-control">
+              <input type="text" name="Namesneaker" value="<%= editsneaker.Namesneaker %>" class="form-control">
             </div>
             <div class="form-group">
                 <label for="">Mini detail</label>
@@ -19,12 +19,18 @@
             <div class="form-group">
               <label for="">รายละเอียด</label>
               <input name="Detail" rows="4" cols="80" class="form-control" value="<%= editsneaker.Detail %>" >
+            
             <div class="form-group">
-              <label for="">ราคา</label>
-              <input type="text" name="Price" value="<%= editsneaker.Price %>"  class="form-control">
-            </div>  
-            <p>Size US</p>
-            <p><select type="text" value="<%= editsneaker.Size %>"  name="Sizesneaker" >
+              <label for="">Brand</label>
+              <p><select type="text" value="<%= editsneaker.Brand %>"  name="Brand" >
+                <option>nike</option>
+                <option>adidas</option>
+                <option>jordan</option>
+            </select>
+            </p>
+            </div>
+            <p>Size US Men</p>
+            <p><select type="text" value="<%= editsneaker.Sizesneaker %>"  name="Sizesneaker" >
               <option>7 US</option>
               <option>8 US</option>
               <option>9 US</option>
@@ -34,18 +40,20 @@
               <option>13 US</option>
           </select>
           </p>
-              <div class="form-group">
-                <label for="">Brand</label>
-                <input type="text" name="Brand" value="<%= editsneaker.Brand %>"  class="form-control">
-              </div>
+          <div class="form-group">
+            <label for="">จำนวน</label>
+            <input type="text" name="Count" value="<%= editsneaker.Count %>"  class="form-control">
+          </div>
+    
               <div class="form-group">
                 <label for="">สี</label>
                 <input type="text" name="Color" value="<%= editsneaker.Color %>"  class="form-control">
               </div>
               <div class="form-group">
-                <label for="">จำนวน</label>
-                <input type="number" name="Count" value="" min=1 class="form-control">
-              </div>
+                <label for="">ราคา</label>
+                <input type="text" name="Price" value="<%= editsneaker.Price %>"  class="form-control">
+              </div>  
+              
             <div class="form-group">
               <label for="">ภาพสินค้า</label>
               <input type="text" name="Image" value="<%= editsneaker.Image %>"  class="form-control">

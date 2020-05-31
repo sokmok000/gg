@@ -25,7 +25,7 @@ let editsneaker = multer({storage : savesneaker});
 
 
 router.get('/admin', function(req, res) {
-  sneaker.find({},function(err,newsneaker){
+  sneaker.find({Sizesneaker:"7 US"},function(err,newsneaker){
     if(err){
       console.log("error")
     }else{
@@ -36,17 +36,42 @@ router.get('/admin', function(req, res) {
 });
 
 
+// router.get('/admin/sneaker/editlist', function(req, res) {
+//  sneaker.find(function(err,findall){
+//    if(err){
+//      console.log("error")
+//    }else{
+//     res.render('editlist',{findall:findall});
+//    }
+//  }
+//  )
+// })
+
 
 router.get('/admin/sneaker/editlist', function(req, res) {
- sneaker.find(function(err,findall){
-   if(err){
-     console.log("error")
-   }else{
-    res.render('editlist',{findall:findall});
-   }
- }
- )
+  sneaker.find({Brand:"nike"},function(err,findnike){
+    if(err){
+      console.log("error")
+    }else{
+      sneaker.find({Brand:"adidas"},function(err,findadidas){
+        if(err){
+          console.log("error")
+        }else{
+          sneaker.find({Brand:"jordan"},function(err,findjordan){
+            if(err){
+              console.log("error")
+            }else{
+              res.render('editlist2',{findnike:findnike,findadidas:findadidas,findjordan:findjordan});
+            }
+          })
+        }
+      })
+    }
+  })
 })
+     
+    
+ 
 
  //ADD
 
@@ -67,7 +92,7 @@ router.get('/admin/sneaker/add', function(req, res) {
 });
 
 router.post("/admin/sneaker/add",function(req , res ){
-  sneaker.create(new sneaker({Namesneaker :req.body.Namesneaker, Minidetail :req.body.Minidetail,Detail:req.body.Detail, Sizesneaker:req.body.Sizesneaker,Price:req.body.Price, Image:req.body.Image , Brand :req.body.Brand , Color :req.body.Color,Count :req.body.Count,Date :req.body.Date
+  sneaker.create(new sneaker({Namesneaker :req.body.Namesneaker, Minidetail :req.body.Minidetail,Detail:req.body.Detail,Sizesneaker:req.body.Sizesneaker ,Price:req.body.Price, Image:req.body.Image , Brand :req.body.Brand , Color :req.body.Color,Count :req.body.Count,Date :req.body.Date
   })
   )
   req.flash('success','Add Sneaker Success');
@@ -105,7 +130,7 @@ router.post('/admin/sneaker/:id/edit',function(req,res){
           console.log(err);
       } else {
            req.flash('success','Edit Sneaker Success');
-          res.redirect('/admin')
+          res.redirect('/admin/sneaker/editlist')
           }
       }
   );
@@ -122,7 +147,7 @@ router.post('/admin/sneaker/:id/edit',function(req,res){
           console.log("error")
           else 
           {
-              console.log(remove)
+             
               req.flash('success','You Remove Sneaker Successful');
               res.redirect("/admin")
               
@@ -138,34 +163,35 @@ router.post('/admin/sneaker/:id/edit',function(req,res){
 
 
 router.get("/nike",function(req,res){
-  sneaker.find({Brand:"nike"},function(err,nike){
+  sneaker.find({ $and: [{Brand:"nike"},{Sizesneaker:"7 US"} ]},function(err,nike){
     if(err){
       console.log("error")
     }else{
+     
       res.render("nike",{nike:nike})
     }
-  })
+  }).sort({$natural:-1})
 });
 
 
 router.get("/adidas",function(req,res){
-  sneaker.find({Brand:"adidas"},function(err,adidas){
+  sneaker.find({ $and: [{Brand:"adidas"},{Sizesneaker:"7 US"} ]},function(err,adidas){
     if(err){
       console.log("error")
     }else{
       res.render("adidas",{adidas:adidas})
     }
-  })
+  }).sort({$natural:-1})
 });
 
 router.get("/jordan",function(req,res){
-  sneaker.find({Brand:"jordan"},function(err,jordan){
+  sneaker.find({ $and: [{Brand:"jordan"},{Sizesneaker:"7 US"} ]},function(err,jordan){
     if(err){
       console.log("error")
     }else{
       res.render("jordan",{jordan:jordan})
     }
-  })
+  }).sort({$natural:-1})
 });
 
 
