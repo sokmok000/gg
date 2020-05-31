@@ -648,7 +648,7 @@
                         <h3 class="title">Color</h3>
                         <p class="text"><%= jordandetail.Color %></p>
                     </div>
-                    <div class="size-container">
+                    <!-- <div class="size-container">
                         <h3 class="title">size US Men</h3>
                         <p><select  name="Sizesneaker" >
                             <option>7 US</option>
@@ -660,10 +660,10 @@
                             <option>13 US</option>
                         </select>
                         </p>
-                    </div>
+                    </div> -->
                     <div class="buy-price">
                         
-                        <a href="/<%= jordandetail._id %>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now</a>
+                        <a href="/<%= jordandetail._id %>/<%= jordandetail.Namesneaker %>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now</a>
                       
                         <div class="price">
                             <i class="fas fa-dollar-sign"></i>

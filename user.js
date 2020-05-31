@@ -87,11 +87,24 @@ router.get("/profile",function(req , res){
     if(error){
       console.log(error)
     }else{
+     
       res.render("profile2",{user:user});
     }
   })
 
   }  )
+// router.get("/profile",function(req , res){
+//   User.find({}).populate('sneakers').exec(function(error,user){
+//     if(error){
+//       console.log(error)
+//     }else{
+//      console.log(user)
+//       res.render("profile2",{user:user});
+//     }
+//   })
+
+//   }  )
+
 
   
 
@@ -111,7 +124,7 @@ function(req , res){
 
 
 router.post('/signup',function(req,res){
-  User.register(new User({username:req.body.username,email:req.body.email,name :"",Surename :"",Housenumber:"", Province:"", District:"", Postalcode:"", IDCard :"", Telephone:"", Size :"",Gender:"", image:""
+  User.register(new User({username:req.body.username,email:req.body.email,Name :"",Surename :"",Housenumber:"", Province:"", District:"", Postalcode:"", IDCard :"", Telephone:"", Size :"",Gender:"", image:""
     }), req.body.password, function(err, user){
       if(err){
           console.log(err);
@@ -191,13 +204,13 @@ if(req.file){
 });
 
 
-User.find({},function(err,success){
-  if(err){
-    console.log(err)
-  }else{
-    console.log(success)
-  }
-})
+// User.find({},function(err,success){
+//   if(err){
+//     console.log(err)
+//   }else{
+//     console.log(success)
+//   }
+// })
 
 router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
 
@@ -239,14 +252,12 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
             sneaker.findOne({ $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: req.body.Sizes} ]},function(err,omg){
               if(err){
                 console.log(err)
-              }else{
-                console.log(omg)
-                // let Count=omg.Count
+              }else{   
             sneaker.updateMany( { $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: req.body.Sizes} ]},{$set : {Count:omg.Count-1 ,Date : Date()}},function(err,update){
               if(err){
                 console.log(err)
               }else{
-                console.log(update)
+               
                 yes.sneakers.push(omg)
                 yes.save()
                 res.redirect("/")

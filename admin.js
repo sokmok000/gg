@@ -99,6 +99,34 @@ router.post("/admin/sneaker/add",function(req , res ){
   res.redirect("/admin")
 })
 
+router.get("/admin/user/edit",function(req , res){
+     User.find({}).populate('sneakers').exec(function(error,eiei){
+    if(error){
+      console.log(error)
+    }else{
+      console.log(eiei)
+          res.render("edituser",{eiei:eiei})
+        }
+      })
+    }
+  )
+
+  router.get("/admin/user/edit/see/:id",function(req , res){
+    User.findById({_id:req.params.id}).populate('sneakers').exec(function(error,hello){
+   if(error){
+     console.log(error)
+   }else{
+     console.log(hello)
+         res.render("editusersee",{hello:hello})
+       }
+     })
+   }
+ )
+
+  
+
+
+
 //EDIT 
 
 router.get('/admin/sneaker/:id/edit', function(req,res){
@@ -147,9 +175,23 @@ router.post('/admin/sneaker/:id/edit',function(req,res){
           console.log("error")
           else 
           {
-             
               req.flash('success','You Remove Sneaker Successful');
               res.redirect("/admin")
+              
+          }
+      })
+       
+    });
+
+    
+    router.get('/admin/user/:id/remove', function(req,res){ 
+      User.remove({_id:req.params.id},function(err,remove){
+          if(err)
+          console.log(error)
+          else 
+          {
+              req.flash('success','You Remove User Successful');
+              res.redirect("/admin/user/edit")
               
           }
       })
