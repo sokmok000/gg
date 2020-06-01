@@ -35,7 +35,7 @@ app.use((req,res,next)=>{
 })
 
 let storage = multer.diskStorage({
-  destination: "./public/uploads",
+  destination: "./public/uploadsuser",
   filename:function(req,file,cb){
     cb(null,file.fieldname + "+" + Date.now() + path.extname(file.originalname));
   }
@@ -187,7 +187,7 @@ if(req.file){
     if(err){
       console.log(err)
     }else{
-      const imageall = "./public/uploads/" + find.image
+      const imageall = "./public/uploadsuser/" + find.image
       fs.unlink(imageall,function(err){
         if(err){
           console.log(err)
@@ -361,6 +361,7 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
           if(err){
             console.log(err)
           }else{
+            
             res.render("shipping",{info:info,sneaker:sneaker})
           }
         })
@@ -378,18 +379,19 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
             if(err){
               console.log(err)
             }else{
-              sneaker.findById({_id:req.params.id},function(err,sneaker){
-                if(err){
-                  console.log(err)
-                }else{
-                  res.redirect("/" + req.params.id + "/buy")
-                }
-      }
-              )}
+                res.redirect("/profile")
+            }
+          
     })
   }
 })
   })
+  
+
+
+  
+
+
     
 
 

@@ -4,15 +4,19 @@ const bodyParser = require('body-parser')
 const passport = require("passport")
 const passportLocal = require("passport-local")
 const bcrypt = require('bcryptjs')
-const path = require("path");
+
 const session = require("express-session")
 const flash = require("connect-flash")
-const multer = require('multer');
 const methodOverride = require("method-override")
 let sneaker = require("./model/sneaker")
 let User = require("./model/db");
 let user = require('./user');
 let Sneaker = require("./admin")
+
+const multer = require('multer');
+const path =require("path")
+const fs = require("fs")
+
 let app = express()
 
 
@@ -82,9 +86,6 @@ app.get("/adidas/:id/detail",function(req,res){
     })
  
 });     
-
-
-
 
 
 app.get("/nike/:id/detail",function(req,res){

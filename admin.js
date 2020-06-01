@@ -5,23 +5,27 @@ const sneaker = require("./model/sneaker")
 const plimit = require('p-limit');
 
 const multer = require('multer');
+const path =require("path")
+const fs = require("fs")
+
 let User = require("./model/db");
 let app = express()
 
-let savesneaker = multer.diskStorage(
-  {
-  destination:function(req,file,sn){
-    sn(null,"./public/images/img-profile/");
-  },
-  filename:function(req,file,sn){
-   
-
-    sn(null,file.originalname);
+let storage = multer.diskStorage({
+  destination: "./public/uploadssneaker",
+  filename:function(req,file,cb){
+    cb(null,file.fieldname + "+" + Date.now() + path.extname(file.originalname));
   }
 })
-
-let editsneaker = multer({storage : savesneaker});
-
+const imagefilter = function(req,file,cb){
+  var ext = path.extname(file.originalname)
+  if(ext !== ".png" && ext !== ".jpg" && ext !== ".jpeg" && ext !== ".gif" )
+  {
+    return cb(new Error("only image"), false)
+  }
+  cb(null,true)
+}
+let upload = multer({storage : storage,fileFilter : imagefilter});
 
 
 router.get('/admin', function(req, res) {
@@ -91,8 +95,9 @@ router.get('/admin/sneaker/add', function(req, res) {
   res.render('add');
 });
 
-router.post("/admin/sneaker/add",function(req , res ){
-  sneaker.create(new sneaker({Namesneaker :req.body.Namesneaker, Minidetail :req.body.Minidetail,Detail:req.body.Detail,Sizesneaker:req.body.Sizesneaker ,Price:req.body.Price, Image:req.body.Image , Brand :req.body.Brand , Color :req.body.Color,Count :req.body.Count,Date :req.body.Date
+router.post("/admin/sneaker/add",upload.single('Image'),function(req , res ){
+  let Image = req.file.filename
+  sneaker.create(new sneaker({Namesneaker :req.body.Namesneaker, Minidetail :req.body.Minidetail,Detail:req.body.Detail,Sizesneaker:req.body.Sizesneaker ,Price:req.body.Price, Image:Image , Brand :req.body.Brand , Color :req.body.Color,Count :req.body.Count,Date :req.body.Date
   })
   )
   req.flash('success','Add Sneaker Success');
@@ -140,17 +145,48 @@ router.get('/admin/sneaker/:id/edit', function(req,res){
 });
 
 
-router.post('/admin/sneaker/:id/edit',function(req,res){ 
-
-  let Namesneaker = req.body.Namesneaker
-  let Minidetail = req.body.Minidetail
-  let Detail = req.body.Detail
-  let Sizesneaker= req.body.Sizesneaker
-  let Price= req.body.Price
-  let Image= req.body.Image
-  let Brand= req.body.Brand
-  let Color= req.body.Color
-  let Count= req.body.Count
+router.post('/admin/sneaker/:id/edit',upload.single('Image'),function(req,res){ 
+  if(req.file){
+    sneaker.findById({_id:req.params.id},function(err,find){
+      if(err){
+        console.log(err)
+      }else{
+        const imageall = "./public/uploadssneaker/" + find.Image
+        fs.unlink(imageall,function(err){
+          if(err){
+            console.log(err)
+          }
+        })
+      }
+      })
+      var Namesneaker = req.body.Namesneaker
+      var Minidetail = req.body.Minidetail
+      var Detail = req.body.Detail
+      var Sizesneaker= req.body.Sizesneaker
+      var Price= req.body.Price
+      var Image= req.file.filename
+      var Brand= req.body.Brand
+      var Color= req.body.Color
+      var Count= req.body.Count
+    }else{
+      var Namesneaker = req.body.Namesneaker
+      var Minidetail = req.body.Minidetail
+      var Detail = req.body.Detail
+      var Sizesneaker= req.body.Sizesneaker
+      var Price= req.body.Price
+      var Brand= req.body.Brand
+      var Color= req.body.Color
+      var Count= req.body.Count
+    }
+  // let Namesneaker = req.body.Namesneaker
+  // let Minidetail = req.body.Minidetail
+  // let Detail = req.body.Detail
+  // let Sizesneaker= req.body.Sizesneaker
+  // let Price= req.body.Price
+  // let Image= req.body.Image
+  // let Brand= req.body.Brand
+  // let Color= req.body.Color
+  // let Count= req.body.Count
   
 
   sneaker.updateMany({_id:req.params.id},{$set : {Namesneaker:Namesneaker,Minidetail:Minidetail,Detail:Detail,Sizesneaker:Sizesneaker,Price:Price,Image:Image,Brand:Brand,Color:Color,Count:Count}} ,function(err, update){
