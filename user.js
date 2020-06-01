@@ -7,9 +7,10 @@ let bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 const passport = require("passport")
 const passportLocal = require('passport-local');
-
-
 const multer = require('multer');
+const path =require("path")
+const fs = require("fs")
+
 
 let app = express()
 app.use(passport.initialize())
@@ -33,19 +34,21 @@ app.use((req,res,next)=>{
   next();
 })
 
-let saveprofile = multer.diskStorage(
-  {
-  destination:function(req,file,sp){
-    sp(null,"./public/images/img-profile/");
-  },
-  filename:function(req,file,sp){
-   
-
-    sp(null,file.originalname);
+let storage = multer.diskStorage({
+  destination: "./public/uploads",
+  filename:function(req,file,cb){
+    cb(null,file.fieldname + "+" + Date.now() + path.extname(file.originalname));
   }
 })
-
-let edit = multer({storage : saveprofile});
+const imagefilter = function(req,file,cb){
+  var ext = path.extname(file.originalname)
+  if(ext !== ".png" && ext !== ".jpg" && ext !== ".jpeg" && ext !== ".gif" )
+  {
+    return cb(new Error("only image"), false)
+  }
+  cb(null,true)
+}
+let upload = multer({storage : storage,fileFilter : imagefilter});
 
 
 router.get('/', function(req, res) {
@@ -152,55 +155,79 @@ router.post('/signup',function(req,res){
       })
   });
   
-  router.post('/profile/:id/edit',edit.single('image'),function(req,res){
-    if(!req.file){
-        console.log(req.file)
-    let Name = req.body.Name
-    let Surename = req.body.Surename
-    let Housenumber = req.body.Housenumber
-    let Province= req.body.Province
-    let District= req.body.District
-    let Postalcode= req.body.Postalcode
-    let IDCard= req.body.IDCard
-    let Telephone= req.body.Telephone
-    let Size= req.body.Size
-    let Gender= req.body.Gender
-    let image= req.body.image
+  router.post('/profile/:id/edit',upload.single('image'),function(req,res){
+//     if(!req.file){
+//         console.log(req.file)
+//     let Name = req.body.Name
+//     let Surename = req.body.Surename
+//     let Housenumber = req.body.Housenumber
+//     let Province= req.body.Province
+//     let District= req.body.District
+//     let Postalcode= req.body.Postalcode
+//     let IDCard= req.body.IDCard
+//     let Telephone= req.body.Telephone
+//     let Size= req.body.Size
+//     let Gender= req.body.Gender
+//     let image= req.file.filename
           
    
-    User.updateMany({_id:req.user._id},{$set : {Name:Name,Surename:Surename,Housenumber:Housenumber,Province:Province
-    ,District:District,Postalcode:Postalcode,IDCard:IDCard,Telephone:Telephone,Size:Size,Gender:Gender,image:image}} ,function(err, update){
-        if(err){
-            console.log(error);
-        } else {
-             req.flash('success','Edit profile success');
-            res.redirect('/profile')
-            }
-        }
-    );
-}
+//     User.updateMany({_id:req.user._id},{$set : {Name:Name,Surename:Surename,Housenumber:Housenumber,Province:Province
+//     ,District:District,Postalcode:Postalcode,IDCard:IDCard,Telephone:Telephone,Size:Size,Gender:Gender,image:image}} ,function(err, update){
+//         if(err){
+//             console.log(error);
+//         } else {
+//              req.flash('success','Edit profile success');
+//             res.redirect('/profile')
+//             }
+//         }
+//     );
+// }
 if(req.file){
-  let Name = req.body.Name;
-  let Surename = req.body.Surename;
-  let Housenumber = req.body.Housenumber
-  let Province= req.body.Province
-  let District= req.body.District
-  let Postalcode= req.body.Postalcode
-  let IDCard= req.body.IDCard
-  let Telephone= req.body.Telephone
-  let Size= req.body.Size
-  let Gender= req.body.Gender
-  let image= req.file.image
+  User.findById({_id:req.user._id},function(err,find){
+    if(err){
+      console.log(err)
+    }else{
+      const imageall = "./public/uploads/" + find.image
+      fs.unlink(imageall,function(err){
+        if(err){
+          console.log(err)
+        }
+      })
+    }
+    })
+    var Name = req.body.Name;
+    var Surename = req.body.Surename;
+    var Housenumber = req.body.Housenumber
+    var Province= req.body.Province
+    var District= req.body.District
+    var Postalcode= req.body.Postalcode
+    var IDCard= req.body.IDCard
+    var Telephone= req.body.Telephone
+    var Size= req.body.Size
+    var Gender= req.body.Gender
+    var image= req.file.filename
+  }else{
+    var Name = req.body.Name;
+    var Surename = req.body.Surename;
+    var Housenumber = req.body.Housenumber
+    var Province= req.body.Province
+    var District= req.body.District
+    var Postalcode= req.body.Postalcode
+    var IDCard= req.body.IDCard
+    var Telephone= req.body.Telephone
+    var Size= req.body.Size
+    var Gender= req.body.Gender
+  }
     User.updateMany({_id:req.user._id},{$set : {Name:Name,Surename:Surename,Housenumber:Housenumber,Province:Province
       ,District:District,Postalcode:Postalcode,IDCard:IDCard,Telephone:Telephone,Size:Size,Gender:Gender,image:image}} ,function(err, update){
         if(err){
             console.log(err);
         } else {
+            req.flash('success','Edit profile success');
             res.redirect('/profile')
             }
         }
     );
-}
 });
 
 
@@ -365,5 +392,5 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
   })
     
 
-  
+
   module.exports = router 

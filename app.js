@@ -59,7 +59,15 @@ app.set('views',[path.join(__dirname,"views"),
 
 
 
-
+                 function enSureAuthenticated(req,res,next){
+                    if(req.isAuthenticated()){
+                          return next();
+                      }else{
+                        req.flash('error', 'You need to login first');
+                        res.redirect("/login")
+                        
+                  }
+                  }
 
 
 
@@ -75,6 +83,10 @@ app.get("/adidas/:id/detail",function(req,res){
  
 });     
 
+
+
+
+
 app.get("/nike/:id/detail",function(req,res){
     sneaker.findById({_id:req.params.id},function(err,nikedetail){
         if(err){
@@ -82,9 +94,51 @@ app.get("/nike/:id/detail",function(req,res){
         }else{
          res.render("nikedetail",{nikedetail:nikedetail});
         }
-    })
- 
-});     
+    }
+    )
+}); 
+
+
+
+
+//Comment
+
+// app.get("/nike/:id/detail",function(req,res){
+//     sneaker.findById({_id:req.params.id}).populate("users").exec(function(err,nikedetail){
+//         if(err){
+//             console.log("error")
+//         }else{
+//          res.render("nikedetail",{nikedetail:nikedetail});
+//         }
+//     }
+//     )
+// });     
+
+// app.post("/nike/:id/detail",enSureAuthenticated,function(req,res){
+//     sneaker.findById({_id:req.params.id},function(err,nikedetail){
+//         if(err){
+//             console.log(err)
+//         }else{
+//             User.findById({_id:req.user._id},function(err,find){
+//                 if(err){
+//                     console.log(err)
+//                 }else{
+//                     User.update({_id:req.user._id},{$set :{comment : req.body.comment}},function(err,update){
+//                         if(err){
+//                             console.log(err)
+//                         }else{
+//                             nikedetail.users.push(find)
+//                             nikedetail.save()
+//                             res.redirect("/nike/" + nikedetail._id + "/detail")
+//                         }
+//                     })
+//                 }
+//             })
+          
+//         }
+//     }
+//     )
+// });     
 
 app.get("/jordan/:id/detail",function(req,res){
     sneaker.findById({_id:req.params.id},function(err,jordandetail){

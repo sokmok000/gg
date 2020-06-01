@@ -20,6 +20,7 @@
     "express-messages": "^1.0.1",
     "express-session": "^1.17.1",
     "express-validator": "^6.4.0",
+    "fs": "0.0.1-security",
     "git": "^0.1.5",
     "http-errors": "^1.7.3",
     "l": "^0.6.0",

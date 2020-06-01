@@ -47,7 +47,7 @@
 <body class="pcard">
    
    
-    <form  action="/profile/<%= edit._id %>/edit" method="POST" >
+    <form  action="/profile/<%= edit._id %>/edit" method="POST" enctype="multipart/form-data" >
     <div class="profile-card">
     
     <div  class="image-container">
@@ -86,19 +86,13 @@
 
         <hr>
         <p>Change Photo</p>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+       
+            <div class="from-grop">
+                <input type="file" class="form-control" name="image" accept="image/*">
               </div>
-              <!-- <div class="inputBox">
-                <input type="submit" name="" value="Submit">
-              </div> -->
+              
          </div>
-            <!-- <center><button type="button"  class="btn btn-dark">Submit</button></center> -->
+    
     </div> 
     <div class="inputBox">
         <center><input type="submit" class="btn btn-dark" name="" value="Submit"></center>

@@ -654,19 +654,7 @@ window.addEventListener('resize', changeHeight);
                     <h3 class="title">Color</h3>
                     <p class="text"><%= nikedetail.Color %></p>
                 </div>
-                <!-- <div class="size-container">
-                    <h3 class="title">size US Men</h3>
-                    <p><select  name="Sizesneaker" >
-                        <option>7 US</option>
-                        <option>8 US</option>
-                        <option>9 US</option>
-                        <option>10 US</option>
-                        <option>11 US</option>
-                        <option>12 US</option>
-                        <option>13 US</option>
-                    </select>
-                    </p>
-                </div> -->
+
                 <div class="buy-price">
                     
                     <a href="/<%= nikedetail._id %>/<%=nikedetail.Namesneaker%>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now</a>
@@ -676,10 +664,34 @@ window.addEventListener('resize', changeHeight);
                         <h1><%= nikedetail.Price %></h1>
                     </div>
                 </div>
+
+
+<!-- comment -->
+<!-- 
+                <form class="" action="/nike/<%= nikedetail._id %>/detail" method="post">
+                <div class="form-group">
+                    <label for="">รีวิว</label>
+                    <input type="text" name="comment" value=""  class="form-control">
+                  </div>
+             
+                <center><div><input type="submit"  value="Comment" class="btn btn-success"></div></center>
+                
+               
+            </form  > 
+            <% nikedetail.users.forEach(function(a){ %>
+            <div class="color-container">
+                
+                <p class="text"><%= a.username %> :  <%= a.comment %>  </p>
+
+            </div>
+            <% }) %> -->
+
+            
             </div>
         </div>
     </div>
     
+            
 </body>
 </html>
 
