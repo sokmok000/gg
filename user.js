@@ -7,6 +7,7 @@ let bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 const passport = require("passport")
 const passportLocal = require('passport-local');
+
 const multer = require('multer');
 const path =require("path")
 const fs = require("fs")
@@ -283,22 +284,29 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
             sneaker.updateMany( { $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: req.body.Sizes} ]},{$set : {Count:omg.Count-1 ,Date : Date()}},function(err,update){
               if(err){
                 console.log(err)
-              }else{
-               
-                yes.sneakers.push(omg)
-                yes.save()
-                res.redirect("/")
+              }else{ 
+              User.updateMany({_id:req.user._id},{$set : {Name:req.body.Name,Surename:req.body.Surename,Housenumber:req.body.Housenumber,Province:req.body.Province
+                ,District:req.body.District,Postalcode:req.body.Postalcode,IDCard:req.body.IDCard,Telephone:req.body.Telephone}}, function(err,update){
+                  if(err){
+                    console.log(err)
+                  }else{
+                    yes.sneakers.push(omg)
+                    yes.save()
+                    res.redirect("/")
+                  }
               }
-            })
+              )}
       
-          }
+          })
+        }
       })
     }
   })
-  }
-})
+}
+    })
   })
-
+    
+  
 
 
 

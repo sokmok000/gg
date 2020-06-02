@@ -77,7 +77,7 @@
         </li>
       </ul>
   
-        <%= user.Housenumber %> <%= user.Province %> <%= user.District %> <%= user.Postalcode %> <a href="/<%= buy._id %>/buy/shippinginfo"><div class="btn btn-outline-dark" href="/<%= buy._id %>/buy/shippinginfo" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit Info</div></a>
+        <!-- <%= user.Housenumber %> <%= user.Province %> <%= user.District %> <%= user.Postalcode %> <a href="/<%= buy._id %>/buy/shippinginfo"><div class="btn btn-outline-dark" href="/<%= buy._id %>/buy/shippinginfo" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit Info</div></a> -->
     
     
     
@@ -87,59 +87,62 @@
         <legend class="headline-5 prl6-sm prl0-lg ta-sm-l bg-transparent css-ybrhvy">
           <div class="pt8-sm pt0-lg headline-5 css-uf1ume">
             <span class="prl0-sm ta-sm-l bg-transparent sizeHeader">เลือกไซส์</span>
+            <div class="form-group">
+              <label for="">  </label>
+              <p><select type="text" value=""  name="Sizes" >
+                <option>7 US</option>
+                <option>8 US</option>
+                <option>9 US</option>
+                <option>10 US</option>
+                <option>11 US</option>
+                <option>12 US</option>
+                <option>13 US</option>
+      
+            </select>
+            </div> 
+          </div>
+      
 
-          </div>
-        <!-- </legend>
-        <div class="mt2-sm css-12whm6j">
-          <div class="css-181a6of">
-            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364328" name="Sizes7" type="text" class="visually-hidden" >
-            <label for="skuAndSize__24364328" tabindex="-1" class="css-xf3ahq">7 US</label>
-          </div>
-          <div class="css-181a6of">
-            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364332" name="Sizes8" type="text" class="visually-hidden" >
-            <label for="skuAndSize__24364332" tabindex="-1" class="css-xf3ahq">8 US</label>
-          </div>
-          <div class="css-181a6of">
-            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364327" name="skuAndSize" type="radio" class="visually-hidden" value="24364327:8">
-            <label for="skuAndSize__24364327" tabindex="-1" class="css-xf3ahq">9 US</label>
-          </div><div class="css-181a6of">
-            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364338" name="skuAndSize" type="radio" class="visually-hidden" value="24364338:8.5">
-            <label for="skuAndSize__24364338" tabindex="-1" class="css-xf3ahq">10 US</label>
-          </div>
-          <div class="css-181a6of">
-            <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364329" name="skuAndSize" type="radio"  class="visually-hidden" value="24364329:9">
-            <label for="skuAndSize__24364329" tabindex="-1" class="css-xf3ahq">11 US</label>
-          </div>
-          <div class="css-181a6of">
-              <input aria-describedby="pdp-buytools-low-inventory-messaging" id="skuAndSize__24364336" name="skuAndSize" type="radio"  class="visually-hidden" value="24364336:9.5">
-              <label for="skuAndSize__24364336" tabindex="-1" class="css-xf3ahq">12 US</label>
-            </div>
-            <div class="css-181a6of">
-                <input aria-describedby="pdp-buytools-low-inventory-messaging"  name="skuAndSize" type="radio"  class="visually-hidden" value="24364331:10">
-                <label for="skuAndSize__24364331" tabindex="-1" class="css-xf3ahq">13 US</label>
-              </div>
-               -->
-                <div class="form-group">
-                <label for="">  </label>
-                <p><select type="text" value=""  name="Sizes" >
-                  <option>7 US</option>
-                  <option>8 US</option>
-                  <option>9 US</option>
-                  <option>10 US</option>
-                  <option>11 US</option>
-                  <option>12 US</option>
-                  <option>13 US</option>
-        
-              </select>
-              </div> 
 
+                <img class="d-block mx-auto mb-4" src="" alt="" width="400" height="200">
+            <div class="profile-card">
             
-
-
+            <div  class="image-container">
+                   
+                    <div class="main-container">
+                        <p>Name</p>
+                        <p><input style="width: 600px;" type="text" name="Name" value="<%= user.Name %>" required></p>
+                        <p>Surename</p>
+                        <p><input style="width: 600px;" type="text" name="Surename" value="<%= user.Surename %>" required></p>
+                    </div>
+                    
+                    <hr>
+            </div> 
+            <div class="main-container">
+                <p>บ้านเลขที่</p>
+                <p><input style="width: 600px;"  type="text" name="Housenumber" placeholder="Address" value="<%= user.Housenumber %>" required></p>
+                <p>จังหวัด</p>
+               <p><input style="width: 600px;" type="text" name="Province" placeholder="" value="<%= user.Province %>" required> </p>
+                <p>เขต</p>
+                <p><input style="width: 600px;" type="text" name="District" placeholder="" value="<%= user.District %>" required> </p>
+                <p>รหัสไปรษณีย์</p>
+                <p><input style="width: 600px;" type="text" name="Postalcode" placeholder="" value="<%= user.Postalcode %>" required> </p>
+                <p>บัตรประชาชน</p>
+                <p><input style="width: 600px;" type="text" name="IDCard" placeholder="13 หลัก" value="<%= user.IDCard %>" required> </p>
+                <p>Tel.</p>
+                <p><input style="width: 600px;" type="tel" name="Telephone" placeholder="085-xxxxxxx" value="<%= user.Telephone %>" required> </p>
+            
+      
+              </div>
+        
+        </div>
+      
                 </div>
               </fieldset>
             </div>
-            <button aria-label="ยืนยัน" class="ncss-btn-primary-dark btn-lg css-y0myut add-to-cart-btn"> ยืนยัน</button></div></form>
+            <button aria-label="ยืนยัน" class="ncss-btn-primary-dark btn-lg css-y0myut add-to-cart-btn"> ยืนยัน</button>
+          </div>
+        </form>
     
     
     
