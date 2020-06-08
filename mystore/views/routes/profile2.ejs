@@ -1,0 +1,93 @@
+<%- include("partials/header") %>
+<style>
+.pcard
+{
+    background-color: #f1f1f1;
+}
+
+.profile-card
+{
+    width: 400px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+}
+
+.image-container
+{
+    position: relative;
+}
+
+.info
+{
+    color: #4b4fe2;
+    margin-right: 16px;
+}
+
+.main-container
+{
+    padding: 20px;
+}
+/* .list-bar
+{
+    background-color: #bdc9ea;
+    border-radius: 16px;
+} */
+.itemlist
+{
+    padding: 0.1em 16px;
+    border-radius: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: #D2D9DA;
+}
+</style>
+
+<br><br><br><br>
+<body class="pcard">
+<div class="profile-card">
+    <a href="/profile/<%= user._id %>/edit"><div class="btn btn-outline-dark" href="/profile/<%= user._id %>/edit" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit</div></a>
+    <div class="image-container">
+            <img src= <%= "../uploadsuser/" + user.image %> style="width: 100%">
+            <div class="title">
+                <h2 class="container"><span><%= user.Name %></span> <span><%= user.Surename %></span> </h2>
+
+            </div>
+            
+    </div>
+    <div class="main-container">
+
+        <p> บ้านเลขที่:  <span><%= user.Housenumber %></span></p>
+        <p> จังหวัด: <span><%= user.Province %></span></p>
+        <p> เขต: <span><%= user.District %></span></p>
+        <p> รหัสไปรษณีย์: <span><%= user.Postalcode %></span></p>
+        <p> บัตร ปชช.: <span><%= user.IDCard %></span></p>
+        <p> Tel.: <span><%= user.Telephone %></span></p>
+        <p> Size: <span><%= user.Size %></span></p>
+        <p> เพศ: <span><%= user.Gender %></span></p>
+        <hr>
+        <p><b>
+            <i class="fa fa-asterisk info"></i>รายการสินค้าที่สั่ง
+        </b></p>
+        
+        <div class="list-bar">
+            
+            <% user.sneakers.forEach(function(sneakers){ %>
+                
+            <div class="itemlist">
+                
+                 <%=  sneakers.Namesneaker %>  <%=  sneakers.Sizesneaker %> <%= moment(sneakers.Date).format("MM/DD/YY") %>
+                  
+            </div>
+        
+            <%})%>
+       
+        </div>
+    
+         
+    </div>
+    
+</div>
+</body>
+
+<%- include("partials/footer") %>
