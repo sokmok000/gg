@@ -46,28 +46,47 @@
 <br><br><br><br>
 <body class="pcard">
 <div class="profile-card">
-   
+    <a href="/profile/<%= user._id %>/edit"><div class="btn btn-outline-dark" href="/profile/<%= user._id %>/edit" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit</div></a>
     <div class="image-container">
-         <div class="btn btn-outline-dark" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit</div>
-        <br>
-            <img src="man.svg" style="width: 100%; height: 300px;">
+            <img src= <%= "../uploadsuser/" + user.image %> style="width: 100%">
             <div class="title">
-                <h2 class="container">pitpagon chinanupagon</h2>
+                <h2 class="container"><span><%= user.Name %></span> <span><%= user.Surename %></span> </h2>
 
             </div>
             
     </div>
     <div class="main-container">
 
-        <p><i class="fa fa-home info"></i>46/4 หมู่4</p>
-        <p><i class="fa fa-envelope info"></i>pitpagon@hotmail.com</p>
-        <p><i class="fa fa-phone info"></i>0858024324</p>
-        <a href="/profile/<%= user._id %>/edit"> <p class="btn btn-outline-dark" ><i class="fa fa-plus info"></i> Edit</p></a>
-        <p class="btn btn-outline-dark" href="#" ><i class="fa fa-minus info"></i> Delete</p>
+        <p> บ้านเลขที่:  <span><%= user.Housenumber %></span></p>
+        <p> จังหวัด: <span><%= user.Province %></span></p>
+        <p> เขต: <span><%= user.District %></span></p>
+        <p> รหัสไปรษณีย์: <span><%= user.Postalcode %></span></p>
+        <p> บัตร ปชช.: <span><%= user.IDCard %></span></p>
+        <p> Tel.: <span><%= user.Telephone %></span></p>
+        <p> Size: <span><%= user.Size %></span></p>
+        <p> เพศ: <span><%= user.Gender %></span></p>
         <hr>
+        <p><b>
+            <i class="fa fa-asterisk info"></i>รายการสินค้าที่สั่ง
+        </b></p>
         
-
+        <div class="list-bar">
+            
+            <% user.sneakers.forEach(function(sneakers){ %>
+                
+            <div class="itemlist">
+                
+                 <%=  sneakers.Namesneaker %>  <%=  sneakers.Sizesneaker %> <%= moment(sneakers.Date).format("MM/DD/YY") %>
+                  
+            </div>
+        
+            <%})%>
+       
+        </div>
+    
+         
     </div>
+    
 </div>
 </body>
 

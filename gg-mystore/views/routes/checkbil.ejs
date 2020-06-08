@@ -45,54 +45,115 @@
   <body >
     <div class="container">
   <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="https://i.pinimg.com/originals/72/38/5c/72385cc0a276ba208e05fffdc9fe4c83.jpg" alt="" width="400" height="200">
+  
     <h2>Checkout</h2>
     <p class="lead"></p>
   </div>
-
+  <img class="d-block mx-auto mb-4"  src= <%= "/uploadssneaker/" + buy.Image %> alt="" width="400" height="200" >   
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="gg">Your Item</span>
-        <span class="badge badge-secondary badge-pill">1</span>
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div >
-            <h6 class="my-0">Nike Air Force 1</h6>
-            <small class="text-muted">White/Black</small>
+            <%=  buy.Namesneaker %>
+            <small class="text-muted"></small>
           </div>
-          <span class="text-muted">$160</span>
+          <span class="text-muted"><strong>$<%=  buy.Price %></strong></span>
         </li>
 
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-dark">
-            <h6 class="text-dark">Promo code</h6>
-
+            <h6 class="text-dark">Shipping</h6>
           </div>
-          <span class="text-success">-$5</span>
+  
+          <span class="text-success">$10</span>
         </li>
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (USD)</span>
-          <strong>$155</strong>
+          <strong>$<%=  buy.Price+10 %></strong>
         </li>
       </ul>
-
-      <form class="card p-2">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code">
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
+  
+        <!-- <%= user.Housenumber %> <%= user.Province %> <%= user.District %> <%= user.Postalcode %> <a href="/<%= buy._id %>/buy/shippinginfo"><div class="btn btn-outline-dark" href="/<%= buy._id %>/buy/shippinginfo" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit Info</div></a> -->
+    
+    
+    
+        <form action="/<%=buy._id %>/<%=buy.Namesneaker %>/buy" method="POST">
+          <div class="prl6-sm prl0-lg">
+      <fieldset class="mt5-sm mb3-sm body-2 css-14bfa24">
+        <legend class="headline-5 prl6-sm prl0-lg ta-sm-l bg-transparent css-ybrhvy">
+          <div class="pt8-sm pt0-lg headline-5 css-uf1ume">
+            <span class="prl0-sm ta-sm-l bg-transparent sizeHeader">เลือกไซส์</span>
+            <div class="form-group">
+              <label for="">  </label>
+              <p><select type="text" value=""  name="Sizes" >
+                <option>7 US</option>
+                <option>8 US</option>
+                <option>9 US</option>
+                <option>10 US</option>
+                <option>11 US</option>
+                <option>12 US</option>
+                <option>13 US</option>
+      
+            </select>
+            </div> 
           </div>
+      
+
+
+                <img class="d-block mx-auto mb-4" src="" alt="" width="400" height="200">
+            <div class="profile-card">
+            
+            <div  class="image-container">
+                   
+                    <div class="main-container">
+                        <p>Name</p>
+                        <p><input style="width: 600px;" type="text" name="Name" value="<%= user.Name %>" required></p>
+                        <p>Surename</p>
+                        <p><input style="width: 600px;" type="text" name="Surename" value="<%= user.Surename %>" required></p>
+                    </div>
+                    
+                    <hr>
+            </div> 
+            <div class="main-container">
+                <p>บ้านเลขที่</p>
+                <p><input style="width: 600px;"  type="text" name="Housenumber" placeholder="Address" value="<%= user.Housenumber %>" required></p>
+                <p>จังหวัด</p>
+               <p><input style="width: 600px;" type="text" name="Province" placeholder="" value="<%= user.Province %>" required> </p>
+                <p>เขต</p>
+                <p><input style="width: 600px;" type="text" name="District" placeholder="" value="<%= user.District %>" required> </p>
+                <p>รหัสไปรษณีย์</p>
+                <p><input style="width: 600px;" type="text" name="Postalcode" placeholder="" value="<%= user.Postalcode %>" required> </p>
+                <p>บัตรประชาชน</p>
+                <p><input style="width: 600px;" type="text" name="IDCard" placeholder="13 หลัก" value="<%= user.IDCard %>" required> </p>
+                <p>Tel.</p>
+                <p><input style="width: 600px;" type="tel" name="Telephone" placeholder="085-xxxxxxx" value="<%= user.Telephone %>" required> </p>
+            
+      
+              </div>
+        
         </div>
-      </form>
-    </div>
+      
+                </div>
+              </fieldset>
+            </div>
+            <button aria-label="ยืนยัน" class="ncss-btn-primary-dark btn-lg css-y0myut add-to-cart-btn"> ยืนยัน</button>
+          </div>
+        </form>
+    
+    
+    
+    
+        <!-- </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
       <form class="needs-validation" novalidate="">
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
+            <label for="firstName"></label>
             <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
             <div class="invalid-feedback">
               Valid first name is required.
@@ -176,10 +237,11 @@
             <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
             <label class="custom-control-label" for="credit">Cash</label>
           </div>    
-        </div>
+        </div> -->
+      <!-- <form action="/<%=buy._id %>/buy" method="POST">
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block a" type="submit">Continue to checkout</button>
-      </form>
+        <input type="submit" name="" class="btn btn-primary btn-sm" id="btn" value="Check Out"> 
+      </form> -->
     </div>
   </div>
 

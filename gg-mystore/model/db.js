@@ -52,11 +52,15 @@ let databaseSchema = new mongoose.Schema({
     image: {
         type : String
     },
-    
-   
-    
-     
-
+    // comment: {
+    //     type : String
+    // },
+    sneakers : [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"Sneaker"
+        }
+    ]
 })
 databaseSchema.plugin(passportLocalMongoose);   
 module.exports = mongoose.model("Sign Ups",databaseSchema)

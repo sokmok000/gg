@@ -47,37 +47,37 @@
 <body class="pcard">
    
    
-    <form  action="/profile/<%= edit._id %>/edit" method="POST" ></form>
+    <form  action="/profile/<%= edit._id %>/edit" method="POST" enctype="multipart/form-data" >
     <div class="profile-card">
     
     <div  class="image-container">
             <img src="blue.png" style="width: 100%">
             <div class="main-container">
                 <p>Name</p>
-                <p><input style="width: 600px;" type="text" name="Name" value="<%= edit.Name %>"></p>
+                <p><input style="width: 600px;" type="text" name="Name" value="<%= edit.Name %>" required></p>
                 <p>Surename</p>
-                <p><input style="width: 600px;" type="text" name="Surename" value="<%= edit.Surename %>"></p>
+                <p><input style="width: 600px;" type="text" name="Surename" value="<%= edit.Surename %>" required></p>
             </div>
             
             <hr>
     </div> 
     <div class="main-container">
         <p>บ้านเลขที่</p>
-        <p><input style="width: 600px;"  type="text" name="Housenumber" placeholder="Address" value="<%= edit.Housenumber %>"></p>
+        <p><input style="width: 600px;"  type="text" name="Housenumber" placeholder="Address" value="<%= edit.Housenumber %>" required></p>
         <p>จังหวัด</p>
-       <p><input style="width: 600px;" type="text" name="Province" placeholder="" value="<%= edit.Province %>"></p>
+       <p><input style="width: 600px;" type="text" name="Province" placeholder="" value="<%= edit.Province %>" required> </p>
         <p>เขต</p>
-        <p><input style="width: 600px;" type="text" name="District" placeholder="" value="<%= edit.District %>"></p>
+        <p><input style="width: 600px;" type="text" name="District" placeholder="" value="<%= edit.District %>" required> </p>
         <p>รหัสไปรษณีย์</p>
-        <p><input style="width: 600px;" type="text" name="Postalcode" placeholder="" value="<%= edit.Postalcode %>"></p>
+        <p><input style="width: 600px;" type="text" name="Postalcode" placeholder="" value="<%= edit.Postalcode %>" required> </p>
         <p>บัตรประชาชน</p>
-        <p><input style="width: 600px;" type="number" name="IDCard" placeholder="13 หลัก" value="<%= edit.IDCard %>"></p>
+        <p><input style="width: 600px;" type="text" name="IDCard" placeholder="13 หลัก" value="<%= edit.IDCard %>" required> </p>
         <p>Tel.</p>
-        <p><input style="width: 600px;" type="tel" name="Telephone" placeholder="085-xxxxxxx" value="<%= edit.Telephone %>"></p>
+        <p><input style="width: 600px;" type="tel" name="Telephone" placeholder="085-xxxxxxx" value="<%= edit.Telephone %>" required> </p>
         <p>Size</p>
-        <p><input style="width: 600px;" type="" name="Size" placeholder="" value="<%= edit.Size %>"> </p>
+        <p><input style="width: 600px;" type="" name="Size" placeholder="" value="<%= edit.Size %>" required> </p>
         <p>เพศ</p>
-        <p><select value="<%= edit.Gender %>"  name="Gender" >
+        <p><select value="<%= edit.Gender %>"  name="Gender" required >
             <option>Male</option>
             <option>Female</option>
             <option>Other</option>
@@ -86,18 +86,17 @@
 
         <hr>
         <p>Change Photo</p>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+       
+            <div class="from-grop">
+                <input type="file" class="form-control" name="image" accept="image/*">
               </div>
-            </div>
-            <center><button type="button"  class="btn btn-dark">Submit</button></center>
-    </div>
-
+              
+         </div>
+    
+    </div> 
+    <div class="inputBox">
+        <center><input type="submit" class="btn btn-dark" name="" value="Submit"></center>
+      </div>
 </div>
 </form>
 </body>

@@ -1,0 +1,45 @@
+<%- include("partials/adminheader") %>
+<div class="container">
+    
+    <h2>History Checkout</h2>
+    <table style="width: 100%;" class="table table-bordered table-dark">
+        <thead>
+          <tr>
+
+            <th scope="col">Username</th>
+            <th scope="col">email</th>
+            <th scope="col">Name</th>   
+            <th scope="col">Surename</th>
+            <th scope="col">Sneaker</th>
+            <th scope="col">Size</th>
+            <th scope="col">Date</th>
+            <th scope="col">Delete</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <% hello.sneakers.forEach(function(sneakers) { %>
+          <tr>
+            <td><%= hello.username %></td>
+            <td><%= hello.email %></td>
+            <td><%= hello.Name %></td>
+            <td><%= hello.Surename %></td>
+            <td><%= sneakers.Namesneaker %></td>
+            <td><%= sneakers.Sizesneaker %></td>
+            <td><%= sneakers.Date %></td>
+            <td><td><a class="btn-sm btn-light" href="/admin/user/<%= hello._id %>/remove">Delete</a></td></td>
+        
+
+          </tr>
+          <% }) %>
+          
+          
+          
+          
+
+
+        </tbody>
+      </table>
+
+</div>
+<%- include("partials/footer") %>

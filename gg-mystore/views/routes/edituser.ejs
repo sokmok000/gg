@@ -1,0 +1,35 @@
+<%- include("partials/adminheader") %>
+<div class="container">
+    
+    <h2>Edit User</h2>
+    <table style="width: 100%;" class="table table-bordered table-dark">
+        <thead>
+          <tr>
+
+            <th scope="col">Username</th>
+            <th scope="col">email</th>
+            <th scope="col">Detail</th>
+            <th scope="col">Delete</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <% eiei.forEach(function(eiei) { %>
+          <tr>
+            <td><%= eiei.username %></td>
+            <td><%= eiei.email %></td>
+            <td><a class="btn-sm btn-light" href="/admin/user/edit/see/<%= eiei._id %>">Detail</a> </td>
+            <td><a class="btn-sm btn-light" href="/admin/user/<%= eiei._id %>/remove">Delete</a></td>
+          </tr>
+          <% }) %>
+          
+          
+          
+          
+
+
+        </tbody>
+      </table>
+
+</div>
+<%- include("partials/footer") %>
