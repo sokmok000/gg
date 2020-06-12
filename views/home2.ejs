@@ -61,15 +61,30 @@
 <center><div class="bdiv"><h1 class="hh1"> Welcome To My Store</div></h1>
 </center>
 
+
+<form action="/search" method="GET">
+  <div>
+  <input name="findsneakers" style="margin-bottom: 20px;" type="search" class="form-control sj-form-control" placeholder="search"  value="" required>
+  </div>
+  <div>
+  <button style="text-transform: uppercase;font-family: 'Lato', sans-serif;color: white;font-size: 25px;padding: 4px 10px 4px 10px;background-color: black;" type="submit">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    </svg>
+  </button>
+</div>
+</form>
+
+
 <div class="bdiv3"><i style="color: #eb5757" class="fa fa-thumbs-o-up"></i>New Items</div>
 <br>
 <div class="row">
-
+  
   <% newsneaker.forEach(function(newsneaker){ %>
   <div class="col-md-4">
     <div class="thumbnail">
+      <!-- newsneaker.Image.filename -->
       <a href="/<%=newsneaker.Brand %>/<%= newsneaker._id %>/detail">
-        <center><img class="image123" src= <%= "../uploadssneaker/" + newsneaker.Image %> ></center>
+        <center><img class="image123" src= <%= "../uploadssneaker/" + newsneaker.Image[0].filename %> ></center>
         <div class="caption"><br>
           <center><p class="btn btn-secondary" style="text-align: center; font-size: 20px; ">More Details</p></center>
         </div>

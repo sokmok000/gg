@@ -56,6 +56,8 @@ app.use("*",function(req , res , next){
 app.use('/', user);
 app.use('/', Sneaker);
 app.set("view engine","ejs");
+
+
 app.use(express.static(__dirname + '/public'));
 app.set('views',[path.join(__dirname,"views"),
                  path.join(__dirname,"views/routes") ]);

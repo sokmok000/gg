@@ -21,7 +21,8 @@ const   mongoose = require('mongoose'),
                 type : Number
             },
             Image : {
-                type : String
+                type : Array
+
             },
             Brand : {
                 type : String

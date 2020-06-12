@@ -232,14 +232,6 @@ if(req.file){
 });
 
 
-// User.find({},function(err,success){
-//   if(err){
-//     console.log(err)
-//   }else{
-//     console.log(success)
-//   }
-// })
-
 router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
 
   sneaker.findById(req.params.id,function(err,buy){
@@ -257,16 +249,6 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
       }
     })
   })
-//   router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
-//   sneaker.find({ $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: "7 US"} ]},function(err,ok){
-//     if(err){
-//       console.log(err)
-//     }else{
-//       console.log(ok)
-//     }
-//   })
-// })
-
 
   router.post("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
     User.findById(req.user._id,function(err,yes){
@@ -278,9 +260,10 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
             console.log(err)
           }else{
             sneaker.findOne({ $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: req.body.Sizes} ]},function(err,omg){
-              if(err){
-                console.log(err)
-              }else{   
+              if(omg.Count == 0){
+                req.flash('error','THIS SIZE OUT STOCK');
+                res.redirect("/" + req.params.id + "/" + req.params.Namesneaker + "/buy")
+              }else{    
             sneaker.updateMany( { $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: req.body.Sizes} ]},{$set : {Count:omg.Count-1 ,Date : Date()}},function(err,update){
               if(err){
                 console.log(err)
@@ -292,6 +275,7 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
                   }else{
                     yes.sneakers.push(omg)
                     yes.save()
+                    req.flash('success','BUY SUCCESS');
                     res.redirect("/")
                   }
               }
@@ -360,40 +344,75 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
 
                 // sneaker.find({$or:[{Size7 : {Size7: req.body.Sizes,Count7:ok.Size7.Count7} },{Size8 : {Size8: req.body.Sizes,Count8:ok.Size8.Count8} }]}
 
-  router.get("/:id/buy/shippinginfo",function(req,res){
-    User.findById({_id:req.user._id},function(err,info){
-      if(err){
-        console.log(err)
-      }else{
-        sneaker.findById({_id:req.params.id},function(err,sneaker){
-          if(err){
-            console.log(err)
-          }else{
+//   router.get("/:id/buy/shippinginfo",function(req,res){
+//     User.findById({_id:req.user._id},function(err,info){
+//       if(err){
+//         console.log(err)
+//       }else{
+//         sneaker.findById({_id:req.params.id},function(err,sneaker){
+//           if(err){
+//             console.log(err)
+//           }else{
             
-            res.render("shipping",{info:info,sneaker:sneaker})
-          }
-        })
-      }
-    })
-  })
+//             res.render("shipping",{info:info,sneaker:sneaker})
+//           }
+//         })
+//       }
+//     })
+//   })
 
-  router.post("/:id/buy/shippinginfo",function(req,res){
-    User.findById({_id:req.user._id},function(err,find){
-      if(err){
-        console.log(err)
-      }else{
-        User.updateMany({_id:req.user._id},{$set : {Name:req.body.Name,Surename:req.body.Surename,Housenumber:req.body.Housenumber,Province:req.body.Province
-          ,District:req.body.District,Postalcode:req.body.Postalcode,IDCard:req.body.IDCard,Telephone:req.body.Telephone}}, function(err,update){
-            if(err){
-              console.log(err)
-            }else{
-                res.redirect("/profile")
-            }
+//   router.post("/:id/buy/shippinginfo",function(req,res){
+//     User.findById({_id:req.user._id},function(err,find){
+//       if(err){
+//         console.log(err)
+//       }else{
+//         User.updateMany({_id:req.user._id},{$set : {Name:req.body.Name,Surename:req.body.Surename,Housenumber:req.body.Housenumber,Province:req.body.Province
+//           ,District:req.body.District,Postalcode:req.body.Postalcode,IDCard:req.body.IDCard,Telephone:req.body.Telephone}}, function(err,update){
+//             if(err){
+//               console.log(err)
+//             }else{
+//                 res.redirect("/profile")
+//             }
           
-    })
-  }
-})
+//     })
+//   }
+// })
+//   })
+router.get('/search', function(req,res){
+  sneaker.findOne({Namesneaker: {$regex: req.query.findsneakers }},function(err,sneakershow){
+      if(err){
+          console.log("Error");
+      } else {
+         console.log(sneakershow)
+      res.redirect("/nike/" + sneakershow._id  + "/detail")
+      }
   })
+});
+
+router.get('/search/nike', function(req,res){
+  sneaker.findOne({Namesneaker: {$regex: req.query.findnike },Brand : "nike"},function(err,sneakershow){
+      if(err){
+          console.log("Error");
+      } else {
+         console.log(sneakershow)
+      res.redirect("/nike/" + sneakershow._id  + "/detail")
+      }
+  })
+});
+
+
+// router.get('/search', function(req,res){
+//   sneaker.findOne({Namesneaker: {$regex: req.query.findsneakers }},function(err,sneakershow){
+//       if(err){
+//           console.log("Error");
+//       } else {
+//          console.log(sneakershow)
+//       res.redirect("/nike/" + sneakershow._id  + "/detail")
+//       }
+//   })
+// });
+
+
   
 
 
