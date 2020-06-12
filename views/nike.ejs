@@ -8,7 +8,7 @@
 </header>
 <br><br><br><br><br><br>
 
-
+<!-- 
 <form action="/search/nike" method="GET">
     <div>
     <input name="findnike" style="margin-bottom: 20px;" type="search" class="form-control sj-form-control" placeholder="search"  value="" required>
@@ -19,14 +19,14 @@
       </svg>
     </button>
   </div>
-  </form>
+  </form> -->
 
 <div class ="row"style="display:flex; flex-wrap:wrap;">
     <% nike.forEach(function(n){ %>
     <div class="col-md-4 col-sm-6" >
         
             <div class="card">
-                    <div class="front"><img src = <%= "../uploadssneaker/" + n.Image %> class="img-fluid" width = "300px" > </div>
+                    <div class="front"><img src = <%= "../uploadssneaker/" + n.Image[0].filename %> class="img-fluid" width = "300px" > </div>
                     <div class = "back">
                         <div class="details">
                             <h2> <%= n.Name %><br><span><%= n.Minidetail %></span></h2>

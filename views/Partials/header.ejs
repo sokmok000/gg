@@ -272,13 +272,24 @@ function myFunction() {
       <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
       <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>      
       <div class="w3-dropdown-hover w3-hide-small">
-       <a  href="/login"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " style="float: right; margin-right: 20px;" >Login</a>
+       <a  href="/login"  class="w3-bar-item w3-button w3-padding-large w3-hide-small "  >Login</a>
     </div>
-
-    
     <div class="w3-dropdown-hover w3-hide-small">
       <a href="/signup"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Signup</a>
   </div>
+
+  <form action="/search" method="GET">
+    <div>
+    <input name="findsneakers" style="margin-bottom: 20px;" type="search" class="container"  placeholder="Find Name Sneaker "  value="" required>
+    </div>
+    <div>
+    <button style="text-transform: uppercase;font-family: 'Lato', sans-serif;color: white;font-size: 25px;padding: 4px 10px 4px 10px;background-color: black;" type="submit">
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      </svg>
+    </button>
+  </div>
+  </form>
+  
 <%}%>
       
 
@@ -289,13 +300,23 @@ function myFunction() {
   <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
   <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>
   
-<!-- <div class="w3-dropdown-hover w3-hide-small">
-  <a href="/profile"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Profile</a>
-</div> -->
   <div class="w3-dropdown-hover w3-hide-small">
     <a href="/logout"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Logout</a>
 
-</div><a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Your Username is <%= user.username %></a>
+</div><a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Profile Name Is <%= user.username %></a>
+
+
+<form action="/search" method="GET">
+  <div>
+  <input name="findsneakers" style="margin-bottom: 20px;" type="search" class="container" placeholder="Find Name Sneaker "  value="" required>
+  </div>
+  <div>
+  <button style="text-transform: uppercase;font-family: 'Lato', sans-serif;color: white;font-size: 25px;padding: 4px 10px 4px 10px;background-color: black;" type="submit">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    </svg>
+  </button>
+</div>
+</form>
 
 
 <%}%>

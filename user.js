@@ -115,7 +115,7 @@ router.get("/profile",function(req , res){
 
 router.post("/login",passport.authenticate("local",{
           failureRedirect:"/login",
-          successRedirect : "/profile",
+          successRedirect : "/",
           successFlash: true,            
          failureFlash: true,
           successFlash: "You log in successfully",
@@ -260,10 +260,17 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
             console.log(err)
           }else{
             sneaker.findOne({ $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: req.body.Sizes} ]},function(err,omg){
-              if(omg.Count == 0){
+              console.log(omg)
+              if(omg == null){
+                req.flash('error','DONT HAVE THIS SIZE');
+                res.redirect("/" + req.params.id + "/" + req.params.Namesneaker + "/buy")
+              }
+              else if(omg.Count < 1){
                 req.flash('error','THIS SIZE OUT STOCK');
                 res.redirect("/" + req.params.id + "/" + req.params.Namesneaker + "/buy")
-              }else{    
+              }
+              
+              else{    
             sneaker.updateMany( { $and: [{Namesneaker:req.params.Namesneaker},{Sizesneaker: req.body.Sizes} ]},{$set : {Count:omg.Count-1 ,Date : Date()}},function(err,update){
               if(err){
                 console.log(err)
@@ -276,7 +283,7 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
                     yes.sneakers.push(omg)
                     yes.save()
                     req.flash('success','BUY SUCCESS');
-                    res.redirect("/")
+                    res.redirect("/profile")
                   }
               }
               )}
@@ -380,25 +387,17 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
 //   })
 router.get('/search', function(req,res){
   sneaker.findOne({Namesneaker: {$regex: req.query.findsneakers }},function(err,sneakershow){
-      if(err){
-          console.log("Error");
-      } else {
+        if(sneakershow == null){
+          req.flash('error','CAN NOT FIND SNEAKER');
+         res.redirect("/")
+        }
+       else {
          console.log(sneakershow)
-      res.redirect("/nike/" + sneakershow._id  + "/detail")
+      res.redirect("/" + sneakershow.Brand + "/" + sneakershow._id  + "/detail")
       }
   })
 });
 
-router.get('/search/nike', function(req,res){
-  sneaker.findOne({Namesneaker: {$regex: req.query.findnike },Brand : "nike"},function(err,sneakershow){
-      if(err){
-          console.log("Error");
-      } else {
-         console.log(sneakershow)
-      res.redirect("/nike/" + sneakershow._id  + "/detail")
-      }
-  })
-});
 
 
 // router.get('/search', function(req,res){
