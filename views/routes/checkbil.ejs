@@ -10,7 +10,6 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/checkout/">
 
-    <!-- Bootstrap core CSS -->
 <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link href="app.css" rel="stylesheet"
     <!-- Favicons -->
@@ -77,8 +76,8 @@
         </li>
       </ul>
   
-        <!-- <%= user.Housenumber %> <%= user.Province %> <%= user.District %> <%= user.Postalcode %> <a href="/<%= buy._id %>/buy/shippinginfo"><div class="btn btn-outline-dark" href="/<%= buy._id %>/buy/shippinginfo" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit Info</div></a> -->
-    
+        
+        <a href="/<%= buy._id %>/<%= buy.Namesneaker %>/buy/shippinginfo" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Shipping Info</a>
     
     
         <form action="/<%=buy._id %>/<%=buy.Namesneaker %>/buy" method="POST">
@@ -101,6 +100,8 @@
             </select>
             </div> 
           </div>
+
+        
       
 
 
