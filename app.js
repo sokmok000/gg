@@ -19,7 +19,7 @@ const fs = require("fs")
 
 let app = express()
 
-
+var port = process.env.PORT || 3000
 
 app.use(session({
     secret: 'keyboard cat',
@@ -202,7 +202,7 @@ app.get("/jordan/:id/detail",function(req,res){
 //     res.render("signup");
 // });
 
-app.listen(process.env.PORT || 3000, function(req,res){
+app.listen(port, function(req,res){
     console.log("Started Now!!");
 });
 
