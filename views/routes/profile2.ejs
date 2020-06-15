@@ -46,6 +46,19 @@
     color: #fff;
     background-color: #D2D9DA;
 }
+@media screen and (max-width: 720px)
+{
+.profile-card
+{
+  margin-right: 10px;
+  margin-left: 10px;
+  
+  height: 72%;
+  width: 72%;
+}
+}
+  
+
 </style>
 
 <br><br><br><br>
@@ -54,7 +67,7 @@
     <div><a href="/profile/<%= user._id %>/edit"><div class="btn btn-outline-light" href="/profile/<%= user._id %>/edit" style="float:  right;margin-top: 10px; margin-right: 10px;">Edit</div></a>
     </div>
     <br>
-    <div class="container image-container">
+    <div class="container image-container fluid-image">
             <img  src= <%= "../uploadsuser/" + user.image %> style="width: 100%">
             <div class="title">
                 <h2 class="container"><span><%= user.Name %></span> <span><%= user.Surename %></span> </h2>

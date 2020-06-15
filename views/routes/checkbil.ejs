@@ -24,22 +24,25 @@
 <meta name="theme-color" content="#563d7c">
 
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+<style>
+  .detail
+  {
+    margin: 0px;
+    clear: both;
+    
+  }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+  @media screen and (max-width:720px){
+    .detail
+    {
+      
+      margin: 0px;
+      clear: both;
+    }
+  }
+    
+  
+</style>
     <link href="form-validation.css" rel="stylesheet">
   </head>
   <center>
@@ -47,7 +50,7 @@
     <br><br>
     
 
-    <div  color: black; "  class="container ">
+    <div  class="container image">
       <div class="row">
         <div class="col">
         
@@ -113,9 +116,9 @@
           </form>
           
         </div>
-        <div style="background-color: #F5F5F5; color: black;  " class="col"> 
-        <div  class="container"  style="margin-top: 50%; margin-bottom: 50%;" >
-          <br>
+        <div class="detail" style="background-color: #F5F5F5; color: black;  " class="col"> 
+        <div  class="container "  style="margin-top: 50%; margin-bottom: 50%;" >
+          
           <div style="text-align: left; font-size: 24px;">ที่อยู่</div>
                 <br>
           <form>
@@ -182,6 +185,10 @@
     
    
   </div>  <br><p aria-label="ยืนยัน" class="btn btn-secondary add-to-cart-btn"> ยืนยัน</p>
-</body></html></center>
+  
+</body>
+
+
+</html></center>
 
 <%- include("partials/footer") %>
