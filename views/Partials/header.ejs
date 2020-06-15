@@ -89,142 +89,7 @@
     color: #a7a7a7;
 
   }
-  /*รายการสินค้า*/
- 
-
-/*ดีเทลรองเท้า2*/
-/*:root
-{
- --primary:#f84848;
-}
-.b2
-{
-  background-color: #efefef;
-}
-
-
-#con
-{
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-}
-
-.card2
-{
-  display: flex;
-  justify-content: center;
-  align-items:center ;
-  width: 860px;
-}
-
-.shoeBackground
-{
-  width: 50%;
-  height: 475px;
-  box-shadow: -15px 0 35px rgba(0, 0, 0, 0.1),
-  0 -15px 35p rgba(0, 0, 0, 0.1),
-  0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-.gradients
-{
-  position:absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-
-.gradient
-{
-  position:absolute;
-  width: 0%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index:-2 ;
-}
-
-.gradient[color="blue"]{
-    background-image: linear-gradient(45deg, #0136af, #22abfa);
-}
-
-.gradient[color="red"]{
-    background-image: linear-gradient(45deg, #d62926, #ee625f);
-}
-
-.gradient[color="green"]{
-    background-image: linear-gradient(45deg, #11998e, #1ce669);
-}
-
-.gradient[color="orange"]{
-    background-image: linear-gradient(45deg, #fc4a1a, #f7b733);
-}
-
-.gradient[color="black"]{
-    background-image: linear-gradient(45deg, #111, #666);
-}
-
-.gradient[color="orange"]{
-  position: absolute;
-  width: 100px;
-  left: 20px;
-  top: 20px;
-}
-
-.share
-{
-  position: absolute;
-  top: 15p;
-  right: 15px;
-  background-color: #fff;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  text-align: center;
-  font-size: 1.3rem;
-  text-decoration: none;
-  color: var(--primary);
-  transition: .5s;
-}
-
-.share:hover
-{
-  transform: scale(1.1);
-}
-
-.share i
-{
-line-height:50px ;
-}
-
-.nike
-{
-  position: absolute;
-  top: 85px;
-  left: 15px;
-  font-size: 11rem;
-  text-transform: uppercase;
-  line-height: .9;
-  color: #fff;
-  opacity: .1;
-
-}
-
-.info
-{
-  width: 50%;
-
-}*/
-
-
-/*ดีเทลรองเท้า2*/
- 
-
-
+  
 </style>
 <script>
 
@@ -271,14 +136,14 @@ function myFunction() {
       <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
       <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
       <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>      
-      <div class="w3-dropdown-hover w3-hide-small">
+      
        <a  href="/login"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " style="float: right; margin-right: 20px;" >Login</a>
-    </div>
+    
 
     
-    <div class="w3-dropdown-hover w3-hide-small">
-      <a href="/signup"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Signup</a>
-  </div>
+    
+      <a style="float: right; margin-right: 20px;" href="/signup"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Sign Up</a>
+  
 <%}%>
       
 
@@ -289,14 +154,14 @@ function myFunction() {
   <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
   <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>
   
-<div class="w3-dropdown-hover w3-hide-small">
+<!-- <div class="w3-dropdown-hover w3-hide-small">
   <a href="/profile"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Profile</a>
-</div>
+</div> -->
   <div class="w3-dropdown-hover w3-hide-small">
     <a href="/logout"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Logout</a>
 
 </div><a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Your Username is <%= user.username %></a>
-<div><a class="cart w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-shopping-cart"></i> Cart</a></div>
+
 
 <%}%>
 </div>

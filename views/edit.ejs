@@ -47,37 +47,77 @@
 <body class="pcard">
    
    
-    <form  action="/profile/<%= edit._id %>/edit" method="POST" ></form>
+    <form  action="/profile/<%= edit._id %>/edit" method="POST" enctype="multipart/form-data" >
     <div class="profile-card">
     
-    <div  class="image-container">
-            <img src="blue.png" style="width: 100%">
+        <div class="container image-container">
+            <img  src= <%= "../uploadsuser/" + user.image %> style="width: 100%">
             <div class="main-container">
-                <p>Name</p>
-                <p><input style="width: 600px;" type="text" name="Name" value="<%= edit.Name %>"></p>
-                <p>Surename</p>
-                <p><input style="width: 600px;" type="text" name="Surename" value="<%= edit.Surename %>"></p>
+                 <form>
+                    <div class="row" >
+                      <div class="col" >
+                        
+                        <input type="text" class="form-control" placeholder="First name" value="<%= user.Name %>" required>
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Last name" value="<%= user.Surename %>" required>
+                      </div>
+                    </div>
+                  </form>
             </div>
             
             <hr>
     </div> 
     <div class="main-container">
-        <p>บ้านเลขที่</p>
-        <p><input style="width: 600px;"  type="text" name="Housenumber" placeholder="Address" value="<%= edit.Housenumber %>"></p>
-        <p>จังหวัด</p>
-       <p><input style="width: 600px;" type="text" name="Province" placeholder="" value="<%= edit.Province %>"></p>
-        <p>เขต</p>
-        <p><input style="width: 600px;" type="text" name="District" placeholder="" value="<%= edit.District %>"></p>
-        <p>รหัสไปรษณีย์</p>
-        <p><input style="width: 600px;" type="text" name="Postalcode" placeholder="" value="<%= edit.Postalcode %>"></p>
-        <p>บัตรประชาชน</p>
-        <p><input style="width: 600px;" type="number" name="IDCard" placeholder="13 หลัก" value="<%= edit.IDCard %>"></p>
-        <p>Tel.</p>
-        <p><input style="width: 600px;" type="tel" name="Telephone" placeholder="085-xxxxxxx" value="<%= edit.Telephone %>"></p>
-        <p>Size</p>
-        <p><input style="width: 600px;" type="" name="Size" placeholder="" value="<%= edit.Size %>"> </p>
+        
+         
+          <form>
+            <form>
+              <div class="row user">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="บัตรประชาชน" value="<%= user.IDCard %>" required>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" value="<%= user.Telephone %>" required>
+                </div>
+              </div>
+            </form>
+            <br>
+            <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="บ้านเลขที่" value="<%= user.Housenumber %>" required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="ถนน" value="" required>
+              </div>
+            </div>
+          </form>
+          <br>
+          <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="แขวง/ตำบล" value="" required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="เขต/อำเภอ" value="<%= user.District %>" required>
+              </div>
+            </div>
+          </form>
+          <br>
+          <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="จังหวัด" value="<%= user.Province %>" required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="รหัสไปรษณีย์" value="<%= user.Postalcode %>" required>
+              </div>
+            </div>
+          </form>
+          <br>
         <p>เพศ</p>
-        <p><select value="<%= edit.Gender %>"  name="Gender" >
+        <p><select class="form-control" style="width: 10%;" value="<%= edit.Gender %>"  name="Gender" required >
             <option>Male</option>
             <option>Female</option>
             <option>Other</option>
@@ -86,18 +126,18 @@
 
         <hr>
         <p>Change Photo</p>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+       
+            <div class="from-grop">
+                <input class="form-control" type="file" class="form-control" name="image" accept="image/*">
               </div>
-            </div>
-            <center><button type="button"  class="btn btn-dark">Submit</button></center>
-    </div>
-
+              
+         </div>
+    
+    </div> 
+    <br>
+    <div class="inputBox">
+        <center><input type="submit" class="btn btn-dark" name="" value="Submit"></center>
+      </div>
 </div>
 </form>
 </body>

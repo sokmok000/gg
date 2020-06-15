@@ -1,4 +1,4 @@
-<%- include("partials/header") %>
+<%- include("partials/adminheader") %>
 
 <body>
    
@@ -7,39 +7,111 @@
         <div class="col-lg-12 my-4">
           <h2 align="center">แบบฟอร์มบันทึกสินค้า</h2>
         
-          <form class="" action="/products/add" method="post">
+          <form class="" action="/admin/sneaker/add" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label for="">ชื่อสินค้า</label>
-              <input type="text" name="name" value="" class="form-control">
+              <input type="text" name="Namesneaker" value="" class="form-control">
             </div>
             <div class="form-group">
                 <label for="">Mini detail</label>
-                <textarea name="description" value="" class="form-control"></textarea>
+                <input name="Minidetail" value="" class="form-control">
               </div>
             <div class="form-group">
               <label for="">รายละเอียด</label>
-              <textarea name="description" rows="4" cols="80" class="form-control"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="">ราคา</label>
-              <input type="number" name="price" value=""  class="form-control">
-            </div>  
-            <div class="form-group">
-                <label for="">U.S. Men</label>
-                <input type="number" name="size" value="" min=1 class="form-control">
-              </div>
-            <div class="form-group">
-              <label for="">ภาพสินค้า</label>
-              <input type="url" name="img" value="" min=1 class="form-control">
+              <input name="Detail" rows="4" cols="80" class="form-control">
             </div>
             
-          </form>
+            <div class="form-group">
+              <label for="">Brand</label>
+              <p><select type="text" value=""  name="Brand" >
+                <option>nike</option>
+                <option>adidas</option>
+                <option>jordan</option>
+            </select>
+            </div>
+            
+          
+            <!-- <div class="form-group">
+              <label for="">Size 7 US MEN</label>
+             <p><select type="text" value=""  name="Size7" >
+              <option>7 US</option>
+          </select>
+            </div>  
+            <div class="form-group">
+              <label for="">จำนวน</label>
+              <p><select type="text" value=""  name="Count7" >
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+            </div>  
+
+
+            <div class="form-group">
+              <label for="">Size 8 US MEN</label>
+             <p><select type="text" value=""  name="Size8" >
+              <option>8 US</option>
+  
+          </select>
+            </div>  
+            <div class="form-group">
+              <label for="">จำนวน</label>
+              <p><select type="text" value=""  name="Count8" >
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+            </div> -->
+            <label for="">Size US Men</label>
+             <p><select type="text" value=""  name="Sizesneaker" >
+              <option>7 US</option>
+              <option>8 US</option>
+              <option>9 US</option>
+              <option>10 US</option>
+              <option>11 US</option>
+              <option>12 US</option>
+              <option>13 US</option>
+          </select> 
+          <div class="form-group">
+            <label for="">จำนวน</label>
+            <input type="text" name="Count" value=""  class="form-control">
+          </div>
+      
+              
+              <div class="form-group">
+                <label for="">สี</label>
+                <input type="text" name="Color" value=""  class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="">ราคา</label>
+                <input type="text" name="Price" value=""  class="form-control">
+              </div> 
+    
+              <p>Photo</p>
+       
+              <div class="from-grop">
+                  <input type="file" class="form-control" name="Image" accept="Image/*">
+                </div>
+            
+          
           
         </div> 
       </div>
       <center><div><input type="submit"  value="บันทึกข้อมูล" class="btn btn-success"></div></center>
       
     </div>
+  </form> 
   </body>
 
 

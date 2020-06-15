@@ -2,12 +2,21 @@ const express = require("express");
 const bodyParser = require('body-parser')
 //passport ID
 const passport = require("passport")
-const LocalStrategy = require("passport-local").Strategy
+const passportLocal = require("passport-local")
 const bcrypt = require('bcryptjs')
-const path = require("path");
+
 const session = require("express-session")
 const flash = require("connect-flash")
+const methodOverride = require("method-override")
+let sneaker = require("./model/sneaker")
+let User = require("./model/db");
 let user = require('./user');
+let Sneaker = require("./admin")
+
+const multer = require('multer');
+const path =require("path")
+const fs = require("fs")
+
 let app = express()
 
 
@@ -22,61 +31,143 @@ app.use(bodyParser.json())
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
-app.get("*",function(req , res , next){
+app.use(methodOverride("_method"))
+passport.use('local', new passportLocal(User.authenticate()));
+passport.serializeUser(function(user, done) { 
+    done(null, user);
+  });
+  passport.deserializeUser(function(user, done) {
+    if(user!=null)
+      done(null,user);
+      
+  });
+
+
+app.use("*",function(req , res , next){
     res.locals.user = req.user || null
     res.locals.error = req.flash("error")
     res.locals.success = req.flash("success")
+    res.locals.Sneaker = req.Sneaker
+    res.locals.moment = require('moment')
     next()
+
+
 })
 app.use('/', user);
-// app.use("/",route)
+app.use('/', Sneaker);
 app.set("view engine","ejs");
-
-
-
-
-
-
-// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/public'));
 app.set('views',[path.join(__dirname,"views"),
                  path.join(__dirname,"views/routes") ]);
 
-app.get("/adidas/details",function(req,res){
-    res.render("details2");
+
+
+
+                 function enSureAuthenticated(req,res,next){
+                    if(req.isAuthenticated()){
+                          return next();
+                      }else{
+                        req.flash('error', 'You need to login first');
+                        res.redirect("/login")
+                        
+                  }
+                  }
+
+
+
+
+app.get("/adidas/:id/detail",function(req,res){
+    sneaker.findById({_id:req.params.id},function(err,adidasdetail){
+        if(err){
+            console.log("error")
+        }else{
+         res.render("adidasdetail",{adidasdetail:adidasdetail});
+        }
+    })
+ 
 });     
 
-app.get("/nike/details",function(req,res){
-    res.render("details2");
-});  
 
-app.get("/jordan/details",function(req,res){
-    res.render("details2");
-});  
-
-app.get("/add",function(req,res){
-    res.render("add");
-});
-
-app.get("/edit",function(req,res){
-    res.render("edit");
-});  
-app.get("/1",function(req,res){
-    res.render("profile");
-});  
-
-app.get("/nike/details/checkbil",function(req,res){
-    res.render("checkbil");
-});  
-
-app.get("/adidas/details/checkbil",function(req,res){
-    res.render("checkbil");
-});  
+app.get("/nike/:id/detail",function(req,res){
+    sneaker.findById({_id:req.params.id},function(err,nikedetail){
+        if(err){
+            console.log("error")
+        }else{
+         res.render("nikedetail",{nikedetail:nikedetail});
+        }
+    }
+    )
+}); 
 
 
-app.get("/jordan/details/checkbil",function(req,res){
-    res.render("checkbil");
-});  
+
+
+//Comment
+
+// app.get("/nike/:id/detail",function(req,res){
+//     sneaker.findById({_id:req.params.id}).populate("users").exec(function(err,nikedetail){
+//         if(err){
+//             console.log("error")
+//         }else{
+//          res.render("nikedetail",{nikedetail:nikedetail});
+//         }
+//     }
+//     )
+// });     
+
+// app.post("/nike/:id/detail",enSureAuthenticated,function(req,res){
+//     sneaker.findById({_id:req.params.id},function(err,nikedetail){
+//         if(err){
+//             console.log(err)
+//         }else{
+//             User.findById({_id:req.user._id},function(err,find){
+//                 if(err){
+//                     console.log(err)
+//                 }else{
+//                     User.update({_id:req.user._id},{$set :{comment : req.body.comment}},function(err,update){
+//                         if(err){
+//                             console.log(err)
+//                         }else{
+//                             nikedetail.users.push(find)
+//                             nikedetail.save()
+//                             res.redirect("/nike/" + nikedetail._id + "/detail")
+//                         }
+//                     })
+//                 }
+//             })
+          
+//         }
+//     }
+//     )
+// });     
+
+app.get("/jordan/:id/detail",function(req,res){
+    sneaker.findById({_id:req.params.id},function(err,jordandetail){
+        if(err){
+            console.log("error")
+        }else{
+         res.render("jordandetail",{jordandetail:jordandetail});
+        }
+    })
+ 
+});     
+
+    // app.get("/add",function(req,res){
+    //     res.render("add");
+    // });
+
+
+
+
+
+// app.get("/adidas/details/checkbil",function(req,res){
+//     res.render("checkbil");
+// });  
+
+
+// app.get("/jordan/details/checkbil",function(req,res){
+//     res.render("checkbil");
+// });  
 
 // app.get("/profile",function(req,res){
 //     res.render("profile");
@@ -101,22 +192,9 @@ app.get("/jordan/details/checkbil",function(req,res){
 //         {name: "Anivia",imgurl:"https://vignette.wikia.nocookie.net/leagueoflegends/images/1/15/Anivia_PapercraftSkin.jpg/revision/latest?cb=20190208202530"},
 //       ];
 
-app.get("/edit", function(req,res){
-    res.render("edit");
-});
-
-app.get("/jordan", function(req,res){
-    res.render("jordan");
-});
-
-app.get("/home2", function(req,res){
-    res.render("home2");
-});
 
 
-app.get("/nike",function(req,res){
-    res.render("nike");
-});
+
 
 // app.get("/signup",function(req,res){
 //     res.render("signup");
@@ -126,9 +204,7 @@ app.listen(3000, function(req,res){
     console.log("Started Now!!");
 });
 
-app.get("/adidas",function(req,res){
-    res.render("adidas");
-});
+
 
 
 
