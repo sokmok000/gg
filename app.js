@@ -202,7 +202,7 @@ app.get("/jordan/:id/detail",function(req,res){
 //     res.render("signup");
 // });
 
-app.listen(3000, function(req,res){
+app.listen(process.env.PORT || 3000, function(req,res){
     console.log("Started Now!!");
 });
 

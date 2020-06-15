@@ -354,42 +354,42 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
 
                 // sneaker.find({$or:[{Size7 : {Size7: req.body.Sizes,Count7:ok.Size7.Count7} },{Size8 : {Size8: req.body.Sizes,Count8:ok.Size8.Count8} }]}
 
-  router.get("/:id/:Namesneaker/buy/shippinginfo",function(req,res){
-    User.findById({_id:req.user._id},function(err,info){
-      if(err){
-        console.log(err)
-      }else{
-        sneaker.findById({_id:req.params.id},function(err,sneaker){
-          if(err){
-            console.log(err)
-          }else{
+//   router.get("/:id/:Namesneaker/buy/shippinginfo",function(req,res){
+//     User.findById({_id:req.user._id},function(err,info){
+//       if(err){
+//         console.log(err)
+//       }else{
+//         sneaker.findById({_id:req.params.id},function(err,sneaker){
+//           if(err){
+//             console.log(err)
+//           }else{
             
-            res.render("shipping",{info:info,sneaker:sneaker})
-          }
-        })
-      }
-    })
-  })
+//             res.render("shipping",{info:info,sneaker:sneaker})
+//           }
+//         })
+//       }
+//     })
+//   })
 
-  router.post("/:id/:Namesneaker/buy/shippinginfo",function(req,res){
-    User.findById({_id:req.user._id},function(err,find){
-      if(err){
-        console.log(err)
-      }else{
+//   router.post("/:id/:Namesneaker/buy/shippinginfo",function(req,res){
+//     User.findById({_id:req.user._id},function(err,find){
+//       if(err){
+//         console.log(err)
+//       }else{
        
           
-            User.updateMany({_id:req.user._id},{$set : {Name:req.body.Name,Surename:req.body.Surename,Housenumber:req.body.Housenumber,Province:req.body.Province
-              ,District:req.body.District,Postalcode:req.body.Postalcode,IDCard:req.body.IDCard,Telephone:req.body.Telephone}}, function(err,update){
-                if(err){
-                  console.log(err)
-                }else{
-                    res.redirect("/" + req.params.id + "/" + req.params.Namesneaker + "/buy")
-                }
-          })
+//             User.updateMany({_id:req.user._id},{$set : {Name:req.body.Name,Surename:req.body.Surename,Housenumber:req.body.Housenumber,Province:req.body.Province
+//               ,District:req.body.District,Postalcode:req.body.Postalcode,IDCard:req.body.IDCard,Telephone:req.body.Telephone}}, function(err,update){
+//                 if(err){
+//                   console.log(err)
+//                 }else{
+//                     res.redirect("/" + req.params.id + "/" + req.params.Namesneaker + "/buy")
+//                 }
+//           })
         
-      }
-  })
-})
+//       }
+//   })
+// })
   
 
 
