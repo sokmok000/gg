@@ -2,19 +2,19 @@
 <body style="background-color: #273746;">
     
 <div class="container">
-    <header class="jumbotron" style="background: url(bgshop4.jpg) no-repeat center; background-size:cover; width: 100%; height:300px ;" >
+    <header class="jumbotron" style="background: url(bgshop4.jpg); background-size:cover; width: 100%; height:300px ;" >
         <div class="container">
         
     </div>
 </header>
-<br><br><br><br><br><br>
+
 
 <div class ="row"style="display:flex; flex-wrap:wrap;">
     <% jordan.forEach(function(jd){%>
         <div class="col-md-4 col-sm-6" >
         
             <div class="card">
-                    <div class="front"><img  src = <%= "../uploadssneaker/" + jd.Image %> class="img-fluid" width = "300px" ></div>
+                    <div class="front"><img  src = <%= "../uploadssneaker/" + jd.Image[0].filename %> class="img-fluid" width = "300px" ></div>
                     <div class = "back">
                         <div class="details">
                             <h2> <%= jd.Name %><br><span><%= jd.Minidetail %></span></h2>

@@ -264,12 +264,24 @@ function myFunction() {
       
       <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     
-      <a href="/" class="w3-bar-item w3-button w3-padding-large"><i class="glyphicon glyphicon-home"></i> Admin </a>
+      <a href="/admin" class="w3-bar-item w3-button w3-padding-large"><i class="glyphicon glyphicon-home"></i> Admin </a>
 
   <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
   <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
   <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>
-  <a  href="/admin/sneaker/editlist"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " style="float: right; margin-right: 20px;" >Editor Page</a> 
+  <a  href="/admin/sneaker/editlist"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " style="float: right; margin-right: 20px;" >Editor Page</a>
+  
+  <!-- ค้นหา -->
+  <form action="/search" method="GET">
+    <div class="topnav">
+      <div class="search-container">
+        <button class="icon" type="submit"><i style="color:white;" class="fa fa-search"></i></button>
+      <input name="findsneakers" type="search" placeholder="Find Name Sneaker" required>
+      
+    </div>
+  </form>
+</div>
+  
 
 
 </div>
@@ -297,5 +309,31 @@ function myFunction() {
 </div>
 
 
+<br>
+<br>
+<!-- ค้นหาcss -->
  <body> 
-   
+  <style>
+    button {
+      width: 50px;
+      background: black;
+  }
+    .icon
+    {
+      float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 4px;
+    margin-right: 16px;
+    font-size: 17px;
+    }
+  
+    .topnav  input[type=search] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 4px;
+    margin-right: 16px;
+    font-size: 17px;
+  }
+  </style>

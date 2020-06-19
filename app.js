@@ -19,7 +19,7 @@ const fs = require("fs")
 
 let app = express()
 
-
+var port = process.env.PORT || 3000
 
 app.use(session({
     secret: 'keyboard cat',
@@ -56,6 +56,8 @@ app.use("*",function(req , res , next){
 app.use('/', user);
 app.use('/', Sneaker);
 app.set("view engine","ejs");
+
+
 app.use(express.static(__dirname + '/public'));
 app.set('views',[path.join(__dirname,"views"),
                  path.join(__dirname,"views/routes") ]);
@@ -200,7 +202,11 @@ app.get("/jordan/:id/detail",function(req,res){
 //     res.render("signup");
 // });
 
-app.listen(3000, function(req,res){
+app.get("/test",function(req,res){
+    res.render("test");
+});
+
+app.listen(port, function(req,res){
     console.log("Started Now!!");
 });
 

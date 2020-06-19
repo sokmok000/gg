@@ -136,15 +136,50 @@ function myFunction() {
       <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
       <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
       <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>      
-      
-       <a  href="/login"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " style="float: right; margin-right: 20px;" >Login</a>
-    
+      <div style="float: right;" class="w3-dropdown-hover w3-hide-small">
+       <a  href="/login" style="float: right;" class="w3-bar-item w3-button w3-padding-large w3-hide-small "  >Login</a>
+    </div>
+    <div style="float: right;" class="w3-dropdown-hover w3-hide-small">
+      <a href="/signup" style="float: right;" class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Signup</a>
+  </div>
 
-    
-    
-      <a style="float: right; margin-right: 20px;" href="/signup"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Sign Up</a>
+  <!-- ค้นหา -->
   
+  <form action="/search" method="GET">
+    <div class="topnav">
+      <div class="search-container">
+        <button class="icon" type="submit"><i style="color:white;" class="fa fa-search"></i></button>
+      <input name="findsneakers" type="search" placeholder="Find Name Sneaker" required>
+      
+    </div>
+  </form>
+</div>
 <%}%>
+<!-- ค้นหาcss -->
+<style>
+  button {
+    width: 50px;
+    background: black;
+}
+  .icon
+  {
+    float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 4px;
+  margin-right: 16px;
+  font-size: 17px;
+  }
+
+  .topnav  input[type=search] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 4px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+</style>
       
 
 
@@ -154,13 +189,21 @@ function myFunction() {
   <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
   <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>
   
-<!-- <div class="w3-dropdown-hover w3-hide-small">
-  <a href="/profile"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Profile</a>
-</div> -->
-  <div class="w3-dropdown-hover w3-hide-small">
-    <a href="/logout"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Logout</a>
+  <div style="float: right;" class="w3-dropdown-hover w3-hide-small">
+    <a href="/logout" style="float: right;"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Logout</a>
 
-</div><a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Your Username is <%= user.username %></a>
+</div><a href="/profile" style="float: right;" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Profile Name Is <%= user.username %></a>
+
+<!-- ค้นหาตอนlog in -->
+<form action="/search" method="GET">
+  <div class="topnav">
+    <div class="search-container">
+      <button class="icon" type="submit"><i style="color:white;" class="fa fa-search"></i></button>
+    <input name="findsneakers" type="search" placeholder="Find Name Sneaker" required>
+    
+  </div>
+</form>
+</div>
 
 
 <%}%>

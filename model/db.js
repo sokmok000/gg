@@ -52,9 +52,7 @@ let databaseSchema = new mongoose.Schema({
     image: {
         type : String
     },
-    // comment: {
-    //     type : String
-    // },
+    
     sneakers : [
         {
             type: mongoose.Schema.Types.ObjectId,

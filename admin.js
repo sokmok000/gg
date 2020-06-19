@@ -25,7 +25,7 @@ const imagefilter = function(req,file,cb){
   }
   cb(null,true)
 }
-let upload = multer({storage : storage,fileFilter : imagefilter});
+let upload = multer({storage : storage,fileFilter : imagefilter})
 
 
 router.get('/admin', function(req, res) {
@@ -95,8 +95,8 @@ router.get('/admin/sneaker/add', function(req, res) {
   res.render('add');
 });
 
-router.post("/admin/sneaker/add",upload.single('Image'),function(req , res ){
-  let Image = req.file.filename
+router.post("/admin/sneaker/add",upload.array('Image', 20),function(req , res ){
+  let Image = req.files
   sneaker.create(new sneaker({Namesneaker :req.body.Namesneaker, Minidetail :req.body.Minidetail,Detail:req.body.Detail,Sizesneaker:req.body.Sizesneaker ,Price:req.body.Price, Image:Image , Brand :req.body.Brand , Color :req.body.Color,Count :req.body.Count,Date :req.body.Date
   })
   )
@@ -145,13 +145,13 @@ router.get('/admin/sneaker/:id/edit', function(req,res){
 });
 
 
-router.post('/admin/sneaker/:id/edit',upload.single('Image'),function(req,res){ 
-  if(req.file){
+router.post('/admin/sneaker/:id/edit',upload.array('Image',20),function(req,res){ 
+  if(req.files){
     sneaker.findById({_id:req.params.id},function(err,find){
       if(err){
         console.log(err)
       }else{
-        const imageall = "./public/uploadssneaker/" + find.Image
+        const imageall = "./public/uploadssneaker/" + find.Image[0].filename
         fs.unlink(imageall,function(err){
           if(err){
             console.log(err)
@@ -164,7 +164,7 @@ router.post('/admin/sneaker/:id/edit',upload.single('Image'),function(req,res){
       var Detail = req.body.Detail
       var Sizesneaker= req.body.Sizesneaker
       var Price= req.body.Price
-      var Image= req.file.filename
+      var Image= req.files
       var Brand= req.body.Brand
       var Color= req.body.Color
       var Count= req.body.Count

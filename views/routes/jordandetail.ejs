@@ -1,3 +1,4 @@
+<%- include("partials/header2") %>
 <script >
 
     const sizes = document.querySelectorAll('.size');
@@ -679,8 +680,9 @@
                     <h1 class="nike">nike</h1>
                     
                     <a href="#" class="share"><i class="fas fa-share-alt"></i></a>
+                    
     
-                    <img style="width: 100%; height: 100%;" src= <%= "/uploadssneaker/" + jordandetail.Image %> class="img-fluid" width = "350px" >
+                    <img  style="width: 100%; height: 100%;" src= <%= "/uploadssneaker/" + jordandetail.Image[0].filename %> class="img-fluid" width = "350px" >
                 </div>
                 <div class="info">
                     <div class="shoeName">
