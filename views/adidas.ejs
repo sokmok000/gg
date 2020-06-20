@@ -1,7 +1,7 @@
 <%- include("partials/header") %>
-<body style="background-color: #273746;">
+<body style="background-image: linear-gradient(to top right, #FFFFFF, #CBCBCB ,#929292,#505050);">
 <div class="container">
-    <header class="jumbotron" style="background: url(jordanbg.jpg); background-size:cover; width: 100%; height:300px ;">
+    <header class="jumbotron" style="background: url(jordanbg.jpg) no-repeat center; background-size:cover; width: 100%; height:300px ;">
         <div class="container">
         
     </div>
@@ -20,7 +20,7 @@
                                 <h2><%= adi.Name %><br><span><%= adi.Minidetail %></span></h2>
                                 <p class="btn btn-secondary" style="text-align: center; font-size: 20px;"><a href="/adidas/<%= adi._id %>/detail">Detail</a></p>
                                 
-                                <div><a href="/<%= adi._id %>/<%= adi.Namesneaker %>/buy" class="add-cart btn btn-secondary"><i class="fas fa-shopping-cart"></i>Buy Now</a></div>
+                                <div><a href="/<%= adi._id %>/<%= adi.Namesneaker %>/buy" class="add-cart btn btn-secondary"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
                                 
                                 <div class="social-icons">
                                     <a href="#"><i class="" aria-hidden="true"></i></a>

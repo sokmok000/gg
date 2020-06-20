@@ -148,16 +148,7 @@ router.get('/admin/sneaker/:id/edit', function(req,res){
 router.post('/admin/sneaker/:id/edit',upload.array('Image',20),function(req,res){ 
   if(req.files){
     sneaker.findById({_id:req.params.id},function(err,find){
-      if(err){
-        console.log(err)
-      }else{
-        const imageall = "./public/uploadssneaker/" + find.Image[0].filename
-        fs.unlink(imageall,function(err){
-          if(err){
-            console.log(err)
-          }
-        })
-      }
+     
       })
       var Namesneaker = req.body.Namesneaker
       var Minidetail = req.body.Minidetail

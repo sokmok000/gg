@@ -102,7 +102,9 @@ function myFunction() {
   }
 }
 
+
 </script>
+
 
 
 
@@ -112,7 +114,7 @@ function myFunction() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>NameWeb</title>
+        <title >Sneaker</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
@@ -129,7 +131,7 @@ function myFunction() {
       
       <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     
-      <a href="/" class="w3-bar-item w3-button w3-padding-large"><i class="glyphicon glyphicon-home"></i> Web Name</a>
+      <a href="/" class="w3-bar-item w3-button w3-padding-large"><i class="glyphicon glyphicon-home"></i> Sneaker</a>
       
 
       <%if(!locals.user){%>
@@ -145,7 +147,7 @@ function myFunction() {
 
   <!-- ค้นหา -->
   
-  <form action="/search" method="GET">
+  <!-- <form action="/search" method="GET">
     <div class="topnav">
       <div class="search-container">
         <button class="icon" type="submit"><i style="color:white;" class="fa fa-search"></i></button>
@@ -153,7 +155,7 @@ function myFunction() {
       
     </div>
   </form>
-</div>
+</div> -->
 <%}%>
 <!-- ค้นหาcss -->
 <style>
@@ -172,13 +174,16 @@ function myFunction() {
   }
 
   .topnav  input[type=search] {
+  
   float: right;
   padding: 6px;
   border: none;
   margin-top: 4px;
-  margin-right: 16px;
+  margin-right: 10px;
   font-size: 17px;
 }
+
+
 </style>
       
 
@@ -195,7 +200,7 @@ function myFunction() {
 </div><a href="/profile" style="float: right;" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Profile Name Is <%= user.username %></a>
 
 <!-- ค้นหาตอนlog in -->
-<form action="/search" method="GET">
+<!-- <form action="/search" method="GET">
   <div class="topnav">
     <div class="search-container">
       <button class="icon" type="submit"><i style="color:white;" class="fa fa-search"></i></button>
@@ -203,13 +208,14 @@ function myFunction() {
     
   </div>
 </form>
-</div>
+</div> -->
 
 
 <%}%>
 </div>
 
-<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px; ">
+
   <a href="/nike" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">NIKE</a>
   <a href="/jordan" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Jordan</a>
   <a href="/adidas" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Adidas</a>
