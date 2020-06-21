@@ -1,6 +1,5 @@
 <%- include("partials/header2") %>
 
-        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -27,7 +26,7 @@
     }
     
     .container{
-        min-height: 100vh;
+        /* min-height: 100vh; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -88,25 +87,6 @@
         z-index: -1;
     }
     
-    .gradient[color="blue"]{
-        background-image: linear-gradient(45deg, #0136af, #22abfa);
-    }
-    
-    .gradient[color="red"]{
-        background-image: linear-gradient(45deg, #d62926, #ee625f);
-    }
-    
-    .gradient[color="green"]{
-        background-image: linear-gradient(45deg, #11998e, #1ce669);
-    }
-    
-    .gradient[color="orange"]{
-        background-image: linear-gradient(45deg, #fc4a1a, #f7b733);
-    }
-    
-    .gradient[color="black"]{
-        background-image: linear-gradient(45deg, #111, #666);
-    }
     
     .logo{
         position: absolute;
@@ -245,30 +225,7 @@
         transition: .5s;
     }
     
-    .color[color="blue"]{
-        background-color: #2175f5;
-        border-color: #2175f5;
-    }
     
-    .color[color="red"]{
-        background-color: #f84848;
-        border-color: #f84848;
-    }
-    
-    .color[color="green"]{
-        background-color: #29b864;
-        border-color: #29b864;
-    }
-    
-    .color[color="orange"]{
-        background-color: #ff5521;
-        border-color: #ff5521;
-    }
-    
-    .color[color="black"]{
-        background-color: #444;
-        border-color: #444;
-    }
     
     .color.active{
         border-color: #fff;
@@ -537,52 +494,105 @@
     
     
     </style>
-  <script>
-    function changeimage(smallImg)
-    {
-        var fullImg = document.getElementById("imageBox");
-        fullImg.src = smallImg.src;
+    
+    <script>
+    const sizes = document.querySelectorAll('.size');
+    const colors = document.querySelectorAll('.color');
+    const shoes = document.querySelectorAll('.shoe');
+    const gradients = document.querySelectorAll('.gradient');
+    const shoeBg = document.querySelector('.shoeBackground');
+    
+    let prevColor = "blue";
+    let animationEnd = true;
+    
+    function changeSize(){
+        sizes.forEach(size => size.classList.remove('active'));
+        this.classList.add('active');
     }
-</script>
-     
-    <body>
+    
+    function changeColor(){
+        if(!animationEnd) return;
+        let primary = this.getAttribute('primary');
+        let color = this.getAttribute('color');
+        let shoe = document.querySelector(`.shoe[color="${color}"]`);
+        let gradient = document.querySelector(`.gradient[color="${color}"]`);
+        let prevGradient = document.querySelector(`.gradient[color="${prevColor}"]`);
+    
+        if(color == prevColor) return;
+    
+        colors.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+    
+        document.documentElement.style.setProperty('--primary', primary);
         
+        shoes.forEach(s => s.classList.remove('show'));
+        shoe.classList.add('show');
+    
+        gradients.forEach(g => g.classList.remove('first', 'second'));
+        gradient.classList.add('first');
+        prevGradient.classList.add('second');
+    
+        prevColor = color;
+        animationEnd = false;
+    
+        gradient.addEventListener('animationend', () => {
+            animationEnd = true;
+        })
+    }
+    
+    sizes.forEach(size => size.addEventListener('click', changeSize));
+    colors.forEach(c => c.addEventListener('click', changeColor));
+    
+    let x = window.matchMedia("(max-width: 1000px)");
+    
+    function changeHeight(){
+        if(x.matches){
+            let shoeHeight = shoes[0].offsetHeight;
+            shoeBg.style.height = `${shoeHeight * 0.9}px`;
+        }
+        else{
+            shoeBg.style.height = "475px";
+        }
+    }
+    
+    changeHeight();
+    
+    window.addEventListener('resize', changeHeight);
+    </script>
+    <script>
+        function myFunction(smallImg)
+        {
+            var fullImg = document.getElementById("imageBox");
+            fullImg.src = smallImg.src;
+        }
+       
+        
+    </script>
+    <body> 
+        
+        
+       
         <div class="container">
             
-            <div  class="product-small-img">
-                    
-                            
-                <img id="1" src=<%= "/uploadssneaker/" + adidasdetail.Image[0].filename %> onclick="changeimage(this)">
-                <img id="2" src=<%= "/uploadssneaker/" + adidasdetail.Image[1].filename %> onclick="changeimage(this)">
-                <img id="3" src=<%= "/uploadssneaker/" + adidasdetail.Image[2].filename %> onclick="changeimage(this)">
-                <img id="4" src=<%= "/uploadssneaker/" + adidasdetail.Image[3].filename %> onclick="changeimage(this)">
-                
-            </div>
+            
             <div class="card">
                 
+                
                 <div class="shoeBackground">
+                    
                     
                     <div class="gradients">
                         
                         
                     </div>
                  
-                    
                     <div class="product">
                         <div class="img-container">
-                            <img id="imageBox" style="height: 300px; width: 400px;"  src=<%= "/uploadssneaker/" + adidasdetail.Image[0].filename %>>
+                            <img id="imageBox"   src=<%= "/uploadssneaker/" + adidasdetail.Image[0].filename %>>
                         </div>
                     </div>
                     
-                    <a href="#" class="share"><i class="fas fa-share-alt"></i></a>
-
-    
-                   
-                    
-                    
-    
                 </div>
-               
                 <div class="info">
                     <div class="shoeName">
                         <div>
@@ -598,69 +608,127 @@
                     <div class="color-container">
                         <h3 class="title">Color</h3>
                         <p class="text"><%= adidasdetail.Color %></p>
+                        <hr>
+                        
+                        <!-- The grid: four columns -->
+                                <div class="row">
+                                    <div class="product-small-img" >
+                                    <img src=<%= "/uploadssneaker/" + adidasdetail.Image[0].filename %>  onclick="myFunction(this);">
+                                    </div>
+                                    <div class="product-small-img" >
+                                    <img src=<%= "/uploadssneaker/" + adidasdetail.Image[1].filename %>  onclick="myFunction(this);">
+                                    </div>
+                                    <div class="product-small-img" >
+                                    <img src=<%= "/uploadssneaker/" + adidasdetail.Image[2].filename %>  onclick="myFunction(this);">
+                                    </div>
+                                    <div class="product-small-img" >
+                                    <img src=<%= "/uploadssneaker/" + adidasdetail.Image[3].filename %> onclick="myFunction(this);">
+                                    </div>
+                                </div>
+                                <br><br><br>
+                                
+                                
+
+                            <!-- <div class="row">
+                                <div  class="product-small-img">        
+                                    <div ><img id="1" src=<%= "/uploadssneaker/" + adidasdetail.Image[0].filename %> onclick="changeimage(this)"></div>
+                                    <div ><img id="2" src=<%= "/uploadssneaker/" + adidasdetail.Image[1].filename %> onclick="changeimage(this)"></div>
+                                    <div ><img id="3" src=<%= "/uploadssneaker/" + adidasdetail.Image[2].filename %> onclick="changeimage(this)"></div>
+                                    <div ><img id="4" src=<%= "/uploadssneaker/" + adidasdetail.Image[3].filename %> onclick="changeimage(this)"></div>
+                                </div>
+                            </div> -->
+                        
                     </div>
                     
-                    <div class="buy-price">
-                        <a href="/<%= adidasdetail._id %>/<%= adidasdetail.Namesneaker %>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now</a>
-                        <div class="price">
-                            <i class="fas fa-dollar-sign"></i>
+                    
+                    <div style="float: left;" class="buy-price">
+                        
+                        <a href="/<%= adidasdetail._id %>/<%= adidasdetail.Namesneaker %>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now </a>
+                      
+                        <div  class="price">
+                            <i style="margin-right:5%" class="fas fa-dollar-sign"></i>
                             <h1><%= adidasdetail.Price %></h1>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </div>
         
-       
     </body>
     </html>
-   
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .product-small-img img
+        {
+            height: 65px; 
+            width: 80px;
+            margin: 10px 0;
+            cursor: pointer;
+            display: block;
+            opacity: .6;
+        }
+        .product-small-img img:hover
+        {
+            opacity: 1;
+        }
+        .product-small-img
+        {
+            float: left;
+            
+        }
+        .product
+        {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            position: absolute;
+        }
+        .img-container img
+        {
+            float: left ;
+            height: 500px;
+        }
+        .img-container
+        {
+            float: right;;
+            padding:10px;
+        }
+        .column {
+            float: left;
+            width: 25%;
+            margin-bottom: 80%;
+            
+        }
+        #imageBox
+        {
+            height: 300px; 
+            width: 400px;
+        }
+        @media screen and (max-width: 720px)
+        {
+            .product-small-img img
+        {
+            height:50px; 
+            width: 65px;
+            margin: 10px 0;
+            cursor: pointer;
+            display: block;
+            opacity: .6;
+        }
+        #imageBox
+        {
+            height: 200px; 
+            width: 300px;
+        }
+        }
+        
+    </style>
 
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    .product-small-img img
-    {
-        height: 65px; 
-        width: 80px;
-        margin: 10px 0;
-        cursor: pointer;
-        display: block;
-        opacity: .6;
-    }
-    .product-small-img img:hover
-    {
-        opacity: 1;
-    }
-    .product-small-img
-    {
-        float: left;
-        padding: 50px;
-    }
-    .product
-    {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        position: absolute;
-    }
-    .img-container img
-    {
-        float: left ;
-        height: 500px;
-    }
-    .img-container
-    {
-        float: right;;
-        padding:10px;
-    }
     
-</style>
     
-
     
     
     

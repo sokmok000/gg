@@ -95,7 +95,7 @@
     <div class="col-md-4 col-sm-6">
       <div class="container" class="thumbnail">
         <a href="/<%=newsneaker.Brand %>/<%= newsneaker._id %>/detail">
-          <center><img style="width: 290px; height: 195px;" class="image123" src= <%= "../uploadssneaker/" + newsneaker.Image %> ></center>
+          <center><img style="width: 290px; height: 195px;" class="image123" src= <%= "../uploadssneaker/" + newsneaker.Image[0].filename %> ></center>
           <div class="caption"><br>
             <center><p class="btn btn-secondary" style="text-align: center; font-size: 20px; ">More Details</p></center>
           </div>
