@@ -1,0 +1,193 @@
+<%- include("partials/header") %>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Checkout example · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+<link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="app.css" rel="stylesheet"
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+<meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+
+<style>
+  .detail
+  {
+    margin: 0px;
+    clear: both;
+    
+  }
+  @media screen and (max-width:720px){
+    .detail
+    {
+      
+      margin: 0px;
+      clear: both;
+    }
+  }
+    
+  
+</style>
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+  <center>
+  <body >
+    <br><br>
+    
+
+    <div  class="container image">
+      <div class="row">
+        <div class="col">
+        
+        <div style="background-color:black; height: 100%;" class="container">
+          <br>
+          <br>
+        <h2 style="color: white;">Checkout</h2>
+        <br><br>
+        
+      <img class="d-block mx-auto mb-4"   src= <%= "/uploadssneaker/" + buy.Image[0].filename %> alt="" width="400" height="200" >   
+        
+        <br>
+        
+        <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <div style="text-align: center; color: white;" class="gg">Your Item</div>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div >
+              <%=  buy.Namesneaker %>
+              <small class="text-muted"></small>
+            </div>
+            <span class="text-muted"><strong>$<%=  buy.Price %></strong></span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between bg-light">
+            <div class="text-dark">
+              <h6 class="text-dark">Shipping</h6>
+            </div>
+    
+            <span class="text-success">$10</span>
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$<%=  buy.Price+10 %></strong>
+          </li>
+        </ul>
+          <form action="/<%=buy._id %>/<%=buy.Namesneaker %>/buy" method="POST">
+            <div >
+        
+              <legend class="headline-5 prl6-sm prl0-lg ta-sm-l bg-transparent css-ybrhvy">
+                <div >
+                  <span style="color: white;">เลือกไซส์</span>
+                  <div class="form-group">
+                  
+                    <p><select class="form-control" type="text" value=""  name="Sizes" >
+                      <option>7 US</option>
+                      <option>8 US</option>
+                      <option>9 US</option>
+                      <option>10 US</option>
+                      <option>11 US</option>
+                      <option>12 US</option>
+                      <option>13 US</option>
+            
+                    </select>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          
+        </div>
+        <div class="detail" style="background-color: #F5F5F5; color: black;  " class="col"> 
+        <div  class="container "  style="margin-top: 50%; margin-bottom: 50%;" >
+          
+          <div style="text-align: left; font-size: 24px;">ที่อยู่</div>
+                <br>
+          <form>
+            <div class="row" >
+              <div class="col" >
+                
+                <input type="text" class="form-control" placeholder="First name" value="<%= user.Name %>" required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name" value="<%= user.Surename %>" required>
+              </div>
+            </div>
+          </form>
+          <br>
+          <form>
+            <form>
+              <div class="row user">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="บัตรประชาชน" value="<%= user.IDCard %>" required>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" value="<%= user.Telephone %>" required>
+                </div>
+              </div>
+            </form>
+            <br>
+            <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="บ้านเลขที่" value="<%= user.Housenumber %>" required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="ถนน" value="" required>
+              </div>
+            </div>
+          </form>
+          <br>
+          <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="แขวง/ตำบล" value="" required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="เขต/อำเภอ" value="<%= user.District %>" required>
+              </div>
+            </div>
+          </form>
+          <br>
+          <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="จังหวัด" value="<%= user.Province %>" required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="รหัสไปรษณีย์" value="<%= user.Postalcode %>" required>
+              </div>
+            </div>
+          </form>
+          
+          <br>
+        </div>
+      </div>
+    
+    
+   
+  </div>  <br><p aria-label="ยืนยัน" class="btn btn-secondary add-to-cart-btn"> ยืนยัน</p>
+  
+</body>
+
+
+</html></center>
+
+<%- include("partials/footer") %>

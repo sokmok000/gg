@@ -1,0 +1,88 @@
+<%- include("partials/header") %>
+<style>
+.pcard
+{
+    background-color: #f1f1f1;
+}
+
+.profile-card
+{
+    width: 1000px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.5);
+}
+
+.image-container
+{
+    position: relative;
+}
+
+.info
+{
+    color: #4b4fe2;
+    margin-right: 16px;
+}
+
+.main-container
+{
+    padding: 20px;
+}
+/* .list-bar
+{
+    background-color: #bdc9ea;
+    border-radius: 16px;
+} */
+.itemlist
+{
+    padding: 0.1em 16px;
+    border-radius: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: #D2D9DA;
+}
+</style>
+
+<br><br><br><br>
+<body class="pcard">
+   
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/checkout/">
+    <form  action="/<%= sneaker._id %>/<%= sneaker.Namesneaker %>/buy/shippinginfo" method="POST" >
+        <img class="d-block mx-auto mb-4" src="" alt="" width="400" height="200">
+    <div class="profile-card">
+    
+    <div  class="image-container">
+           
+            <div class="main-container">
+                <p>Name</p>
+                <p><input style="width: 600px;" type="text" name="Name" value="<%= info.Name %>" required></p>
+                <p>Surename</p>
+                <p><input style="width: 600px;" type="text" name="Surename" value="<%= info.Surename %>" required></p>
+            </div>
+            
+            <hr>
+    </div> 
+    <div class="main-container">
+        <p>บ้านเลขที่</p>
+        <p><input style="width: 600px;"  type="text" name="Housenumber" placeholder="Address" value="<%= info.Housenumber %>" required></p>
+        <p>จังหวัด</p>
+       <p><input style="width: 600px;" type="text" name="Province" placeholder="" value="<%= info.Province %>" required> </p>
+        <p>เขต</p>
+        <p><input style="width: 600px;" type="text" name="District" placeholder="" value="<%= info.District %>" required> </p>
+        <p>รหัสไปรษณีย์</p>
+        <p><input style="width: 600px;" type="text" name="Postalcode" placeholder="" value="<%= info.Postalcode %>" required> </p>
+        <p>บัตรประชาชน</p>
+        <p><input style="width: 600px;" type="text" name="IDCard" placeholder="13 หลัก" value="<%= info.IDCard %>" required> </p>
+        <p>Tel.</p>
+        <p><input style="width: 600px;" type="tel" name="Telephone" placeholder="085-xxxxxxx" value="<%= info.Telephone %>" required> </p>
+      
+    </div> 
+    <div class="inputBox">
+
+        <center><input type="submit" class="btn btn-dark" name="" value="Save Shipping"></center>
+      </div>    
+</div>
+</form>
+</body>
+
+<%- include("partials/footer") %>

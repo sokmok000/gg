@@ -1,0 +1,10 @@
+<%- include("partials/adminheader") %>
+<div><a  style="font-size: 50px;" href="/admin/sneaker/add">Add</a></div>
+<div><p>List sneaker</p></div>
+ <% findall.forEach(function(findall) {%>
+<div style="margin-top: 10px;"><a><%= findall.Namesneaker %></a><a style="margin-left: 10px;" class="btn btn-outline-dark" href=" /admin/sneaker/<%= findall._id %>/detail">Edit</a></div> 
+<% }) %>
+
+
+
+<%- include("partials/footer") %>

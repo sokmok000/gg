@@ -1,0 +1,735 @@
+<%- include("partials/header2") %>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700&display=swap" rel="stylesheet">
+        <title>Product Card</title>
+    </head>
+    
+    <style>
+    :root{
+        --primary:black;
+    }
+    
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    body{
+        background-color: #efefef;
+    }
+    
+    .container{
+        /* min-height: 100vh; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        overflow: hidden;
+    }
+    
+    .card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 860px;
+    }
+    
+    .shoeBackground{
+        position: relative;
+        background-color: black;
+        width: 50%;
+        height: 475px;
+        box-shadow: -15px 0 35px rgba(0, 0, 0, 0.1),
+        0 -15px 35px rgba(0, 0, 0, 0.1),
+        0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: .5s;
+    }
+    
+    .gradients{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+    
+    .gradient{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: -2;
+    }
+    
+    .first{
+        z-index: 0;
+        animation: 1s width ease;
+    }
+    
+    @keyframes width{
+        from{
+            width: 0%;
+        }
+        to{
+            width: 100%;
+        }
+    }
+    
+    .second{
+        z-index: -1;
+    }
+    
+    
+    .logo{
+        position: absolute;
+        width: 100px;
+        left: 20px;
+        top: 20px;
+    }
+    
+    .share{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: #fff;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 1.3rem;
+        text-decoration: none;
+        color: var(--primary);
+        transition: .5s;
+    }
+    
+    .share:hover{
+        transform: scale(1.1);
+    }
+    
+    .share i{
+        line-height: 50px;
+    }
+    
+    .nike{
+        position: absolute;
+        top: 85px;
+        left: 15px;
+        font-size: 11rem;
+        text-transform: uppercase;
+        line-height: .9;
+        color: #fff;
+        opacity: .1;
+    }
+    
+    .shoe{
+        position: absolute;
+        width: 140%;
+        opacity: 0;
+        bottom: 0;
+        right: 0;
+        transform: rotate(-20deg);
+        transition: .5s;
+    }
+    
+    .shoe.show{
+        opacity: 1;
+    }
+    
+    .info{
+        width: 50%;
+        background-color: #fff;
+        z-index: 1;
+        padding: 35px 40px;
+        box-shadow: 15px 0 35px rgba(0, 0, 0, 0.1),
+        0 -15px 35px rgba(0, 0, 0, 0.1),
+        0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .shoeName{
+        padding: 0 0 10px 0;
+    }
+    
+    .shoeName div{
+        display: flex;
+        align-items: center;
+    }
+    
+    .shoeName div .big{
+        margin-right: 10px;
+        font-size: 2rem;
+        color: #333;
+        line-height: 1;
+    }
+    
+    .shoeName div .new{
+        background-color: var(--primary);
+        text-transform: uppercase;
+        color: #fff;
+        padding: 3px 10px;
+        border-radius: 5px;
+        transition: .5s;
+    }
+    
+    .shoeName .small{
+        font-weight: 500;
+        color: #444;
+        margin-top: 3px;
+        text-transform: capitalize;
+    }
+    
+    .shoeName, .description, .color-container, .size-container{
+        border-bottom: 1px solid #dadada;
+    }
+    
+    .description{
+        padding: 10px 0;
+    }
+    
+    .title{
+        color: #3a3a3a;
+        font-weight: 600;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+    }
+    
+    .text{
+        color: #555;
+        font-size: 17px;
+    }
+    
+    .color-container{
+        padding: 10px 0;
+    }
+    
+    .colors{
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .color{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin: 0 10px;
+        border: 5px solid;
+        cursor: pointer;
+        transition: .5s;
+    }
+    
+    
+    
+    .color.active{
+        border-color: #fff;
+        box-shadow: 0 0 10px .5px rgba(0, 0, 0, 0.2);
+        transform: scale(1.1);
+    }
+    
+    .size-container{
+        padding: 10px 0;
+        margin-bottom: 10px;
+    }
+    
+    .sizes{
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .size{
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+        background-color: #eee;
+        margin: 0 10px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: .3s;
+    }
+    
+    .size.active{
+        background-color: var(--primary);
+        color: #fff;
+        transition: .5s;
+    }
+    
+    .buy-price{
+        padding-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .price{
+        color: #333;
+        display: flex;
+        align-items: flex-start;
+    }
+    
+    .price h1{
+        font-size: 2.1rem;
+        font-weight: 600;
+        line-height: 1;
+    }
+    
+    .price i{
+        font-size: 1.4rem;
+        margin-right: 1px;
+    }
+    
+    .buy{
+        padding: .7rem 1rem;
+        background-color: var(--primary);
+        text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: .5s;
+    }
+    
+    .buy:hover{
+        transform: scale(1.1);
+    }
+    
+    .buy i{
+        margin-right: 2px;
+    }
+    
+    @media (max-width: 1070px){
+        .shoe{
+            width: 135%;
+        }
+
+        .shoeBackground{
+        position: relative;
+        background-color: black;
+        width: 50%;
+        height: 375px;
+        box-shadow: -15px 0 35px rgba(0, 0, 0, 0.1),
+        0 -15px 35px rgba(0, 0, 0, 0.1),
+        0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: .5s;
+        }
+
+    }
+    
+    @media (max-width: 1000px){
+
+        .shoeBackground{
+        position: relative;
+        background-color: black;
+        width: 50%;
+        height: 375px;
+        box-shadow: -15px 0 35px rgba(0, 0, 0, 0.1),
+        0 -15px 35px rgba(0, 0, 0, 0.1),
+        0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: .5s;
+        }
+
+        .card{
+            flex-direction: column;
+            width: 100%;
+            box-shadow: 0 0 35px 1px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card > div{
+            width: 100%;
+            box-shadow: none;
+        }
+    
+        .shoe{
+            width: 100%;
+            transform: rotate(-5deg) translateY(-50%);
+            top: 55%;
+            right: 2%;
+        }
+    
+        .nike{
+            top: 20%;
+            left: 5%;
+        }
+    }
+    
+    @media (max-width: 600px){
+
+
+        .shoeBackground{
+        position: relative;
+        background-color: black;
+        width: 50%;
+        height: 375px;
+        box-shadow: -15px 0 35px rgba(0, 0, 0, 0.1),
+        0 -15px 35px rgba(0, 0, 0, 0.1),
+        0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: .5s;
+        }
+
+        .share{
+            width: 40px;
+            height: 40px;
+        }
+    
+        .share i {
+            font-size: 1rem;
+            line-height: 40px;
+        }
+    
+        .logo{
+            width: 70px;
+        }
+    }
+    
+    @media (max-width: 490px){
+
+        .shoeBackground{
+        position: relative;
+        background-color: black;
+        width: 50%;
+        height: 375px;
+        box-shadow: -15px 0 35px rgba(0, 0, 0, 0.1),
+        0 -15px 35px rgba(0, 0, 0, 0.1),
+        0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: .5s;
+        }
+
+        .nike{
+            font-size: 7rem;
+        }
+    
+        .shoeName div .big{
+            font-size: 1.3rem;
+        }
+    
+        .small{
+            font-size: 1rem;
+        }
+    
+        .new{
+            padding: 2px 6px;
+            font-size: .9rem;
+        }
+    
+        .title{
+            font-size: .9rem;
+        }
+    
+        .text{
+            font-size: .8rem;
+        }
+    
+        .buy{
+            padding: .5rem .8rem;
+            font-size: .8rem;
+        }
+    
+        .price h1{
+            font-size: 1.5rem;
+        }
+    
+        .price i{
+            font-size: .9rem;
+        }
+    
+        .size{
+            width: 30px;
+            height: 30px;
+            margin: 0 8px;
+            font-size: .9rem;
+            line-height: 30px;
+        }
+    
+        .color{
+            margin: 0 6px;
+            width: 0 20px;
+            width: 20px;
+            height: 20px;
+            border-width: 4px;
+        }
+    
+        .share{
+            width: 35px;
+            height: 35px;
+            top: 10px;
+            right: 10px;
+        }
+    
+        .share i{
+            font-size: .8rem;
+            line-height: 35px;
+        }
+    
+        .logo{
+            width: 60px;
+            top: 10px;
+            left: 10px;
+        }
+    
+        .info{
+            padding: 20px;
+        }
+    }
+    
+    @media (max-width: 400px){
+        .buy i{
+            display: none;
+        }
+    
+        .container{
+            padding: 20px;
+        }
+    }
+    
+    
+    </style>
+    
+    <script>
+    const sizes = document.querySelectorAll('.size');
+    const colors = document.querySelectorAll('.color');
+    const shoes = document.querySelectorAll('.shoe');
+    const gradients = document.querySelectorAll('.gradient');
+    const shoeBg = document.querySelector('.shoeBackground');
+    
+    let prevColor = "blue";
+    let animationEnd = true;
+    
+    function changeSize(){
+        sizes.forEach(size => size.classList.remove('active'));
+        this.classList.add('active');
+    }
+    
+    function changeColor(){
+        if(!animationEnd) return;
+        let primary = this.getAttribute('primary');
+        let color = this.getAttribute('color');
+        let shoe = document.querySelector(`.shoe[color="${color}"]`);
+        let gradient = document.querySelector(`.gradient[color="${color}"]`);
+        let prevGradient = document.querySelector(`.gradient[color="${prevColor}"]`);
+    
+        if(color == prevColor) return;
+    
+        colors.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+    
+        document.documentElement.style.setProperty('--primary', primary);
+        
+        shoes.forEach(s => s.classList.remove('show'));
+        shoe.classList.add('show');
+    
+        gradients.forEach(g => g.classList.remove('first', 'second'));
+        gradient.classList.add('first');
+        prevGradient.classList.add('second');
+    
+        prevColor = color;
+        animationEnd = false;
+    
+        gradient.addEventListener('animationend', () => {
+            animationEnd = true;
+        })
+    }
+    
+    sizes.forEach(size => size.addEventListener('click', changeSize));
+    colors.forEach(c => c.addEventListener('click', changeColor));
+    
+    let x = window.matchMedia("(max-width: 1000px)");
+    
+    function changeHeight(){
+        if(x.matches){
+            let shoeHeight = shoes[0].offsetHeight;
+            shoeBg.style.height = `${shoeHeight * 0.9}px`;
+        }
+        else{
+            shoeBg.style.height = "475px";
+        }
+    }
+    
+    changeHeight();
+    
+    window.addEventListener('resize', changeHeight);
+    </script>
+    <script>
+        function myFunction(smallImg)
+        {
+            var fullImg = document.getElementById("imageBox");
+            fullImg.src = smallImg.src;
+        }
+       
+        
+    </script>
+    <body> 
+        
+        
+       
+        <div class="container">
+            
+            
+            <div class="card">
+                
+                
+                <div class="shoeBackground">
+                    
+                    
+                    <div class="gradients">
+                        
+                        
+                    </div>
+                 
+                    <div class="product">
+                        <div class="img-container">
+                            <img id="imageBox"   src=<%= "/uploadssneaker/" + adidasdetail.Image[0].filename %>>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="info">
+                    <div class="shoeName">
+                        <div>
+                            <h1 class="big"><%= adidasdetail.Namesneaker %></h1>
+                            
+                        </div>
+                        <h3 class="small"><%= adidasdetail.Minidetail %></h3>
+                    </div>
+                    <div class="description">
+                        <h3 class="title">Product Info</h3>
+                        <p class="text"><%= adidasdetail.Detail %></p>
+                    </div>
+                    <div class="color-container">
+                        <h3 class="title">Color</h3>
+                        <p class="text"><%= adidasdetail.Color %></p>
+                        <hr>
+                        
+                        <!-- The grid: four columns -->
+                                <div class="row">
+                                    <div class="product-small-img" >
+                                    <img src=<%= "/uploadssneaker/" + adidasdetail.Image[0].filename %>  onclick="myFunction(this);">
+                                    </div>
+                                    <div class="product-small-img" >
+                                    <img src=<%= "/uploadssneaker/" + adidasdetail.Image[1].filename %>  onclick="myFunction(this);">
+                                    </div>
+                                    <div class="product-small-img" >
+                                    <img src=<%= "/uploadssneaker/" + adidasdetail.Image[2].filename %>  onclick="myFunction(this);">
+                                    </div>
+                                    <div class="product-small-img" >
+                                    <img src=<%= "/uploadssneaker/" + adidasdetail.Image[3].filename %> onclick="myFunction(this);">
+                                    </div>
+                                </div>
+                                <br><br><br>
+                                
+                                
+
+                            <!-- <div class="row">
+                                <div  class="product-small-img">        
+                                    <div ><img id="1" src=<%= "/uploadssneaker/" + adidasdetail.Image[0].filename %> onclick="changeimage(this)"></div>
+                                    <div ><img id="2" src=<%= "/uploadssneaker/" + adidasdetail.Image[1].filename %> onclick="changeimage(this)"></div>
+                                    <div ><img id="3" src=<%= "/uploadssneaker/" + adidasdetail.Image[2].filename %> onclick="changeimage(this)"></div>
+                                    <div ><img id="4" src=<%= "/uploadssneaker/" + adidasdetail.Image[3].filename %> onclick="changeimage(this)"></div>
+                                </div>
+                            </div> -->
+                        
+                    </div>
+                    
+                    
+                    <div style="float: left;" class="buy-price">
+                        
+                        <a href="/<%= adidasdetail._id %>/<%= adidasdetail.Namesneaker %>/buy" class="buy"><i class="fas fa-shopping-cart"></i>Buy Now </a>
+                      
+                        <div  class="price">
+                            <i style="margin-right:5%" class="fas fa-dollar-sign"></i>
+                            <h1><%= adidasdetail.Price %></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    </html>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .product-small-img img
+        {
+            height: 65px; 
+            width: 80px;
+            margin: 10px 0;
+            cursor: pointer;
+            display: block;
+            opacity: .6;
+        }
+        .product-small-img img:hover
+        {
+            opacity: 1;
+        }
+        .product-small-img
+        {
+            float: left;
+            
+        }
+        .product
+        {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            position: absolute;
+        }
+        .img-container img
+        {
+            float: left ;
+            height: 500px;
+        }
+        .img-container
+        {
+            float: right;;
+            padding:10px;
+        }
+        .column {
+            float: left;
+            width: 25%;
+            margin-bottom: 80%;
+            
+        }
+        #imageBox
+        {
+            height: 300px; 
+            width: 400px;
+        }
+        @media screen and (max-width: 720px)
+        {
+            .product-small-img img
+        {
+            height:50px; 
+            width: 65px;
+            margin: 10px 0;
+            cursor: pointer;
+            display: block;
+            opacity: .6;
+        }
+        #imageBox
+        {
+            height: 200px; 
+            width: 300px;
+        }
+        }
+        
+    </style>
+
+    
+    
+    
+    
+    
+    <%- include("partials/footer") %>

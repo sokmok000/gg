@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+<link src="http://maxcdn.bootstrapcdn.com/font-awesome/5.0.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+<script>
+
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+</script>
+
+
+
+
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Sneaker</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        
+    </head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+<div class="w3-top content" >
+    <div class="w3-bar w3-black w3-card">
+      
+      <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    
+      <a href="/" class="w3-bar-item w3-button w3-padding-large"><i class="glyphicon glyphicon-home"></i> Sneaker</a>
+      
+
+      <%if(!locals.user){%>
+      <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
+      <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
+      <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>      
+      <div style="float: right;" class="w3-dropdown-hover w3-hide-small">
+       <a  href="/login"style="float: right;"  class="w3-bar-item w3-button w3-padding-large w3-hide-small "  >Login</a>
+    </div>
+    <div style="float: right;" class="w3-dropdown-hover w3-hide-small">
+      <a href="/signup" style="float: right;"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Signup</a>
+  </div>
+
+  <!-- ค้นหา -->
+  
+  <!-- <form action="/search" method="GET">
+    <div class="topnav">
+      <div class="search-container">
+        <button class="icon" type="submit"><i style="color:white;" class="fa fa-search"></i></button>
+      <input name="findsneakers" type="search" placeholder="Find Name Sneaker" required>
+      
+    </div>
+  </form> -->
+</div>
+<%}%>
+<!-- ค้นหาcss -->
+<style>
+  button {
+    width: 50px;
+    background: black;
+}
+  .icon
+  {
+    float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 4px;
+  margin-right: 16px;
+  font-size: 17px;
+  }
+
+  .topnav  input[type=search] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 4px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+</style>
+      
+
+
+<%if(locals.user){%>
+ 
+  <a href="/nike" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NIKE</a>
+  <a href="/jordan" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Jordan</a>
+  <a href="/adidas" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Adidas</a>
+  
+  <div style="float: right;" class="w3-dropdown-hover w3-hide-small">
+    <a href="/logout" style="float: right;"  class="w3-bar-item w3-button w3-padding-large w3-hide-small " >Logout</a>
+
+</div><a href="/profile" style="float: right;" class="w3-bar-item w3-button w3-padding-large w3-hide-small"> Profile Name Is <%= user.username %></a>
+
+<!-- ค้นหาตอนlog in -->
+<!-- <form action="/search" method="GET">
+  <div class="topnav">
+    <div class="search-container">
+      <button class="icon" type="submit"><i style="color:white;" class="fa fa-search"></i></button>
+    <input name="findsneakers" type="search" placeholder="Find Name Sneaker" required>
+    
+  </div>
+</form> -->
+</div>
+
+
+<%}%>
+</div>
+
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="/nike" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">NIKE</a>
+  <a href="/jordan" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Jordan</a>
+  <a href="/adidas" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Adidas</a>
+  <a href="/login" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Log In</a>
+  <a href="/signup" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Sign Up</a>
+  <a href="/proflie" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Proflie</a>
+</div>
+<div class="container">
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+  <% } %>
+  <% if (success && success.length > 0) { %>
+    <div class="alert alert-success" role="alert">
+      <%= success %>
+    </div>
+  <% } %>
+</div>  
+</div>
+
+
+<br>
+<br>
+
+ <body> 
+   

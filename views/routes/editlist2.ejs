@@ -1,0 +1,106 @@
+<%- include("partials/adminheader") %>
+<div class="btn btn-outline-dark"><a href="/admin/sneaker/add" >Add</a></div>
+<div class="btn btn-outline-dark"><a href="/admin/user/edit" >edituser</a></div>
+<div class="container">
+    <h2>Adidas</h2>
+    <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+         
+            <th scope="col">Name</th>
+            <th scope="col">Size</th>
+            <th scope="col">Count</th>
+            <th scope="col">Editor</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+
+            <% findadidas.forEach(function(findadidas) { %>
+          <tr>
+            
+            <td><%= findadidas.Namesneaker %></td>
+            <td><%= findadidas.Sizesneaker %></td>
+            <td><%= findadidas.Count %></td>
+            <td><a class="btn-sm btn-light" href="/admin/sneaker/<%= findadidas._id %>/detail">Edit</a></td>
+          </tr>
+          <% }) %>
+
+
+
+        </tbody>
+      </table>
+    <br><br>
+    
+</div>
+
+<div class="container">
+    <h2>Nike</h2>
+    <table style="width: 100%;" class="table table-bordered table-dark">
+        <thead>
+          <tr>
+           
+            <th scope="col">Name</th>
+            <th scope="col">Size</th>
+            <th scope="col">Count</th>
+            <th scope="col">Editor</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+
+
+
+            <% findnike.forEach(function(findnike) { %>
+          <tr>
+           
+            <td><%= findnike.Namesneaker %></td>
+            <td><%= findnike.Sizesneaker %></td>
+            <td><%= findnike.Count %></td>
+            <td><a class="btn-sm btn-light" href="/admin/sneaker/<%= findnike._id %>/detail">Edit</a></td>
+          </tr>
+          <% }) %>
+
+
+
+        </tbody>
+    </table>
+  <br><br>
+
+</div>
+<div class="container">
+    <h2>Jordan</h2>
+    <table style="width: 100%;" class="table table-bordered table-dark">
+        <thead>
+          <tr>
+
+            <th scope="col">Name</th>
+            <th scope="col">Size</th>
+            <th scope="col">Count</th>
+            <th scope="col">Editor</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+
+
+         
+            <% findjordan.forEach(function(findjordan) { %>
+               
+          <tr>
+          
+            <td><%= findjordan.Namesneaker %></td>
+            <td><%= findjordan.Sizesneaker %></td>
+            <td><%= findjordan.Count %></td>
+            <td><a class="btn-sm btn-light" href="/admin/sneaker/<%= findjordan._id %>/detail">Edit</a></td>
+          </tr>
+          
+          <% }) %>
+          
+
+
+        </tbody>
+      </table>
+
+</div>
+<%- include("partials/footer") %>
