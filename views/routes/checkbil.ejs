@@ -89,6 +89,8 @@
             <strong>$<%=  buy.Price+10 %></strong>
           </li>
         </ul>
+        
+
           <form action="/<%=buy._id %>/<%=buy.Namesneaker %>/buy" method="POST">
             <div >
         
@@ -112,7 +114,7 @@
                 </div>
               </div>
             </div>
-          </form>
+        
           
         </div>
         <div class="detail" style="background-color: #F5F5F5; color: black;  " class="col"> 
@@ -120,70 +122,78 @@
           
           <div style="text-align: left; font-size: 24px;">ที่อยู่</div>
                 <br>
-          <form>
+         
             <div class="row" >
               <div class="col" >
                 
-                <input type="text" class="form-control" placeholder="First name" value="<%= user.Name %>" required>
+                <input type="text" class="form-control" placeholder="First name" value="<%= user.Name %>" name="Name" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="Last name" value="<%= user.Surename %>" required>
+                <input type="text" class="form-control" placeholder="Last name" value="<%= user.Surename %>" name="Surename" required>
               </div>
             </div>
-          </form>
+        
           <br>
-          <form>
-            <form>
+        
+         
               <div class="row user">
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="บัตรประชาชน" value="<%= user.IDCard %>" required>
+                  <input type="text" class="form-control" placeholder="บัตรประชาชน" value="<%= user.IDCard %>" name="IDCard" required>
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" value="<%= user.Telephone %>" required>
+                  <input type="text" class="form-control" placeholder="เบอร์โทรศัพท์" value="<%= user.Telephone %>" name="Telephone" required>
                 </div>
               </div>
-            </form>
+         
             <br>
-            <form>
+            
             <div class="row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="บ้านเลขที่" value="<%= user.Housenumber %>" required>
+                <input type="text" class="form-control" placeholder="บ้านเลขที่" value="<%= user.Housenumber %>" name="Housenumber" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="ถนน" value="" required>
+                <input type="text" class="form-control" placeholder="ถนน" value="<%= user.Road %>" name="Road" required>
               </div>
             </div>
-          </form>
+        
           <br>
-          <form>
+         
             <div class="row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="แขวง/ตำบล" value="" required>
+                <input type="text" class="form-control" placeholder="แขวง/ตำบล" value="<%= user.Parish %>" name="Parish" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="เขต/อำเภอ" value="<%= user.District %>" required>
+                <input type="text" class="form-control" placeholder="เขต/อำเภอ" value="<%= user.District %>" name="District" required>
               </div>
             </div>
-          </form>
+         
           <br>
-          <form>
+         
             <div class="row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="จังหวัด" value="<%= user.Province %>" required>
+                <input type="text" class="form-control" placeholder="จังหวัด" value="<%= user.Province %>" name="Province" required>
               </div>
               <div class="col">
-                <input type="text" class="form-control" placeholder="รหัสไปรษณีย์" value="<%= user.Postalcode %>" required>
+                <input type="text" class="form-control" placeholder="รหัสไปรษณีย์" value="<%= user.Postalcode %>" name="Postalcode" required>
               </div>
             </div>
-          </form>
+         
           
           <br>
         </div>
       </div>
     
     
+  
+  </div> 
+  
+  <br> 
    
-  </div>  <br><p aria-label="ยืนยัน" class="btn btn-secondary add-to-cart-btn"> ยืนยัน</p>
+  <div class="inputBox">
+    <center><input type="submit" class="btn btn-dark" name="" value="ยืนยัน"></center>
+  </div>
+
+  </form>
   
 </body>
 

@@ -128,7 +128,7 @@ function(req , res){
 
 
 router.post('/signup',function(req,res){
-  User.register(new User({username:req.body.username,email:req.body.email,Name :"",Surename :"",Housenumber:"", Province:"", District:"", Postalcode:"", IDCard :"", Telephone:"", Size :"",Gender:"", image:""
+  User.register(new User({username:req.body.username,email:req.body.email,Name :"",Surename :"",Housenumber:"", Province:"", District:"", Postalcode:"", IDCard :"", Telephone:"", Size :"",Gender:"", image:"", Road:"", Parish:""
     }), req.body.password, function(err, user){
       if(err){
           console.log(err);
@@ -206,7 +206,10 @@ if(req.file){
     var Telephone= req.body.Telephone
     var Size= req.body.Size
     var Gender= req.body.Gender
-    var image= req.file.filename
+    var image= req.file.filename 
+    var Road= req.body.Road
+    var Parish= req.body.Parish
+    
   }else{
     var Name = req.body.Name;
     var Surename = req.body.Surename;
@@ -218,9 +221,12 @@ if(req.file){
     var Telephone= req.body.Telephone
     var Size= req.body.Size
     var Gender= req.body.Gender
+    var Road= req.body.Road
+    var Parish= req.body.Parish
+    
   }
     User.updateMany({_id:req.user._id},{$set : {Name:Name,Surename:Surename,Housenumber:Housenumber,Province:Province
-      ,District:District,Postalcode:Postalcode,IDCard:IDCard,Telephone:Telephone,Size:Size,Gender:Gender,image:image}} ,function(err, update){
+      ,District:District,Postalcode:Postalcode,IDCard:IDCard,Telephone:Telephone,Size:Size,Gender:Gender,image:image,Road:Road,Parish:Parish}} ,function(err, update){
         if(err){
             console.log(err);
         } else {
@@ -279,7 +285,7 @@ router.get("/:id/:Namesneaker/buy",enSureAuthenticated,function(req,res){
                 console.log(err)
               }else{ 
               User.updateMany({_id:req.user._id},{$set : {Name:req.body.Name,Surename:req.body.Surename,Housenumber:req.body.Housenumber,Province:req.body.Province
-                ,District:req.body.District,Postalcode:req.body.Postalcode,IDCard:req.body.IDCard,Telephone:req.body.Telephone}}, function(err,update){
+                ,District:req.body.District,Postalcode:req.body.Postalcode,IDCard:req.body.IDCard,Telephone:req.body.Telephone,Road:req.body.Road,Parish:req.body.Parish}}, function(err,update){
                   if(err){
                     console.log(err)
                   }else{

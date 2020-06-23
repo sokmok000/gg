@@ -52,7 +52,12 @@ let databaseSchema = new mongoose.Schema({
     image: {
         type : String
     },
-    
+    Road: {
+        type : String
+    },
+    Parish: {
+        type : String
+    },
     sneakers : [
         {
             type: mongoose.Schema.Types.ObjectId,
