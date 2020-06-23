@@ -202,8 +202,8 @@ app.get("/jordan/:id/detail",function(req,res){
 //     res.render("signup");
 // });
 
-app.get("/test",function(req,res){
-    res.render("test");
+app.get("/contact",function(req,res){
+    res.render("contact");
 });
 
 app.listen(port, function(req,res){
